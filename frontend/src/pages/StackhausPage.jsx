@@ -4,8 +4,8 @@
 // import { Container, Row, Col } from "react-bootstrap"; // React Bootstrap
 import { Link } from 'react-router-dom';  // React Router version of href
 
-// Vanilla Extract styling file
-import * as styles from './StackhausPage.css';
+// Local imports
+import * as styles from './StackhausPage.css';  // Vanilla Extract styling file
 
 
 // Main component

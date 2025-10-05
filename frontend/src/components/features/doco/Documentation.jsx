@@ -2,8 +2,8 @@
 
 // Node imports
 import * as styles from './Documentation.css';  // Vanilla Extract styling file
-import DocumentationTree from './DocumentationTree';  // Sidebar menu
-import { Menu } from '@ark-ui/react'; // Ark-UI component
+// import DocumentationTree from './DocumentationTree';  // Sidebar menu
+import DocumentationMenu from './DocumentationMenu';
 
 
 // Main function 
@@ -16,12 +16,7 @@ function Documentation() {
       {/* Documentation content */}
       <div className={styles.documentationContentDiv}>
         {/* Menu */}
-        {/* <menu className={styles.documentationMenu}>
-          <ul>Overview</ul>
-          <ul>Getting Started</ul>
-          <ul>Configuration</ul>
-        </menu> */}
-        <DocumentationTree />
+        <DocumentationMenu />
         
 
         {/* Content */}

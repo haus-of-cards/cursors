@@ -13,6 +13,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "@ark-ui/react": "^5.25.1",
     "@vanilla-extract/css": "^1.17.4",
     "axios": "^1.11.0",
     "bootstrap": "^5.3.7",

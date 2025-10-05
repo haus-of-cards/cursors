@@ -2,7 +2,7 @@
 
 // Node imports
 import * as styles from './Documentation.css';  // Vanilla Extract styling file
-import DocumentationMenu from './DocumentationMenu';  // Sidebar menu
+import DocumentationTree from './DocumentationTree';  // Sidebar menu
 import { Menu } from '@ark-ui/react'; // Ark-UI component
 
 
@@ -21,33 +21,8 @@ function Documentation() {
           <ul>Getting Started</ul>
           <ul>Configuration</ul>
         </menu> */}
-
-        <Menu.Root defaultOpen={true} className={styles.documentationMenu}>
-          <Menu.Trigger>Open menu</Menu.Trigger>
-          <Menu.Positioner>
-            <Menu.Content>
-              <Menu.ItemGroup>
-                <Menu.ItemGroupLabel>Overview</Menu.ItemGroupLabel>
-                <Menu.Item value="react">React</Menu.Item>
-                <Menu.Item value="solid">Solid</Menu.Item>
-                <Menu.Item value="vue">Vue</Menu.Item>
-                <Menu.Item value="svelte">Svelte</Menu.Item>
-              </Menu.ItemGroup>
-              <Menu.ItemGroup>
-                <Menu.ItemGroupLabel>Getting Started</Menu.ItemGroupLabel>
-                <Menu.Item value="panda">Panda</Menu.Item>
-                <Menu.Item value="tailwind">Tailwind</Menu.Item>
-              </Menu.ItemGroup>
-              <Menu.ItemGroup>
-                <Menu.ItemGroupLabel>Configuration</Menu.ItemGroupLabel>
-                <Menu.Item value="panda">Panda</Menu.Item>
-                <Menu.Item value="tailwind">Tailwind</Menu.Item>
-              </Menu.ItemGroup>
-            </Menu.Content>
-          </Menu.Positioner>
-        </Menu.Root>
-
-
+        <DocumentationTree />
+        
 
         {/* Content */}
         <div className={styles.documentationContent}>

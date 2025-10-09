@@ -6,7 +6,7 @@ import DisplaySidebarItems from "./DisplaySidebarItems";
 
 
 // Main component
-export default function DisplaySidebarSections({sidebarSections}){
+export default function DisplaySidebarSections({sidebarSections,itemSelected,setItemSelected}){
 
   {/* Display the sections in a list */}
   return (
@@ -16,7 +16,11 @@ export default function DisplaySidebarSections({sidebarSections}){
             <li key={section.sectionNumber}>
               {section.sectionTitle}
               {/* Display the items in each section */}
-              <DisplaySidebarItems items={section.sectionItems} />
+              <DisplaySidebarItems 
+                items={section.sectionItems}
+                itemSelected={itemSelected}
+                setItemSelected={setItemSelected}                
+              />
             </li>            
           );
         })}

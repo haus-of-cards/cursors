@@ -1,22 +1,15 @@
 // Component that implements the sidebar menu on the documentation page
 
 // Node imports
-import { useState, Fragment } from "react";
+import { Fragment } from "react";
 
 // Local imports
-import DisplaySidebarSections from "./DisplaySidebarSections";
-// import { sidebarSectionsArray } from './data';
-import { sidebarSections } from './data';
-
-// Constants
-// const sidebarSections = ["Overview", "Getting Started", "Configuration"];
-// const sidebarSectionItems = [];
-// const sidebarSections = sidebarSectionsArray;
-// const sidebarSections = sidebarSectionsArrayObject;
+import { sidebarSections } from './documentationData';  // Data to populate documentation sidebar
+import DisplaySidebarSections from "./DisplaySidebarSections";  // Display sections of the sidebar menu
 
 
 // Main component
-export default function DocumentationSidebar() {
+export default function DocumentationSidebar( {itemSelected, setItemSelected}) {
   // State
   // const [ menuSelection, setMenuSelection ] = useState();
 
@@ -30,7 +23,11 @@ export default function DocumentationSidebar() {
   // Markup
   return (
     <Fragment>
-      <DisplaySidebarSections sidebarSections={sidebarSections} />
+      <DisplaySidebarSections 
+        sidebarSections={sidebarSections}
+        itemSelected={itemSelected}
+        setItemSelected={setItemSelected}
+      />
     </Fragment>
   )
 }

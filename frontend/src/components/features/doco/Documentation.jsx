@@ -1,43 +1,35 @@
 // Component that displays documentation on DocoPage
 
 // Node imports
-import * as styles from './Documentation.css';  // Vanilla Extract styling file
 import { useState } from 'react';
 
 // Local imports
+import * as styles from './Documentation.css';  // Vanilla Extract styling file
 import DocumentationSidebar from './DocumentationSidebar';
+import DocumentationContent from './DocumentationContent';
 
 
 // Main function 
-function Documentation() {
+export default function Documentation() {
   // State
-  const [itemSelected, setItemSelected] = useState();
+  // const [itemSelected, setItemSelected] = useState("Intro to Reactive Cursor"); // Item selected in the Documentation sidebar. Initially first item of first section
+  const [itemSelected, setItemSelected] = useState("1.1"); // Item selected in the Documentation sidebar. Initially 1st item of 2nd section
 
 
+  // Markup
   return (
     <div className={styles.documentationLayout}>
-      {/* Menu option chosen as Heading */}
-      <h3 >  * Menu option - Overview </h3>
 
-      {/* Documentation content */}
-      <div className={styles.documentationContentDiv}>
+      <div className={styles.documentationMenuContentDiv}>
         {/* Menu */}
-        <DocumentationSidebar />
+        <DocumentationSidebar itemSelected={itemSelected} setItemSelected={setItemSelected} />
+        {/* Documentation content */}
+        <DocumentationContent itemSelected={itemSelected} />
 
-        
-
-        {/* Content */}
-        <div className={styles.documentationContent}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione blanditiis obcaecati culpa facilis a autem dolore consectetur et possimus maxime non nihil nisi praesentium unde, quaerat perferendis eos, numquam quis?
-        </div>
-
-      </div>
-
-      
+      </div>      
 
     </div>
 
   )
 }
 
-export default Documentation

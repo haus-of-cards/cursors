@@ -5,7 +5,7 @@ export const sidebarSections = [
     sectionItems: [ 
       { 
         itemNumber: "1.1",
-        itemTitle: "Intro to Reactive Cursor"
+        itemTitle: "Introduction"
       },
       { 
         itemNumber: "1.2",
@@ -41,10 +41,6 @@ export const sidebarSections = [
         itemNumber: "3.2",
         itemTitle: "Advanced Options"
       },
-      { 
-        itemNumber: "3.3",
-        itemTitle: "Using your own SVGs"
-      }
     ]
   }  
 ];
@@ -67,4 +63,20 @@ export const sidebarSectionsOld = [
     sectionItems: [ "Advanced Options", "Using your own SVGs" ]
   },
  
+];
+
+
+export const itemsDocumentation = [
+  {
+    itemNumber: "2.1",
+    itemTitle: "Installing",
+    itemMarkup: `
+      <h3>Intro to Reactive Cursor<h3>
+    `
+  },
+  { 
+    itemNumber: "1.2",
+    itemTitle: "Cursor Functionality"
+  },
+
 ];

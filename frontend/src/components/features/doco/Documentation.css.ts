@@ -7,7 +7,8 @@ export const documentationLayout = style({
   flexDirection: "column"  
 });
 
-export const documentationContentDiv = style({
+
+export const documentationMenuContentDiv = style({
   display: "flex",
   flexDirection: "row"  // Horizontal layout with menu on the left and content on the right
 });
@@ -24,16 +25,7 @@ export const documentationMenu = style({
   alignSelf: "flex-start"
 });
 
-export const documentationContent = style({
-  marginLeft: "100px",
-  maxWidth: "600px",
-  flex: 1,
-  // flexBasis: "200px",
-  // flexGrow: "0",
-  // flexShrink: "0",
-  // border: "solid"
-  alignSelf: "center"
-});
+
 
 
 

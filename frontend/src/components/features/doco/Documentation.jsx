@@ -2,12 +2,18 @@
 
 // Node imports
 import * as styles from './Documentation.css';  // Vanilla Extract styling file
-// import DocumentationTree from './DocumentationTree';  // Sidebar menu
-import DocumentationMenu from './DocumentationMenu';
+import { useState } from 'react';
+
+// Local imports
+import DocumentationSidebar from './DocumentationSidebar';
 
 
 // Main function 
 function Documentation() {
+  // State
+  const [itemSelected, setItemSelected] = useState();
+
+
   return (
     <div className={styles.documentationLayout}>
       {/* Menu option chosen as Heading */}
@@ -16,7 +22,8 @@ function Documentation() {
       {/* Documentation content */}
       <div className={styles.documentationContentDiv}>
         {/* Menu */}
-        <DocumentationMenu />
+        <DocumentationSidebar />
+
         
 
         {/* Content */}

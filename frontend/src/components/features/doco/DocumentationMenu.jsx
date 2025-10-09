@@ -10,24 +10,30 @@ function DocumentationMenu() {
 
     <NavigationMenu.Root>
       <NavigationMenu.List>
-        <NavigationMenu.Item>Overview
-          <NavigationMenu.Trigger />
+
+        <NavigationMenu.Item>
+          <NavigationMenu.Trigger>Overview</NavigationMenu.Trigger>
           <NavigationMenu.Content>
-            <NavigationMenu.Link />
+            <NavigationMenu.Link>Reactive Cursor</NavigationMenu.Link>
+            <NavigationMenu.Link>Cursor Functions</NavigationMenu.Link>        
           </NavigationMenu.Content>
         </NavigationMenu.Item>
 
-        <NavigationMenu.Item>Getting Started
-          <NavigationMenu.Link />
+        <NavigationMenu.Item>
+          <NavigationMenu.Trigger>Getting Started</NavigationMenu.Trigger>
+            <NavigationMenu.Content>
+              <NavigationMenu.Link>Installing</NavigationMenu.Link>
+              <NavigationMenu.Link>Demo Cursor</NavigationMenu.Link>        
+          </NavigationMenu.Content>            
         </NavigationMenu.Item>
 
-        <NavigationMenu.Item>Configuration
-          <NavigationMenu.Trigger />
-          <NavigationMenu.Content>
-            <NavigationMenu.Sub>
-              <NavigationMenu.List />
-              <NavigationMenu.Viewport />
-            </NavigationMenu.Sub>
+        <NavigationMenu.Item>
+          <NavigationMenu.Trigger>Configuration</NavigationMenu.Trigger>
+            <NavigationMenu.Content>
+              <NavigationMenu.Sub>
+                <NavigationMenu.List />
+                <NavigationMenu.Viewport />
+              </NavigationMenu.Sub>
           </NavigationMenu.Content>
         </NavigationMenu.Item>
 

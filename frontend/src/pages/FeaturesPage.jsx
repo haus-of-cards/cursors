@@ -1,11 +1,11 @@
-// Page demonstrating features of the Reactive Cursor component
+// Page demonstrating features of the React Cursor component
 
 // React component FeaturesPage
 function FeaturesPage() {
   
   return (
 
-    <div> React Cursor Features Page</div>
+    <div>React Cursors Features Page</div>
   )
 }
 

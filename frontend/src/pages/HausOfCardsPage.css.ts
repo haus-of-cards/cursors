@@ -1,8 +1,8 @@
-// Vanilla Extract Styling file for Homepage StackhausPage.jsx
+// Vanilla Extract Styling file for Homepage HausOfCardsPage.jsx
 
 import { style } from "@vanilla-extract/css";
 
-export const stackhauspage = style({
+export const hausofcardspage = style({
   // margin: "2rem",
   marginTop: "20px",
   // display: "grid",
@@ -11,7 +11,7 @@ export const stackhauspage = style({
   alignItems: "center"
 });
 
-export const stackhauspageDemoDiv = style({
+export const hausofcardspageDemoDiv = style({
   marginTop: "20px",
   padding: "20px",
   display: "flex",
@@ -21,7 +21,7 @@ export const stackhauspageDemoDiv = style({
   
 });
 
-export const stackhauspageDemo = style({
+export const hausofcardspageDemo = style({
   marginLeft: "10px",
   flexBasis: "300px",
   flexGrow: "0",
@@ -29,7 +29,7 @@ export const stackhauspageDemo = style({
   border: "solid"
 });
 
-export const stackhauspageH3 = style({
+export const hausofcardspageH3 = style({
   marginTop: "30px",
   // paddingLeft: "20px",
   // paddingRight: "20px",

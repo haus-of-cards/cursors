@@ -12,7 +12,7 @@ import DocumentationContent from './DocumentationContent';
 // Main function 
 export default function Documentation() {
   // State
-  // const [itemSelected, setItemSelected] = useState("Intro to Reactive Cursor"); // Item selected in the Documentation sidebar. Initially first item of first section
+  // const [itemSelected, setItemSelected] = useState("Intro to React Cursor"); // Item selected in the Documentation sidebar. Initially first item of first section
   const [itemSelected, setItemSelected] = useState("1.1"); // Item selected in the Documentation sidebar. Initially 1st item of 2nd section
 
 

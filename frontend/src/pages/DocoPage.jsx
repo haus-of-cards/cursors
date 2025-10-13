@@ -1,4 +1,4 @@
-// Page providing documentation for the Reactive Cursors project
+// Page providing documentation for the React Cursors project
 
 // Local imports
 import * as styles from './DocoPage.css';  // Vanilla Extract styling file
@@ -10,7 +10,7 @@ function DocoPage() {
   
   return (
     <div className={styles.docopage}>
-      <h1 >Reactive Cursor Documentation</h1>
+      <h1 >React Cursors Documentation</h1>
       <Documentation /> {/* Display documentation menu & content*/}
     </div>
 

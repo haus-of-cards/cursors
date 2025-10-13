@@ -5,14 +5,14 @@ import { Route, Routes } from "react-router-dom"; // Page routing with ReactRout
 import { Fragment } from "react";
 
 // Local imports
-import Stackhaus from "./pages/StackhausPage";
+import HausOfCards from "./pages/HausOfCardsPage";
 import DocoPage from "./pages/DocoPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Layout from "./components/layout/Layout"; // Layout component that structures our App
 import FeaturesPage from "./pages/FeaturesPage";
 
 // Workspace imports
-import ReactiveCursor from "reactive-cursors";
+import ReactCursor from "@holmesdev/cursors";
 
 // React component App
 function App() {
@@ -21,8 +21,8 @@ function App() {
   // Markup (JSX)
   return (
     <Fragment>
-      {/* Import ReactiveCursor Component */}
-      <ReactiveCursor />
+      {/* Import React Cursor Component */}
+      <ReactCursor />
 
       {/* New Routing Setup using the Layout component  */}
       {/* Page routing */}
@@ -30,7 +30,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           {" "}
           {/* Note how the Layout component is used as an element instead of a wrapper */}
-          <Route index element={<Stackhaus />} />{" "}
+          <Route index element={<HausOfCards />} />
           <Route path="features" element={<FeaturesPage />} />
           <Route path="docs" element={<DocoPage />} />
           {/* Catchall segment ie. Page not found */}

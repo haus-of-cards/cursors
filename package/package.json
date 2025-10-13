@@ -1,8 +1,8 @@
 {
-  "name": "reactive-cursors",
+  "name": "@holmesdev/cursors",
   "version": "0.0.0",
   "description": "React component for custom cursors - SVG based, fully-customizable, and accessibility-focused",
-  "author": "Stackhaus",
+  "author": "Haus of Cards",
   "keywords": [
     "react",
     "cursor",
@@ -13,13 +13,13 @@
     "svg"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/stackhaus-hg/reactive-cursors",
+  "homepage": "https://github.com/haus-of-cards/cursors",
   "repository": {
     "type": "git",
-    "url": "https://github.com/stackhaus-hg/reactive-cursors.git"
+    "url": "https://github.com/haus-of-cards/cursors.git"
   },
   "bugs": {
-    "url": "https://github.com/stackhaus-hg/reactive-cursors/issues"
+    "url": "https://github.com/haus-of-cards/cursors/issues"
   },
   "type": "module",
   "main": "dist/index.cjs.js",

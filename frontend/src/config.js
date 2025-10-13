@@ -2,8 +2,8 @@
 
 const config = {
   // githubRepoURL: import.meta.env.VITE_GITHUB_REPOSITORY,
-  githubRepoURL: "https://github.com/stackhaus-hg/reactive-cursors",
-  websiteURL: "https://stackhaus-hg.github.io/reactive-cursors/",
+  githubRepoURL: "https://github.com/haus-of-cards/cursors",
+  websiteURL: "https://haus-of-cards.github.io/cursors/",
 };
 
 // Notes about import.meta.env:

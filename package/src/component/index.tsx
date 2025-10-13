@@ -26,7 +26,7 @@ export type Props = {
 };
 
 // Component
-const ReactiveCursor = ({
+const ReactCursor = ({
   enable = true,
   layers = [
     {
@@ -121,7 +121,7 @@ const ReactiveCursor = ({
   // Don't render anything if cursor is disabled
   if (!enable) return null;
 
-  // ReactiveCursor Component
+  // ReactCursor Component
   return (
     <div
       ref={cursorRef}
@@ -141,7 +141,7 @@ const ReactiveCursor = ({
         // Render the SVG cursor layer
         return (
           <SvgComponent
-            key={`reactive-cursor-layer-${i}`}
+            key={`react-cursor-layer-${i}`}
             color={layer.fill ?? defaultSvgOptions.fill}
             stroke={layer.stroke ?? defaultSvgOptions.stroke}
             strokeWidth={layer.strokeSize ?? defaultSvgOptions.strokeSize}
@@ -161,4 +161,4 @@ const ReactiveCursor = ({
   );
 };
 
-export default ReactiveCursor;
+export default ReactCursor;

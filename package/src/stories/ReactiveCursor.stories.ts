@@ -1,4 +1,4 @@
-// Story file for Stackhaus' ReactiveCursor component (in /component/index.tsx)
+// Story file for Haus of Cards' ReactCursor component (in /component/index.tsx)
 
 // Node imports
 import React from "react";
@@ -6,13 +6,13 @@ import type { Meta, StoryObj } from '@storybook/react-vite';  // Storybook
 
 
 // Local imports
-import ReactiveCursor from "../component/index"; // Our React component
+import ReactCursor from "../component/index"; // Our React component
 
 
 // Note: Based this code on the Story for the Button component
 const meta = {
-  title: 'Component/ReactiveCursor',
-  component: ReactiveCursor, // Our React component which we are writing a story for
+  title: 'Component/ReactCursor',
+  component: ReactCursor, // Our React component which we are writing a story for
   parameters: {
     // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: 'centered',
@@ -42,7 +42,7 @@ const meta = {
     zIndex: 2147483647
     
   },
-} satisfies Meta<typeof ReactiveCursor>;
+} satisfies Meta<typeof ReactCursor>;
 
 // The default export metadata controls how Storybook lists your stories and provides information used by addons
 export default meta;

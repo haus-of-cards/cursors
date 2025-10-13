@@ -1,4 +1,4 @@
-// Vanilla Extract Styling file for Homepage StackhausPage.jsx
+// Vanilla Extract Styling file for Homepage HausOfCardsPage.jsx
 
 import { style } from "@vanilla-extract/css";
 

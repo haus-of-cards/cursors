@@ -13,11 +13,11 @@ export default defineConfig({
       include: "**/*.svg",
     }),
   ],
-  base: "/reactive-cursors/", // required for GH pages deployment
+  base: "/cursors/", // required for GH pages deployment
   server: { port: 3000 },
   resolve: {
     alias: {
-      "reactive-cursors": path.resolve(
+      "@holmesdev/cursors": path.resolve(
         __dirname,
         "../package/src/component/index.tsx"
       ),

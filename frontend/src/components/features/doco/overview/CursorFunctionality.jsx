@@ -8,7 +8,7 @@ import { Fragment } from "react";
 export default function CursorFunctionality() {
   return (
     <Fragment>
-      <h1>Reactive Cursor Functionality</h1>
+      <h1>React Cursors Functionality</h1>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim quia libero cum ab, voluptate facilis eligendi et? Adipisci repellendus dicta culpa! 
         Tempore voluptates ea enim voluptatem laudantium hic provident repellat.</p>
     </Fragment>

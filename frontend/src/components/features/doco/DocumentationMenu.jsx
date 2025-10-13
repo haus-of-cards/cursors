@@ -14,7 +14,7 @@ function DocumentationMenu() {
         <NavigationMenu.Item>
           <NavigationMenu.Trigger>Overview</NavigationMenu.Trigger>
           <NavigationMenu.Content>
-            <NavigationMenu.Link>Reactive Cursor</NavigationMenu.Link>
+            <NavigationMenu.Link>React Cursors</NavigationMenu.Link>
             <NavigationMenu.Link>Cursor Functions</NavigationMenu.Link>        
           </NavigationMenu.Content>
         </NavigationMenu.Item>

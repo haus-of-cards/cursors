@@ -50,7 +50,7 @@ export const sidebarSectionsOld = [
   {
     sectionNumber: "1",
     sectionTitle: "Overview",
-    sectionItems: [ "Intro to Reactive Cursor", "Cursor Functionality"]
+    sectionItems: [ "Intro to React Cursors", "Cursor Functionality"]
   },
   {
     sectionNumber: "2",
@@ -71,7 +71,7 @@ export const itemsDocumentation = [
     itemNumber: "2.1",
     itemTitle: "Installing",
     itemMarkup: `
-      <h3>Intro to Reactive Cursor<h3>
+      <h3>Intro to React Cursors<h3>
     `
   },
   { 

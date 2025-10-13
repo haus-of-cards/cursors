@@ -7,7 +7,7 @@ function Footer() {
   return (
     // <footer className="footer">
     <footer className={styles.footer}>
-      <span>&copy; Stackhaus 2025 </span>
+      <span>&copy; Haus of Cards 2025 </span>
     </footer>
   )
 }

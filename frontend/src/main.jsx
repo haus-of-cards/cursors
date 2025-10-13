@@ -13,7 +13,8 @@ import App from "./App.jsx"; // Main application component
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename="/reactive-cursors">
+    {/* Basename required for gh-pages URL structure */}
+    <BrowserRouter basename="/cursors">
       <App />
     </BrowserRouter>
   </StrictMode>

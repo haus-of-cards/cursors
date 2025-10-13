@@ -23,13 +23,13 @@ function Header() {
           {/* <Navbar.Brand href="/">CBV</Navbar.Brand> */}
           <Navbar.Brand as={Link} to={""}>
             <img
-              src="images/StackhausLogo159x128.png"
+              src="images/haus-of-cards-logo.png"
               width="30"
               height="30"
               className="d-inline-block align-top"
-              alt="Stackhaus Logo"
+              alt="Haus of Cards Logo"
             />{' '}
-            Reactive Cursor
+            React Cursors
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">

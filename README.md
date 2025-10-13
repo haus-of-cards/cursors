@@ -1,3 +1,3 @@
-# Reactive Cursors
+# Cursors
 
-_by Stackhaus_
+_by Haus of Cards_

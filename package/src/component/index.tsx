@@ -3,7 +3,7 @@ import { CursorLayer } from "../types";
 import { resolveSvg, svgStylesMap } from "../utils";
 
 // Default Cursor Layer Options
-const defaultSvgOptions: Required<CursorLayer> = {
+const defaultSvgOptions: Required<Omit<CursorLayer, "hotspot">> = {
   SVG: svgStylesMap.default,
   fill: "black",
   stroke: "white",
@@ -90,16 +90,25 @@ const ReactCursor = ({
         const delayMs = layer.delay ?? defaultSvgOptions.delay;
         const size = layerSizes[i];
 
-        // update position
+        // update position coordinates
         const smoothing = Math.exp(-delta / delayMs); // exponential smoothing based on ms delay
         pos.x = pos.x * smoothing + targetPosition.current.x * (1 - smoothing);
         pos.y = pos.y * smoothing + targetPosition.current.y * (1 - smoothing);
 
-        // apply transform directly to layer
+        // apply transform directly to layer (i.e. move layer to the updated coordinates)
+        // *note* - use translate3d, as it may be more likely to force GPU computation for optimal performance
         const layerEl = children[i] as HTMLElement;
-        layerEl.style.transform = `translate3d(${pos.x - size.width / 2}px, ${
-          pos.y - size.height / 2
-        }px, 0)`; // use translate3d as it may be more likely to force GPU computation for performance (?)
+        if (layer.hotspot) {
+          // position layer according to supplied hotspot values
+          layerEl.style.transform = `translate3d(
+            ${pos.x - layer.hotspot.x}px, 
+            ${pos.y - layer.hotspot.y}px, 0)`;
+        } else {
+          // otherwise, centre the hotspot
+          layerEl.style.transform = `translate3d(
+            ${pos.x - size.width / 2}px,
+            ${pos.y - size.height / 2}px, 0)`;
+        }
       });
 
       // call next animation frame

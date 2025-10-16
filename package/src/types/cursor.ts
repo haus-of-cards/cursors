@@ -12,4 +12,5 @@ export type CursorLayer = {
   opacity?: number; // opacity of the layer (0-1)
   size?: { height: number; width: number }; // 'px' height/width of the SVG
   delay?: number; // amount of lag that the layer has to the actual system cursor position (0=none)
+  hotspot?: { x: number; y: number }; // xy coordinate override for the "click" hotspot of the cursor layer (x:0, y:10 == 0px across, 10px down)
 };

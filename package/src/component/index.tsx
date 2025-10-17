@@ -1,6 +1,7 @@
-import { CSSProperties, useEffect, useRef } from "react";
+import { CSSProperties, useEffect, useRef, useMemo } from "react";
 import { CursorLayer } from "../types";
 import { resolveSvg, svgStylesMap } from "../utils";
+
 
 // Default Cursor Layer Options
 const defaultSvgOptions: Required<Omit<CursorLayer, "hotspot">> = {
@@ -9,11 +10,37 @@ const defaultSvgOptions: Required<Omit<CursorLayer, "hotspot">> = {
   stroke: "white",
   strokeSize: 10,
   opacity: 1,
-  size: {
-    height: 100,
-    width: 100,
-  },
+  size: { height: 100, width: 100 },
   delay: 0,
+};
+// Accessibility Detection 
+const detectAccessibilityEnv = (ignoreAccessibility = false) => {
+  if (typeof window === "undefined") {
+    return {
+      prefersReduced: false,
+      forcedColors: false,
+      prefersHighContrast: false,
+      coarsePointer: false,
+
+    };
+  }
+
+  const mm = window.matchMedia.bind(window);
+
+  const prefersReduced =
+    !ignoreAccessibility && mm("(prefers-reduced-motion: reduce)").matches;
+  const forcedColors =
+    !ignoreAccessibility && mm("(forced-colors: active)").matches;
+  const prefersHighContrast =
+    !ignoreAccessibility && mm("(prefers-contrast: more)").matches;
+  const coarsePointer = mm("(any-pointer: coarse)").matches;
+
+  return {
+    prefersReduced,
+    forcedColors,
+    prefersHighContrast,
+    coarsePointer,
+  };
 };
 
 // Component Props
@@ -23,6 +50,7 @@ export type Props = {
   layers?: CursorLayer[]; // defines each cursor draw layer
   mixBlendMode?: CSSProperties["mixBlendMode"]; // CSS mix-blend-mode property to apply to the entire component
   zIndex?: number; // custom-define the z-index of the cursor (default is max z-index value)
+  ignoreAccessibility?: boolean; // ignore system accessibility setting
 };
 
 // Component
@@ -39,14 +67,21 @@ const ReactCursor = ({
   showSystemCursor = true,
   mixBlendMode = "normal",
   zIndex = 2147483647,
+  ignoreAccessibility = false,
 }: Props) => {
-  const cursorRef = useRef<HTMLDivElement>(null); // cursor DOM element
-  const targetPosition = useRef({ x: 0, y: 0 }); // current system cursor xy-position, at the current animation frame
-  const layerPosisitions = useRef(layers.map(() => ({ x: 0, y: 0 }))); // current xy-position of the custom cursor layers, at the previous animation frame
-  const prevTime = useRef(performance.now()); // last time the animation frame was updated
-  const animationFrame = useRef<number | null>(null); // current animation frame
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const targetPosition = useRef({ x: 0, y: 0 });
+  const layerPositions = useRef(layers.map(() => ({ x: 0, y: 0 })));
+  const prevTime = useRef(performance.now());
+  const animationFrame = useRef<number | null>(null);
 
-  // Precompute layer sizes (width/height) for centering
+  // Inline accessibility detection (Phase 2: not yet enforced)
+  const env = useMemo(
+    () => detectAccessibilityEnv(ignoreAccessibility),
+    [ignoreAccessibility]
+  );
+
+  // Precompute layer sizes for centering
   const layerSizes = layers.map(
     (layer) => layer.size ?? defaultSvgOptions.size
   );
@@ -55,11 +90,9 @@ const ReactCursor = ({
   useEffect(() => {
     if (!enable || showSystemCursor) return;
 
-    // get the originally set values
     const originalRootCursor = document.documentElement.style.cursor;
     const originalBodyCursor = document.body.style.cursor;
 
-    // override styles with no cursor
     document.body.style.setProperty("cursor", "none", "important");
     document.documentElement.style.setProperty("cursor", "none", "important");
 
@@ -71,12 +104,10 @@ const ReactCursor = ({
 
   // Position and animation of cursor
   useEffect(() => {
-    // Handler for calculating current system cursor position
     const handleMouseMove = (e: MouseEvent) => {
       targetPosition.current = { x: e.clientX, y: e.clientY };
     };
 
-    // Recursive function for animating each cursor layer
     const animate = () => {
       if (!cursorRef.current) return;
 
@@ -86,12 +117,13 @@ const ReactCursor = ({
       prevTime.current = now;
 
       layers.forEach((layer, i) => {
-        const pos = layerPosisitions.current[i];
+        const pos = layerPositions.current[i];
         const delayMs = layer.delay ?? defaultSvgOptions.delay;
         const size = layerSizes[i];
 
         // update position coordinates
-        const smoothing = Math.exp(-delta / delayMs); // exponential smoothing based on ms delay
+        const smoothing =
+          delayMs > 0 ? Math.exp(-delta / delayMs) : 0; // exponential smoothing based on ms delay (+ avoid NaN)
         pos.x = pos.x * smoothing + targetPosition.current.x * (1 - smoothing);
         pos.y = pos.y * smoothing + targetPosition.current.y * (1 - smoothing);
 
@@ -111,26 +143,21 @@ const ReactCursor = ({
         }
       });
 
-      // call next animation frame
       animationFrame.current = requestAnimationFrame(animate);
     };
 
-    // bind the mousemove handler
     window.addEventListener("mousemove", handleMouseMove);
-    // trigger the first animation frame
     animationFrame.current = requestAnimationFrame(animate);
 
-    // remove effects on unmount
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
       if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
     };
   }, [enable, layers]);
 
-  // Don't render anything if cursor is disabled
+  // Skip rendering if disabled
   if (!enable) return null;
 
-  // ReactCursor Component
   return (
     <div
       ref={cursorRef}
@@ -139,15 +166,14 @@ const ReactCursor = ({
         top: 0,
         left: 0,
         pointerEvents: "none",
-        zIndex: zIndex,
-        mixBlendMode: mixBlendMode,
+        zIndex,
+        mixBlendMode,
       }}
+      aria-hidden="true"
+      role="presentation"
     >
-      {/* Render each layer in order, reducing z-index per layer */}
       {layers.map((layer, i) => {
-        // Resolve the SVG component
         const SvgComponent = resolveSvg(layer.SVG);
-        // Render the SVG cursor layer
         return (
           <SvgComponent
             key={`react-cursor-layer-${i}`}
@@ -162,6 +188,7 @@ const ReactCursor = ({
               left: 0,
               opacity: layer.opacity ?? defaultSvgOptions.opacity,
               zIndex: zIndex - i,
+              pointerEvents: "none",
             }}
           />
         );

@@ -69,31 +69,26 @@ const ReactCursor = ({
   zIndex = 2147483647,
   ignoreAccessibility = false,
 }: Props) => {
-  // Inline accessibility detection (Phase 2: not yet enforced)
+  // Inline accessibility detection 
   const env = detectAccessibilityEnv(ignoreAccessibility);
 
-  // Drop to system cursor if accessibility preferences are detected
-  if (env.prefersReduced || env.forcedColors || env.prefersHighContrast || env.coarsePointer) {
-    return null;
-  }
+  const shouldRender = enable && !(env.prefersReduced || env.forcedColors || env.prefersHighContrast || env.coarsePointer);
 
   const cursorRef = useRef<HTMLDivElement>(null);
   const targetPosition = useRef({ x: 0, y: 0 });
   const layerPositions = useRef(layers.map(() => ({ x: 0, y: 0 })));
   const prevTime = useRef(performance.now());
   const animationFrame = useRef<number | null>(null);
-  if (
-    !ignoreAccessibility &&
-    (env.prefersReduced || env.forcedColors || env.prefersHighContrast || env.coarsePointer)
-  ) {
-    return null;
-  }
-    (layer) => layer.size ?? defaultSvgOptions.size
+
+  // Precompute layer sizes for centering
+  const layerSizes = useMemo(() =>
+    layers.map((layer) => layer.size ?? defaultSvgOptions.size),
+    [layers]
   );
 
   // Hide system cursor
   useEffect(() => {
-    if (!enable || showSystemCursor) return;
+    if (!shouldRender || showSystemCursor) return;
 
     const originalRootCursor = document.documentElement.style.cursor;
     const originalBodyCursor = document.body.style.cursor;
@@ -105,10 +100,12 @@ const ReactCursor = ({
       document.documentElement.style.setProperty("cursor", originalRootCursor);
       document.body.style.setProperty("cursor", originalBodyCursor);
     };
-  }, [enable, showSystemCursor]);
+  }, [shouldRender, showSystemCursor]);
 
   // Position and animation of cursor
   useEffect(() => {
+    if (!shouldRender) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       targetPosition.current = { x: e.clientX, y: e.clientY };
     };
@@ -158,12 +155,9 @@ const ReactCursor = ({
       window.removeEventListener("mousemove", handleMouseMove);
       if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
     };
-  }, [enable, layers]);
+  }, [shouldRender, layers]);
 
-  // Skip rendering if disabled
-  if (!enable) return null;
-
-  return (
+  return shouldRender ? (
     <div
       ref={cursorRef}
       style={{
@@ -199,7 +193,7 @@ const ReactCursor = ({
         );
       })}
     </div>
-  );
+  ) : null;
 };
 
 export default ReactCursor;

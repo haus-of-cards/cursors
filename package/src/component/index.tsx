@@ -69,20 +69,25 @@ const ReactCursor = ({
   zIndex = 2147483647,
   ignoreAccessibility = false,
 }: Props) => {
+  // Inline accessibility detection (Phase 2: not yet enforced)
+  const env = detectAccessibilityEnv(ignoreAccessibility);
+
+  // Drop to system cursor if accessibility preferences are detected
+  if (env.prefersReduced || env.forcedColors || env.prefersHighContrast || env.coarsePointer) {
+    return null;
+  }
+
   const cursorRef = useRef<HTMLDivElement>(null);
   const targetPosition = useRef({ x: 0, y: 0 });
   const layerPositions = useRef(layers.map(() => ({ x: 0, y: 0 })));
   const prevTime = useRef(performance.now());
   const animationFrame = useRef<number | null>(null);
-
-  // Inline accessibility detection (Phase 2: not yet enforced)
-  const env = useMemo(
-    () => detectAccessibilityEnv(ignoreAccessibility),
-    [ignoreAccessibility]
-  );
-
-  // Precompute layer sizes for centering
-  const layerSizes = layers.map(
+  if (
+    !ignoreAccessibility &&
+    (env.prefersReduced || env.forcedColors || env.prefersHighContrast || env.coarsePointer)
+  ) {
+    return null;
+  }
     (layer) => layer.size ?? defaultSvgOptions.size
   );
 

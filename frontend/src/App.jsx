@@ -2,7 +2,7 @@
 
 // Node imports
 import { Route, Routes } from "react-router-dom"; // Page routing with ReactRouter
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 
 // Local imports
 import HausOfCards from "./pages/HausOfCardsPage";
@@ -16,13 +16,14 @@ import ReactCursor from "@holmesdev/cursors";
 
 // React component App
 function App() {
-  // Logic (JS)
+  // State
+  const [mainCursor, setMainCursor] = useState(true); // Our application-wide main cursor enabled by default
 
   // Markup (JSX)
   return (
     <Fragment>
       {/* Import React Cursor Component */}
-      <ReactCursor />
+      <ReactCursor enable={mainCursor} />
 
       {/* New Routing Setup using the Layout component  */}
       {/* Page routing */}
@@ -31,7 +32,7 @@ function App() {
           {" "}
           {/* Note how the Layout component is used as an element instead of a wrapper */}
           <Route index element={<HausOfCards />} />
-          <Route path="features" element={<FeaturesPage />} />
+          <Route path="features" element={<FeaturesPage setMainCursor={setMainCursor} />}  />
           <Route path="docs" element={<DocoPage />} />
           {/* Catchall segment ie. Page not found */}
           <Route path="*" element={<NotFoundPage />} />

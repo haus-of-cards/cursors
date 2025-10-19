@@ -16,7 +16,10 @@ export default function FeaturesPage() {
       <div className={styles.featuresPageDemoDiv}>
         <div className={styles.featuresPageTestbed} >
           <p>Demo Testbed goes Here</p>
-          <ReactCursor layers={ [ { fill: "red", stroke: "green", size: { height: 30, width: 30 } } ] } />
+          <ReactCursor 
+            layers={ [ { fill: "red", stroke: "green", size: { height: 30, width: 30 } } ] } 
+            zIndex={10}  
+          />
           {/* <ReactCursor /> */}
         </div>
         <div className={styles.featuresPageCode}>Code output goes Here</div>

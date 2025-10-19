@@ -5,7 +5,7 @@ maintainers
  - Sofia Mironenko
 
 
-Acknowlegements
+Acknowledgements
 ---------------
 
 Special thanks to Holmesglen and the teachers Alex Bicknell and Tom Power for their support and guidance.

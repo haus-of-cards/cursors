@@ -1,5 +1,5 @@
-import { CSSProperties, useEffect, useRef, useMemo } from "react";
-import { CursorLayer } from "../types";
+import { CSSProperties, useEffect, useRef, useMemo, useState } from "react";
+import { CursorLayer, CursorEffects } from "../types";
 import { resolveSvg, svgStylesMap } from "../utils";
 
 
@@ -51,6 +51,8 @@ export type Props = {
   mixBlendMode?: CSSProperties["mixBlendMode"]; // CSS mix-blend-mode property to apply to the entire component
   zIndex?: number; // custom-define the z-index of the cursor (default is max z-index value)
   ignoreAccessibility?: boolean; // ignore system accessibility setting
+  effects?: CursorEffects; // effect states for hover and click
+  hoverSelector?: string; // CSS selector for elements that trigger hover effect (default: 'a, button, [role="button"]')
 };
 
 // Component
@@ -68,6 +70,8 @@ const ReactCursor = ({
   mixBlendMode = "normal",
   zIndex = 2147483647,
   ignoreAccessibility = false,
+  effects,
+  hoverSelector = 'a, button, [role="button"], input, textarea, select',
 }: Props) => {
   // Inline accessibility detection 
   const env = detectAccessibilityEnv(ignoreAccessibility);
@@ -79,11 +83,45 @@ const ReactCursor = ({
   const layerPositions = useRef(layers.map(() => ({ x: 0, y: 0 })));
   const prevTime = useRef(performance.now());
   const animationFrame = useRef<number | null>(null);
+  
+  // Effect states
+  const [isHovering, setIsHovering] = useState(false);
+  const [isClicking, setIsClicking] = useState(false);
 
-  // Precompute layer sizes for centering
+  // Apply effects to layers based on current state
+  const effectiveLayers = useMemo(() => {
+    if (!effects) return layers;
+
+    // Determine which effect to apply (click takes precedence over hover)
+    const activeEffect = isClicking ? effects.click : isHovering ? effects.hover : null;
+    
+    if (!activeEffect) return layers;
+
+    // Apply effect to first layer only (can be extended to all layers if needed)
+    return layers.map((layer, index) => {
+      if (index !== 0) return layer;
+      
+      return {
+        ...layer,
+        SVG: activeEffect.SVG ?? layer.SVG,
+        fill: activeEffect.fill ?? layer.fill,
+        stroke: activeEffect.stroke ?? layer.stroke,
+        strokeSize: activeEffect.strokeSize ?? layer.strokeSize,
+        opacity: activeEffect.opacity ?? layer.opacity,
+        size: activeEffect.scale 
+          ? {
+              height: (layer.size?.height ?? defaultSvgOptions.size.height) * activeEffect.scale,
+              width: (layer.size?.width ?? defaultSvgOptions.size.width) * activeEffect.scale,
+            }
+          : layer.size,
+      };
+    });
+  }, [layers, effects, isHovering, isClicking]);
+
+  // Precompute layer sizes for centering (recalculate when effectiveLayers change)
   const layerSizes = useMemo(() =>
-    layers.map((layer) => layer.size ?? defaultSvgOptions.size),
-    [layers]
+    effectiveLayers.map((layer) => layer.size ?? defaultSvgOptions.size),
+    [effectiveLayers]
   );
 
   // Hide system cursor
@@ -96,11 +134,62 @@ const ReactCursor = ({
     document.body.style.setProperty("cursor", "none", "important");
     document.documentElement.style.setProperty("cursor", "none", "important");
 
+    // Create a style element to override cursor on all elements
+    const styleEl = document.createElement("style");
+    styleEl.id = "react-cursor-hide-system";
+    styleEl.textContent = "* { cursor: none !important; }";
+    document.head.appendChild(styleEl);
+
     return () => {
       document.documentElement.style.setProperty("cursor", originalRootCursor);
       document.body.style.setProperty("cursor", originalBodyCursor);
+      const el = document.getElementById("react-cursor-hide-system");
+      if (el) el.remove();
     };
   }, [shouldRender, showSystemCursor]);
+
+  // Hover and click effect detection
+  useEffect(() => {
+    if (!shouldRender || !effects) return;
+
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.matches(hoverSelector)) {
+        setIsHovering(true);
+      }
+    };
+
+    const handleMouseOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (target.matches(hoverSelector)) {
+        setIsHovering(false);
+      }
+    };
+
+    const handleMouseDown = () => {
+      if (effects.click) {
+        setIsClicking(true);
+      }
+    };
+
+    const handleMouseUp = () => {
+      if (effects.click) {
+        setIsClicking(false);
+      }
+    };
+
+    document.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseout", handleMouseOut);
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("mouseup", handleMouseUp);
+
+    return () => {
+      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseout", handleMouseOut);
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [shouldRender, effects, hoverSelector]);
 
   // Position and animation of cursor
   useEffect(() => {
@@ -118,7 +207,7 @@ const ReactCursor = ({
       const delta = now - prevTime.current;
       prevTime.current = now;
 
-      layers.forEach((layer, i) => {
+      effectiveLayers.forEach((layer, i) => {
         const pos = layerPositions.current[i];
         const delayMs = layer.delay ?? defaultSvgOptions.delay;
         const size = layerSizes[i];
@@ -155,7 +244,7 @@ const ReactCursor = ({
       window.removeEventListener("mousemove", handleMouseMove);
       if (animationFrame.current) cancelAnimationFrame(animationFrame.current);
     };
-  }, [shouldRender, layers]);
+  }, [shouldRender, effectiveLayers, layerSizes]);
 
   return shouldRender ? (
     <div
@@ -171,7 +260,7 @@ const ReactCursor = ({
       aria-hidden="true"
       role="presentation"
     >
-      {layers.map((layer, i) => {
+      {effectiveLayers.map((layer, i) => {
         const SvgComponent = resolveSvg(layer.SVG);
         return (
           <SvgComponent

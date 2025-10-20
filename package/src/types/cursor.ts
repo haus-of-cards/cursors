@@ -14,3 +14,19 @@ export type CursorLayer = {
   delay?: number; // amount of lag that the layer has to the actual system cursor position (0=none)
   hotspot?: { x: number; y: number }; // xy coordinate override for the "click" hotspot of the cursor layer (x:0, y:10 == 0px across, 10px down)
 };
+
+// Effect State - defines how cursor changes on interaction
+export type CursorEffectState = {
+  SVG?: FC<SVGProps<SVGSVGElement>> | SvgDefaultStyles; // SVG to use during effect
+  fill?: string; // fill colour during effect
+  stroke?: string; // stroke colour during effect
+  strokeSize?: number; // stroke size during effect
+  opacity?: number; // opacity during effect
+  scale?: number; // scale multiplier (1 = normal, 2 = double size, 0.5 = half size)
+};
+
+// Effect Configuration
+export type CursorEffects = {
+  hover?: CursorEffectState; // effect when hovering over interactive elements
+  click?: CursorEffectState; // effect when clicking
+};

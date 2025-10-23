@@ -2,7 +2,6 @@ import { CSSProperties, useEffect, useRef, useMemo, useState } from "react";
 import { CursorLayer, CursorEffects } from "../types";
 import { resolveSvg, svgStylesMap } from "../utils";
 
-
 // Default Cursor Layer Options
 const defaultSvgOptions: Required<Omit<CursorLayer, "hotspot">> = {
   SVG: svgStylesMap.default,
@@ -13,7 +12,7 @@ const defaultSvgOptions: Required<Omit<CursorLayer, "hotspot">> = {
   size: { height: 100, width: 100 },
   delay: 0,
 };
-// Accessibility Detection 
+// Accessibility Detection
 const detectAccessibilityEnv = (ignoreAccessibility = false) => {
   if (typeof window === "undefined") {
     return {
@@ -21,7 +20,6 @@ const detectAccessibilityEnv = (ignoreAccessibility = false) => {
       forcedColors: false,
       prefersHighContrast: false,
       coarsePointer: false,
-
     };
   }
 
@@ -73,17 +71,24 @@ const ReactCursor = ({
   effects,
   hoverSelector = 'a, button, [role="button"], input, textarea, select',
 }: Props) => {
-  // Inline accessibility detection 
+  // Inline accessibility detection
   const env = detectAccessibilityEnv(ignoreAccessibility);
 
-  const shouldRender = enable && !(env.prefersReduced || env.forcedColors || env.prefersHighContrast || env.coarsePointer);
+  const shouldRender =
+    enable &&
+    !(
+      env.prefersReduced ||
+      env.forcedColors ||
+      env.prefersHighContrast ||
+      env.coarsePointer
+    );
 
   const cursorRef = useRef<HTMLDivElement>(null);
   const targetPosition = useRef({ x: 0, y: 0 });
   const layerPositions = useRef(layers.map(() => ({ x: 0, y: 0 })));
   const prevTime = useRef(performance.now());
   const animationFrame = useRef<number | null>(null);
-  
+
   // Effect states
   const [isHovering, setIsHovering] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
@@ -93,14 +98,18 @@ const ReactCursor = ({
     if (!effects) return layers;
 
     // Determine which effect to apply (click takes precedence over hover)
-    const activeEffect = isClicking ? effects.click : isHovering ? effects.hover : null;
-    
+    const activeEffect = isClicking
+      ? effects.click
+      : isHovering
+        ? effects.hover
+        : null;
+
     if (!activeEffect) return layers;
 
     // Apply effect to first layer only (can be extended to all layers if needed)
     return layers.map((layer, index) => {
       if (index !== 0) return layer;
-      
+
       return {
         ...layer,
         SVG: activeEffect.SVG ?? layer.SVG,
@@ -108,10 +117,14 @@ const ReactCursor = ({
         stroke: activeEffect.stroke ?? layer.stroke,
         strokeSize: activeEffect.strokeSize ?? layer.strokeSize,
         opacity: activeEffect.opacity ?? layer.opacity,
-        size: activeEffect.scale 
+        size: activeEffect.scale
           ? {
-              height: (layer.size?.height ?? defaultSvgOptions.size.height) * activeEffect.scale,
-              width: (layer.size?.width ?? defaultSvgOptions.size.width) * activeEffect.scale,
+              height:
+                (layer.size?.height ?? defaultSvgOptions.size.height) *
+                activeEffect.scale,
+              width:
+                (layer.size?.width ?? defaultSvgOptions.size.width) *
+                activeEffect.scale,
             }
           : layer.size,
       };
@@ -119,9 +132,9 @@ const ReactCursor = ({
   }, [layers, effects, isHovering, isClicking]);
 
   // Precompute layer sizes for centering (recalculate when effectiveLayers change)
-  const layerSizes = useMemo(() =>
-    effectiveLayers.map((layer) => layer.size ?? defaultSvgOptions.size),
-    [effectiveLayers]
+  const layerSizes = useMemo(
+    () => effectiveLayers.map((layer) => layer.size ?? defaultSvgOptions.size),
+    [effectiveLayers],
   );
 
   // Hide system cursor
@@ -213,8 +226,7 @@ const ReactCursor = ({
         const size = layerSizes[i];
 
         // update position coordinates
-        const smoothing =
-          delayMs > 0 ? Math.exp(-delta / delayMs) : 0; // exponential smoothing based on ms delay (+ avoid NaN)
+        const smoothing = delayMs > 0 ? Math.exp(-delta / delayMs) : 0; // exponential smoothing based on ms delay (+ avoid NaN)
         pos.x = pos.x * smoothing + targetPosition.current.x * (1 - smoothing);
         pos.y = pos.y * smoothing + targetPosition.current.y * (1 - smoothing);
 

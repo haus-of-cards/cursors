@@ -1,33 +1,35 @@
-
-import type { Meta, StoryObj } from '@storybook/react';
-import ReactCursor from '../component';
+import type { Meta, StoryObj } from "@storybook/react";
+import ReactCursor from "../component";
 
 const meta: Meta<typeof ReactCursor> = {
-  title: 'ReactCursor',
+  title: "ReactCursor",
   component: ReactCursor,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
   decorators: [
     (Story, context) => {
       // Mock matchMedia for accessibility flags
       const originalMatchMedia = window.matchMedia;
       const queries: Record<string, boolean> = {
-        '(prefers-reduced-motion: reduce)': context.parameters?.prefersReduced || false,
-        '(forced-colors: active)': context.parameters?.forcedColors || false,
-        '(prefers-contrast: more)': context.parameters?.prefersHighContrast || false,
-        '(any-pointer: coarse)': context.parameters?.coarsePointer || false,
+        "(prefers-reduced-motion: reduce)":
+          context.parameters?.prefersReduced || false,
+        "(forced-colors: active)": context.parameters?.forcedColors || false,
+        "(prefers-contrast: more)":
+          context.parameters?.prefersHighContrast || false,
+        "(any-pointer: coarse)": context.parameters?.coarsePointer || false,
       };
-      window.matchMedia = (query: string) => ({
-        matches: queries[query] ?? false,
-        media: query,
-        onchange: null,
-        addListener: () => {},
-        removeListener: () => {},
-        addEventListener: () => {},
-        removeEventListener: () => {},
-        dispatchEvent: () => false,
-      } as MediaQueryList);
+      window.matchMedia = (query: string) =>
+        ({
+          matches: queries[query] ?? false,
+          media: query,
+          onchange: null,
+          addListener: () => {},
+          removeListener: () => {},
+          addEventListener: () => {},
+          removeEventListener: () => {},
+          dispatchEvent: () => false,
+        }) as MediaQueryList;
       const result = Story();
       // Restore after story renders
       setTimeout(() => {
@@ -46,8 +48,8 @@ export const Default: Story = {
   args: {
     layers: [
       {
-        fill: 'black',
-        stroke: 'white',
+        fill: "black",
+        stroke: "white",
         strokeSize: 10,
         size: { height: 20, width: 20 },
       },
@@ -98,7 +100,7 @@ export const IgnoreAccessibility: Story = {
     ...Default.args,
     ignoreAccessibility: true,
     showSystemCursor: false,
-    enable: true
+    enable: true,
   },
   parameters: {
     prefersReduced: true, // Even with flag, should render since ignored

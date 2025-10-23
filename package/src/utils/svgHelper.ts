@@ -18,7 +18,7 @@ export const svgStylesMap = {
 
 // Returns an SVG depending on input
 export const resolveSvg = (
-  input: SvgDefaultStyles | FC<SVGProps<SVGSVGElement>> | undefined
+  input: SvgDefaultStyles | FC<SVGProps<SVGSVGElement>> | undefined,
 ): FC<SVGProps<SVGSVGElement>> => {
   // If no SVG, return the default
   if (!input) return svgStylesMap.default;

@@ -2,55 +2,90 @@
 
 // Node imports
 import { Button, Accordion, Dropdown, DropdownButton, Form, Row, Col } from 'react-bootstrap';
-import ReactCursor from "@holmesdev/cursors"; // Our cursor!
+// import ReactCursor from "@holmesdev/cursors"; // Our cursor!
 import { useState } from 'react';
 
 // Local imports
 import * as styles from './FeaturesPage.css'; // Vanilla Extract styling file
+
+// Workspace imports
+import ReactCursor from "@holmesdev/cursors";
 
 
 // React component FeaturesPage
 export default function FeaturesPage({setMainCursor}) {  
   // States
   const [demoCursor, setDemoCursor] = useState(false); // Our customised demo cursor disabled by default
-  const [numberOfLayers, setNumberOfLayers] = useState(1); // Initially only one layer for the demo cursor
-  const [layers, setLayers] = useState([]); // Used tohold the layer options for each layer
+  const [testBed, setTestBed] = useState(false); // Our Testbed is initially off
+
+  // const [numberOfLayers, setNumberOfLayers] = useState(1); // Initially only one layer for the demo cursor
+  // const [layers, setLayers] = useState([]); // Used tohold the layer options for each layer
 
   // Functions
 
-    // Handle cursor entering the Testbed
-    function handleInsideTestbed(){
-      setMainCursor(false);
-      setDemoCursor(true);
+    // Handle cursor over Testbed ie. 
+    function handleCursorOverTestbed(){
+      if(testBed){
+        setMainCursor(false);
+        setDemoCursor(true);
+      } else {
+        setMainCursor(true);
+        setDemoCursor(false);
+      }
+      // setMainCursor(true);
+      // setDemoCursor(false);
     }
-    // Handle cursor exiting the Testbed
-    function handleOutsideTestbed(){
-      setMainCursor(true);
-      setDemoCursor(false);
+    
+    // Handle cursor leaving the Testbed ie. only main cursor shows
+    function handleCursorLeavingTestbed(){  
+        setDemoCursor(false);
+        setMainCursor(true);
+    
+      // setMainCursor(true);
     }
+
+    // Handle clicking of the Demo Cursor enable/disable button
+      function handleTestbedButton(){
+        setTestBed(!testBed); // Toggle state of the Testbed
+      }
 
 
   // Markup
   return (
     <div className={styles.featuresPage}>
+      {/* Demo Cursor */}
+      <ReactCursor
+        enable={demoCursor}
+        layers={ [ { fill: "red", stroke: "green", size: { height: 30, width: 30 } } ] } 
+        zIndex={10}  
+      />
       <h1 >Cursor Features</h1>
+      
       {/* Demo Div */}
       <div className={styles.featuresPageDemoDiv}>
+        {/* Demo Cursor Testbed */}
         <div className={styles.featuresPageTestbed} 
-          onMouseEnter={handleInsideTestbed} 
-          onMouseLeave={handleOutsideTestbed} 
+          onMouseOver={handleCursorOverTestbed}
+          onMouseOut={handleCursorLeavingTestbed}
+          // onMouseEnter={handleInsideTestbed} 
+          // onMouseLeave={handleOutsideTestbed} 
         >
           <p>Demo Testbed goes Here</p>
-          <ReactCursor
+          {/* <ReactCursor
             enable={demoCursor}
             layers={ [ { fill: "red", stroke: "green", size: { height: 30, width: 30 } } ] } 
             zIndex={10}  
-          />
-          {/* <ReactCursor /> */}
+          /> */}
         </div>
+        {/* Demo Cursor Code */}
         <div className={styles.featuresPageCode}>Code output goes Here</div>
       </div>
       
+      {/*  */}
+      <Button onClick={handleTestbedButton} >
+        { !testBed && <span>Enable Testbed</span> } 
+        { testBed && <span>Disable Testbed</span> }       
+      </Button>       
 
       {/* Options Div */}
       <div className={styles.featuresPageOptionsDiv}>
@@ -209,9 +244,8 @@ export default function FeaturesPage({setMainCursor}) {
 
         </Accordion>        
 
-        <div>
-          <Button>Apply Settings to Cursor</Button>       
-          <Button>Reset to Cursor Values</Button>       
+        <div>          
+          <Button>Reset to Default</Button>       
 
         </div>
 

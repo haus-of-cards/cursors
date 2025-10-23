@@ -49,12 +49,44 @@ export const featuresPageCode = style({
 export const featuresPageOptionsDiv = style({
   marginTop: "3rem",
   padding: "2rem",
-  width: "600px",
+  // width: "800px",
+  width: "auto",
+  display: "flex",
+  flexDirection: "column",
+  flexWrap: "wrap",
+  // alignContent: "center",
+  // height: "10vw",
+  // justifyContent: "center",
+  justifyContent: "space-around",
+  textAlign: "center",
+  border: "solid"
+});
+
+
+// Div for Demo & Code sections
+export const featuresPageOptionsMainDiv = style({
+  marginTop: "2rem",
+  // padding: "2rem",
+  // width: "600px",
+  display: "flex",
+  flexDirection: "column",
+  // alignContent: "center",
+  // height: "10vw",
+  // justifyContent: "center",
+  justifyContent: "space-around",
+  // border: "solid"
+});
+
+// Div for Demo & Code sections
+export const featuresPageOptionsMain = style({
+  // marginTop: "3rem",
+  padding: "1rem",
+  // width: "600px",
   display: "flex",
   flexDirection: "row",
   // alignContent: "center",
-  height: "10vw",
+  // height: "10vw",
   // justifyContent: "center",
   justifyContent: "space-around",
-  border: "solid"
+  // border: "solid"
 });

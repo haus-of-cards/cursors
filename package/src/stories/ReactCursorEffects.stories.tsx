@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import ReactCursor from "../component";
 
+/**
+ * Storybook configuration for ReactCursor effect demos.
+ * These stories showcase hover and click-based visual transformations
+ * such as scale, color, SVG, and opacity changes.
+ */
 const meta: Meta<typeof ReactCursor> = {
   title: "ReactCursor/Effects",
   component: ReactCursor,
@@ -89,9 +94,9 @@ const meta: Meta<typeof ReactCursor> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof meta>;
 
+/** Simple hover scale demonstration — cursor doubles in size when hovering */
 export const HoverScaleEffect: Story = {
   args: {
     layers: [
@@ -103,15 +108,16 @@ export const HoverScaleEffect: Story = {
         size: { height: 20, width: 20 },
       },
     ],
-    showSystemCursor: false,
     effects: {
-      hover: {
-        scale: 2, // Double size on hover
-      },
+      hover: { scale: 2 },
     },
+    enable: true,
+    showSystemCursor: false,
+    ignoreAccessibility: true,
   },
 };
 
+/** Hover color and stroke change with slight scale-up */
 export const HoverColorChange: Story = {
   args: {
     layers: [
@@ -123,7 +129,6 @@ export const HoverColorChange: Story = {
         size: { height: 20, width: 20 },
       },
     ],
-    showSystemCursor: false,
     effects: {
       hover: {
         fill: "red",
@@ -131,9 +136,13 @@ export const HoverColorChange: Story = {
         scale: 1.5,
       },
     },
+    enable: true,
+    showSystemCursor: false,
+    ignoreAccessibility: true,
   },
 };
 
+/** SVG morphing on hover — circle becomes a green cross */
 export const HoverSvgChange: Story = {
   args: {
     layers: [
@@ -145,7 +154,6 @@ export const HoverSvgChange: Story = {
         size: { height: 20, width: 20 },
       },
     ],
-    showSystemCursor: false,
     effects: {
       hover: {
         SVG: "cross",
@@ -153,9 +161,13 @@ export const HoverSvgChange: Story = {
         scale: 1.8,
       },
     },
+    enable: true,
+    showSystemCursor: false,
+    ignoreAccessibility: true,
   },
 };
 
+/** Click shrink and color change — cursor compresses when clicked */
 export const ClickEffect: Story = {
   args: {
     layers: [
@@ -167,16 +179,19 @@ export const ClickEffect: Story = {
         size: { height: 24, width: 24 },
       },
     ],
-    showSystemCursor: false,
     effects: {
       click: {
-        scale: 0.5, // Shrink on click
+        scale: 0.5,
         fill: "orange",
       },
     },
+    enable: true,
+    showSystemCursor: false,
+    ignoreAccessibility: true,
   },
 };
 
+/** Combined hover and click effects with different states */
 export const HoverAndClickEffects: Story = {
   args: {
     layers: [
@@ -188,7 +203,6 @@ export const HoverAndClickEffects: Story = {
         size: { height: 20, width: 20 },
       },
     ],
-    showSystemCursor: false,
     effects: {
       hover: {
         scale: 1.5,
@@ -200,9 +214,13 @@ export const HoverAndClickEffects: Story = {
         SVG: "cross",
       },
     },
+    enable: true,
+    showSystemCursor: false,
+    ignoreAccessibility: true,
   },
 };
 
+/** Complex layered state — multiple SVG, color, and scale transformations */
 export const ComplexEffect: Story = {
   args: {
     layers: [
@@ -214,7 +232,6 @@ export const ComplexEffect: Story = {
         size: { height: 30, width: 30 },
       },
     ],
-    showSystemCursor: false,
     effects: {
       hover: {
         SVG: "square",
@@ -231,9 +248,13 @@ export const ComplexEffect: Story = {
         scale: 0.6,
       },
     },
+    enable: true,
+    showSystemCursor: false,
+    ignoreAccessibility: true,
   },
 };
 
+/** Subtle hover and click scaling for minimal, refined UX feedback */
 export const SubtleScale: Story = {
   args: {
     layers: [
@@ -245,14 +266,12 @@ export const SubtleScale: Story = {
         size: { height: 16, width: 16 },
       },
     ],
-    showSystemCursor: false,
     effects: {
-      hover: {
-        scale: 1.25,
-      },
-      click: {
-        scale: 0.9,
-      },
+      hover: { scale: 1.25 },
+      click: { scale: 0.9 },
     },
+    enable: true,
+    showSystemCursor: false,
+    ignoreAccessibility: true,
   },
 };

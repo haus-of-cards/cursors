@@ -1,12 +1,13 @@
 // Vanilla Extract Styling file for Features.jsx
 
 import { style } from "@vanilla-extract/css";
+import { vars } from "../styles/themes.css";
 
 // Layout content vertically
 export const featuresPage = style({
   // margin: "2rem",
   marginTop: "20px",
-  width: "80hw",
+  // width: "80hw",
   // display: "grid",
   display: "flex",
   flexDirection: "column",
@@ -29,20 +30,28 @@ export const featuresPageDemoDiv = style({
 export const featuresPageTestbed = style({
   marginLeft: "10rem",
   marginRight: "2rem",
-  flexBasis: "500px",
+  // flexBasis: "500px",
+  flexBasis: "60vh",
   flexGrow: "0",
   flexShrink: "0",
-  border: "solid"
+  border: "solid",
+  borderRadius: 20,
+  backgroundColor: vars.colors.complementary,
 });
 
 // 
 export const featuresPageCode = style({
   marginLeft: "2rem",
   marginRight: "10rem",
-  flexBasis: "500px",
+  padding: "1em",
+  // flexBasis: "500px",
+  flexBasis: "40vh",
   flexGrow: "0",
   flexShrink: "0",
-  border: "solid"
+  border: "solid",
+  borderRadius: 20,
+  color: "white",
+  backgroundColor: "black"
 });
 
 // Div for Demo & Code sections

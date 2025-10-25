@@ -75,7 +75,11 @@ export default function FeaturesPage({setMainCursor}) {
           /> */}
         </div>
         {/* Demo Cursor Code */}
-        <div className={styles.featuresPageCode}>Code output goes Here</div>
+        <div className={styles.featuresPageCode}>
+          <p> {`enable={demoCursor}`}          </p>
+          <p> {`layers={ [ { fill: "red", stroke: "green", size: { height: 30, width: 30 } } ] }`}  </p>
+          <p> {`zIndex={10}`} </p>
+        </div>
       </div>
       
       {/*  */}
@@ -155,6 +159,8 @@ export default function FeaturesPage({setMainCursor}) {
         <h4>Layer Options</h4>
         {/* Use Accordion to show Layers */}
         {/* <Accordion defaultActiveKey="layer1"> */}
+        
+
         <Accordion >
           <Accordion.Item eventKey="layer1">
             <Accordion.Header>Layer 1</Accordion.Header>

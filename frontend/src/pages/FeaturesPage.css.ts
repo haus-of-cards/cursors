@@ -15,7 +15,7 @@ export const featuresPage = style({
 
 // Div for Demo & Code sections
 export const featuresPageDemoDiv = style({
-  marginTop: "3rem",
+  marginTop: "2rem",
   padding: "2rem",
   display: "flex",
   flexDirection: "row",
@@ -47,7 +47,7 @@ export const featuresPageCode = style({
 
 // Div for Demo & Code sections
 export const featuresPageOptionsDiv = style({
-  marginTop: "3rem",
+  marginTop: "2rem",
   padding: "2rem",
   // width: "800px",
   width: "auto",
@@ -65,7 +65,7 @@ export const featuresPageOptionsDiv = style({
 
 // Div for Demo & Code sections
 export const featuresPageOptionsMainDiv = style({
-  marginTop: "2rem",
+  marginTop: "1rem",
   // padding: "2rem",
   // width: "600px",
   display: "flex",
@@ -87,6 +87,6 @@ export const featuresPageOptionsMain = style({
   // alignContent: "center",
   // height: "10vw",
   // justifyContent: "center",
-  justifyContent: "space-around",
+  // justifyContent: "space-around",
   // border: "solid"
 });

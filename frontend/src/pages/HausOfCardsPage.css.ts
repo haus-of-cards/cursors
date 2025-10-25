@@ -26,7 +26,7 @@ export const hausofcardspageDemo = style({
   flexBasis: "300px",
   flexGrow: "0",
   flexShrink: "0",
-  border: "solid"
+  // border: "solid"
 });
 
 export const hausofcardspageH3 = style({

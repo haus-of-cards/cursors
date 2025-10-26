@@ -5,7 +5,7 @@ import { style } from "@vanilla-extract/css";
 export const hausofcardspage = style({
   // margin: "2rem",
   // marginTop: "20px",
-  marginTop: "3em",
+  marginTop: "3rem",
   // display: "grid",
   display: "flex",
   flexDirection: "column",
@@ -21,9 +21,9 @@ export const hausofcardspageH1 = style({
 
 export const hausofcardspageDemoDiv = style({
   // marginTop: "20px",
-  marginTop: "3em",
+  marginTop: "3rem",
   // padding: "20px",
-  padding: "2em",
+  padding: "2rem",
   display: "flex",
   flexDirection: "row",
   // height: "200px",

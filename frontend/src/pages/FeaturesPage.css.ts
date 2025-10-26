@@ -6,7 +6,9 @@ import { vars } from "../styles/themes.css";
 // Layout content vertically
 export const featuresPage = style({
   // margin: "2rem",
-  marginTop: "20px",
+  // marginTop: "20px",
+  marginTop: "3rem",
+  // padding: "2rem",
   // width: "80hw",
   // display: "grid",
   display: "flex",
@@ -19,47 +21,24 @@ export const featuresPageDemoDiv = style({
   marginTop: "2rem",
   padding: "2rem",
   display: "flex",
+  justifyContent: "space-around",
   flexDirection: "row",
   // alignContent: "center",
-  height: "20vw",
+  height: "15vw",
+  minWidth: "60vh"
+  // minWidth: "600px"
   // justifyContent: "center",
   
 });
 
-// 
-export const featuresPageTestbed = style({
-  marginLeft: "10rem",
-  marginRight: "2rem",
-  // flexBasis: "500px",
-  flexBasis: "60vh",
-  flexGrow: "0",
-  flexShrink: "0",
-  border: "solid",
-  borderRadius: 20,
-  backgroundColor: vars.colors.complementary,
-});
 
-// 
-export const featuresPageCode = style({
-  marginLeft: "2rem",
-  marginRight: "10rem",
-  padding: "1em",
-  // flexBasis: "500px",
-  flexBasis: "40vh",
-  flexGrow: "0",
-  flexShrink: "0",
-  border: "solid",
-  borderRadius: 20,
-  color: "white",
-  backgroundColor: "black"
-});
-
-// Div for Demo & Code sections
+// Div for Demo Cursor options section
 export const featuresPageOptionsDiv = style({
   marginTop: "2rem",
   padding: "2rem",
   // width: "800px",
   width: "auto",
+  height: "15vw",
   display: "flex",
   flexDirection: "column",
   flexWrap: "wrap",
@@ -72,30 +51,4 @@ export const featuresPageOptionsDiv = style({
 });
 
 
-// Div for Demo & Code sections
-export const featuresPageOptionsMainDiv = style({
-  marginTop: "1rem",
-  // padding: "2rem",
-  // width: "600px",
-  display: "flex",
-  flexDirection: "column",
-  // alignContent: "center",
-  // height: "10vw",
-  // justifyContent: "center",
-  justifyContent: "space-around",
-  // border: "solid"
-});
 
-// Div for Demo & Code sections
-export const featuresPageOptionsMain = style({
-  // marginTop: "3rem",
-  padding: "1rem",
-  // width: "600px",
-  display: "flex",
-  flexDirection: "row",
-  // alignContent: "center",
-  // height: "10vw",
-  // justifyContent: "center",
-  // justifyContent: "space-around",
-  // border: "solid"
-});

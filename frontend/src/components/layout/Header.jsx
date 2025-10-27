@@ -18,7 +18,8 @@ function Header() {
     // This is based on the basic React-Bootstrap Navbar at: https://react-bootstrap.github.io/docs/components/navbar
     // <div className='header'>
     <div className={styles.header}>
-      <Navbar expand="lg" className="bg-body-tertiary">
+      {/* <Navbar expand="lg" className="bg-body-tertiary navbarStyle"> */}
+      <Navbar expand="lg" className="navbarStyle">
         <Container>
           {/* <Navbar.Brand href="/">CBV</Navbar.Brand> */}
           <Navbar.Brand as={Link} to={""}>

@@ -3,7 +3,7 @@
 import { style } from "@vanilla-extract/css";
 
 export const docopage = style({
-  marginTop: "2rem",
+  marginTop: "3rem",
   display: "flex",
   flexDirection: "column",
   alignItems: "center"

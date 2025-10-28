@@ -1,7 +1,7 @@
 import React from 'react'
 
 // Node imports
-import { Button, Accordion, Dropdown, DropdownButton, Form, Row, Col } from 'react-bootstrap';
+import { Button, Accordion, Dropdown, DropdownButton, Form, Row, Col, InputGroup } from 'react-bootstrap';
 
 // Local imports
 import * as styles from './CursorOptions.css'; // Vanilla Extract styling file
@@ -29,16 +29,24 @@ export default function CursorOptions() {
           <div>
             {/* Cursor Enable. Note: It is enabled by default so it can be used in the Testbed */}
             <Form.Check disabled type="switch" id="custom-switch" label="Enable Cursor" checked />  
+            
             {/* System Cursor */}
             <Form.Check type="switch" id="custom-switch" label="Show System Cursor" />
+            
             {/* mixBlendMode */}
-            <Form.Check inline label="normal" name="mixBlendMode" type="radio" id={`inline-radio-1`} />
-            <Form.Check inline label="***" name="mixBlendMode" type="radio" id={`inline-radio-2`} />
-            {/* zIndex */}
-            <Form.Group className="mb-3" controlId="formZIndex">
-              <Form.Label sm="2">zIndex</Form.Label>              
+            <InputGroup className="mb-3">
+              <InputGroup.Text>mixBlendMode: </InputGroup.Text>
+              <Form.Check inline label="normal" name="mixBlendMode" type="radio" id={`inline-radio-1`} />
+              <Form.Check inline label="***" name="mixBlendMode" type="radio" id={`inline-radio-2`} />            
+            </InputGroup>
+            
+            {/* zIndex */}             
+            <InputGroup className="mb-3">
+              <InputGroup.Text>zIndex: </InputGroup.Text>
               <Form.Control type="text" placeholder="2147483647" />              
-            </Form.Group>
+            </InputGroup>
+
+
           </div>
         </div>
 
@@ -50,40 +58,74 @@ export default function CursorOptions() {
             <Accordion.Item eventKey="layer1">
               <Accordion.Header>Layer 1</Accordion.Header>
               <Accordion.Body>
-                {/* Shape selection */}           
-                <Form.Select aria-label="Shape Selection">
-                  {/* <option > Open this select menu</option> */}
+                
+
+                {/* Shape selection */}     
+                <InputGroup className="mb-3">
+                  <InputGroup.Text>Layer Shape: </InputGroup.Text>
+                  <Form.Check inline label="circle" name="mixBlendMode" type="radio" id={`layer-shape-circle`} />
+                  <Form.Check inline label="arrow" name="mixBlendMode" type="radio" id={`layer-shape-arrow`} />
+                  <Form.Check inline label="cross" name="mixBlendMode" type="radio" id={`layer-shape-cross`} />
+                  <Form.Check inline label="square" name="mixBlendMode" type="radio" id={`layer-shape-square`} />                  
+                </InputGroup>
+
+
+                {/* <Form.Select aria-label="Shape Selection">                  
                   <option value="circle">Circle</option>
                   <option value="arrow">Arrow </option>
                   <option value="cross">Cross</option>
                   <option value="square">Square</option>
-                </Form.Select>                
-                {/* Colour selection */}                  
-                <Form.Group className="mb-3" controlId="fillColourInput">
-                  <Form.Label>Fill Colour</Form.Label>
-                  <Form.Control type="color" defaultValue="#DDDDDD" title="Fill Colour" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="strokeColourInput">
-                  <Form.Label>Stroke Colour</Form.Label>
-                  <Form.Control type="color" defaultValue="#888888" title="Stroke Colour" />
-                </Form.Group>                
+                </Form.Select>                 */}
+
+                {/* Colour selection */}  
+                <Row className="mb-3">
+                  <Col>
+                    <Form.Group as={Row} className="mb-3" controlId="fillColourInput">
+                      <Form.Label column>Fill Colour</Form.Label>
+                      <Col>
+                        <Form.Control column type="color" defaultValue="#DDDDDD" title="Fill Colour" />
+                      </Col>
+                    </Form.Group>
+                  </Col>                 
+                  <Col>
+                    <Form.Group as={Row} className="mb-3" controlId="strokeColourInput">
+                      <Form.Label column>Stroke Colour</Form.Label>
+                      <Col>
+                        <Form.Control type="color" defaultValue="#888888" title="Stroke Colour" />
+                      </Col>
+                    </Form.Group>                
+                  </Col>
+                </Row>
+
+                
                 {/* Sizes */}
-                <Form.Group className="mb-3" controlId="strokeSizeInput">
-                  <Form.Label>Stroke Size</Form.Label>
-                  <Form.Control type="text" title="Stroke Size" placeholder='10' />
-                </Form.Group>                
-                <Form.Group className="mb-3" >
-                  <Form.Label>Cursor Size</Form.Label>
-                  <Form.Control type="text" id="strokeSizeInputHorizontal" placeholder="Horizontal Stroke Size" title="Stroke Size (H)" />
-                  <Form.Control type="text" id="strokeSizeInputVertical" placeholder="Vertical Stroke Size" title="Stroke Size (V)" />
-                </Form.Group>                
+                <Row>
+                  <Col>
+                    <Form.Group as={Row} className="mb-3" controlId="strokeSize">
+                      <Form.Label>Stroke Size</Form.Label>
+                      <Form.Control type="text" title="Stroke Size" placeholder="Stroke Size" />
+                    </Form.Group>                                  
+                  </Col>
+                  <Col>
+                    <Form.Group as={Row} className="mb-3" >
+                      <Form.Label>Cursor Size</Form.Label>
+                      <Form.Control type="text" id="cursorSizeHorizontal" placeholder="Cursor Size (H)" title="Cursor Size (H)" />
+                      <Form.Control type="text" id="cursorSizeVertical" placeholder="Cursor Size (V)" title="Cursor Size (V)" />
+                    </Form.Group>                
+                  </Col>
+
+                </Row>
+
+
                 {/* Others */}
-                <Form.Label>Size</Form.Label>
+                {/* <Form.Label>Size</Form.Label>
                 <Form.Range />
                 <Form.Label>Opacity</Form.Label>
                 <Form.Range />
                 <Form.Label>Delay</Form.Label>
-                <Form.Range />
+                <Form.Range /> */}
+
+                
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>        

@@ -36,7 +36,8 @@ export const testbed = style({
   border: "solid",
   borderRadius: 15,
   borderWidth: 2,
-  backgroundColor: vars.colors.complementary
+  // backgroundColor: vars.colors.complementary
+  backgroundColor: "whitesmoke"
 });
 
 

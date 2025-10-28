@@ -58,20 +58,24 @@ export default function FeaturesPage({setMainCursor}) {
       
       {/* Demo Div */}
       <div className={styles.featuresPageDemoDiv}>
-        {/* Demo Cursor Testbed */}
-        <CursorTestbed
-          testBed={testBed}
-          setTestBed={setTestBed}
-          handleCursorOverTestbed={handleCursorOverTestbed}
-          handleCursorLeavingTestbed={handleCursorLeavingTestbed}
-        />
-        
-        {/* Demo Cursor Code */}
-        <CursorCodeDisplay />
+
+        <div className={styles.featuresPageDemoTestbedCodeDiv}>
+          {/* Demo Cursor Testbed */}
+          <CursorTestbed
+            testBed={testBed}
+            setTestBed={setTestBed}
+            handleCursorOverTestbed={handleCursorOverTestbed}
+            handleCursorLeavingTestbed={handleCursorLeavingTestbed}
+          />
+          {/* Demo Cursor Code */}
+          <CursorCodeDisplay />
+        </div>
+
+        {/* Demo Cursor Options */}
+        <CursorOptions />              
+      
       </div>
 
-      {/* Demo Cursor Options */}
-      <CursorOptions />      
 
     </div>
 

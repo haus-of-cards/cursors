@@ -5,12 +5,7 @@ import { vars } from "../styles/themes.css";
 
 // Layout content vertically
 export const featuresPage = style({
-  // margin: "2rem",
-  // marginTop: "20px",
   marginTop: "3rem",
-  // padding: "2rem",
-  // width: "80hw",
-  // display: "grid",
   display: "flex",
   flexDirection: "column",
   alignItems: "center"

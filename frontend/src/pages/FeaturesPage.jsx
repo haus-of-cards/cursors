@@ -47,33 +47,31 @@ export default function FeaturesPage({setMainCursor}) {
   // Markup
   return (
     <div className={styles.featuresPage}>
-      {/* Demo Cursor */}
+      {/* Demo Cursor. *** Should this go here or inside the Testbed?  */}
       <ReactCursor
         enable={demoCursor}
         layers={ [ { fill: "red", stroke: "green", size: { height: 30, width: 30 } } ] } 
         zIndex={10}  
       />
-      <h1 >Cursor Features</h1>
+      
+      <h1 >Cursor Features Demo</h1>
       
       {/* Demo Div */}
       <div className={styles.featuresPageDemoDiv}>
-
         {/* Demo Cursor Testbed */}
-        <CursorTestbed 
+        <CursorTestbed
           testBed={testBed}
           setTestBed={setTestBed}
           handleCursorOverTestbed={handleCursorOverTestbed}
           handleCursorLeavingTestbed={handleCursorLeavingTestbed}
         />
- 
+        
         {/* Demo Cursor Code */}
         <CursorCodeDisplay />
       </div>
-      
-      <div>
-        <CursorOptions />
-      </div>
-      
+
+      {/* Demo Cursor Options */}
+      <CursorOptions />      
 
     </div>
 

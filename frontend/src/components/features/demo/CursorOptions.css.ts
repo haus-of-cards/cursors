@@ -1,16 +1,17 @@
 import { style } from "@vanilla-extract/css";
-import { vars } from "../../../styles/themes.css";
+// import { vars } from "../../../styles/themes.css";
 
 
 
 
-// Div for Demo & Code sections
-export const featuresPageOptionsMainDiv = style({
+// Div for Demo Cursor Options
+export const cursorOptionsDiv = style({
   marginTop: "1rem",
   // padding: "2rem",
   // width: "600px",
   display: "flex",
   flexDirection: "column",
+  // flexDirection: "row",
   // alignContent: "center",
   // height: "10vw",
   // justifyContent: "center",
@@ -18,16 +19,50 @@ export const featuresPageOptionsMainDiv = style({
   // border: "solid"
 });
 
-// Div for Demo & Code sections
-export const featuresPageOptionsMain = style({
+
+// Div for the Demo Cursor Main & Layer options sections
+export const cursorMainAndLayerOptionsDiv = style({
   // marginTop: "3rem",
   padding: "1rem",
   // width: "600px",
   display: "flex",
-  flexDirection: "row",
+  flexDirection: "row", // Running the Divs side-by-side to save vertical space
   // alignContent: "center",
   // height: "10vw",
   // justifyContent: "center",
   // justifyContent: "space-around",
   // border: "solid"
 });
+
+
+// Div for the Demo Cursor Main options section
+export const cursorMainOptionsDiv = style({
+  // marginTop: "3rem",
+  padding: "1rem",
+  // width: "600px",
+  // display: "flex",
+  // flexDirection: "row",
+  // alignContent: "center",
+  // height: "10vw",
+  // justifyContent: "center",
+  // justifyContent: "space-around",
+  // border: "solid"
+});
+
+
+// Div for the Demo Cursor Layer options section
+export const cursorLayerOptionsDiv = style({
+  // marginTop: "3rem",
+  padding: "1rem",
+  // width: "600px",
+  // display: "flex",
+  // flexDirection: "row",
+  // alignContent: "center",
+  // height: "10vw",
+  // justifyContent: "center",
+  // justifyContent: "space-around",
+  // border: "solid"
+});
+
+
+

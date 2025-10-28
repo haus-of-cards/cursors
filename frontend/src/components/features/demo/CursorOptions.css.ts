@@ -38,7 +38,8 @@ export const cursorMainAndLayerOptionsDiv = style({
 export const cursorMainOptionsDiv = style({
   // marginTop: "3rem",
   padding: "1rem",
-  flex: 1
+  // flex: 1
+  // flex: "1 0 10rem"
   // width: "600px",
   // display: "flex",
   // flexDirection: "row",

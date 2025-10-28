@@ -54,7 +54,7 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
             {/* zIndex */}             
             <InputGroup className="mb-3">
               <InputGroup.Text>zIndex: </InputGroup.Text>
-              <Form.Control type="text" placeholder="2147483647" />              
+              <Form.Control type="text" value={demoCursor.zIndex} placeholder="2147483647" />              
             </InputGroup>
 
 

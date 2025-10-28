@@ -28,7 +28,7 @@ export default function FeaturesPage({setMainCursor}) {
       // showSystemCursor: false,
       mixBlendMode: "normal",
       zIndex: 20,
-      ignoreAccessibility: true,
+      ignoreAccessibility: true
       // effects,
       // hoverSelector = 'a, button, [role="button"], input, textarea, select',
     }); 
@@ -98,7 +98,7 @@ export default function FeaturesPage({setMainCursor}) {
             handleCursorLeavingTestbed={handleCursorLeavingTestbed}
           />
           {/* Demo Cursor Code */}
-          <CursorCodeDisplay />
+          <CursorCodeDisplay demoCursor={demoCursor} />
         </div>
 
         {/* Demo Cursor Options */}

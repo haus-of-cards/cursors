@@ -8,7 +8,17 @@ import * as styles from './CursorOptions.css'; // Vanilla Extract styling file
 
 
 // Main component
-export default function CursorOptions() {
+export default function CursorOptions( {demoCursor, setDemoCursor} ) {
+  // Functions
+
+    // Handle option changes
+    // function handleShowSystemCursorSwitch(e){
+    function handleShowSystemCursorSwitch(){
+      // console.log("Event is: ", e )
+      // setDemoCursor(!demoCursor); // Toggle the switch
+      setDemoCursor({ ...demoCursor, showSystemCursor: !demoCursor.showSystemCursor }); // Spread operator to copy the other fields
+    }
+
 
   // Markup
   return (
@@ -31,7 +41,8 @@ export default function CursorOptions() {
             <Form.Check disabled type="switch" id="custom-switch" label="Enable Cursor" checked />  
             
             {/* System Cursor */}
-            <Form.Check type="switch" id="custom-switch" label="Show System Cursor" />
+            <Form.Check type="switch" checked={demoCursor.showSystemCursor} onChange={handleShowSystemCursorSwitch}  id="show-system-cursor" label="Show System Cursor" />
+            {/* <Form.Check type="switch" checked={demoCursor.showSystemCursor} onChange={setDemoCursor(!demoCursor)}  id="show-system-cursor" label="Show System Cursor" /> */}
             
             {/* mixBlendMode */}
             <InputGroup className="mb-3">
@@ -83,7 +94,7 @@ export default function CursorOptions() {
                     <Form.Group as={Row} className="mb-3" controlId="fillColourInput">
                       <Form.Label column>Fill Colour</Form.Label>
                       <Col>
-                        <Form.Control column type="color" defaultValue="#DDDDDD" title="Fill Colour" />
+                        <Form.Control type="color" defaultValue="#DDDDDD" title="Fill Colour" />
                       </Col>
                     </Form.Group>
                   </Col>                 

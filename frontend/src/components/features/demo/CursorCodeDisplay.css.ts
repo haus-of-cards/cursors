@@ -6,7 +6,15 @@ import { vars } from "../../../styles/themes.css";
 
 // 
 export const codeDiv = style({
-  minWidth: "400px",
+  margin: "1rem",
+  // flexBasis: "60vh",
+  // flexGrow: "0",
+  // flexShrink: "0",
+  flex: 1,
+
+
+
+  // minWidth: "400px",
   display: "flex",
   flexDirection: "column",
   border: "solid",
@@ -16,7 +24,7 @@ export const codeDiv = style({
 
   // marginLeft: "2rem",
   // marginRight: "10rem",
-  padding: "1em",
+  padding: "1rem",
   // // flexBasis: "500px",
   // flexBasis: "40vh",
   // flexGrow: "0",

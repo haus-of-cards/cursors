@@ -24,8 +24,11 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-      svgr(),
+      svgr({
+        dimensions: false, // allows SVGR to override height/width of SVG
+      }),
       babel({
+        babelHelpers: "bundled",
         exclude: "node_modules/**",
         presets: ["@babel/preset-react"],
       }),

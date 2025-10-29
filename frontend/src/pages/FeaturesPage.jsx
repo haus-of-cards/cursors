@@ -23,7 +23,9 @@ export default function FeaturesPage({setMainCursor}) {
     // const [demoCursor, setDemoCursor] = useState(false); // Customised demo cursor not displayed by default 
     const [demoCursor, setDemoCursor] = useState({
       enable: false, // Customised demo cursor not displayed by default
-      layers: [ { fill: "yellow", stroke: "black", strokeSize: 10, size: { height: 20, width: 20 } } ],
+      // layers: [ { fill: "yellow", stroke: "black", strokeSize: 10, size: { height: 20, width: 20 } } ],
+      layers: [ { SVG: "circle", fill: "yellow", stroke: "black", strokeSize: 10, size: { height: 20, width: 20 } } ],
+      // layers: [ { SVG: "arrow", fill: "yellow", stroke: "black", strokeSize: 10, size: { height: 20, width: 20 } } ],
       showSystemCursor: true,
       // showSystemCursor: false,
       mixBlendMode: "normal",

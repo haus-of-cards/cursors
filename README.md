@@ -23,7 +23,7 @@
   - [Demo Testbed](#demo-testbed)
 - [About](#ℹ️-about-haus-of-cards)
 - [Accessibility](#🧠-accessibility)
-- [Contributing](#🤝-contributiing)
+- [Contributing](#🤝-contributing)
 - [License](#🧾-license)
 
 ## 📖 Overview
@@ -169,14 +169,101 @@ React Cursors have one or more layers with their own set of options. For example
 
 ### Cursor Effects
 
-Example:
+Cursor effects allow you to dynamically change the cursor's appearance when users interact with certain elements. Effects are applied to the first layer of your cursor.
+
+#### Effect Types
+
+- **`hover`** - Triggered when the mouse hovers over interactive elements (defined by `hoverSelector`)
+- **`click`** - Triggered when the user presses down the mouse button (released on mouse up)
+
+**Note:** Click effects take precedence over hover effects when both are active.
+
+#### Effect Properties
+
+Each effect (`hover` or `click`) accepts the following properties:
+
+| Property       | Type                                                           | Description                                                                                                                              |
+| -------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `SVG?`         | `SvgDefaultStyles` \| `FC<SVGProps<SVGSVGElement>>`           | Changes the SVG shape during the effect. Can use built-in shapes (`"circle"`, `"cross"`, `"square"`, `"arrow"`) or custom SVG component. |
+| `fill?`        | `string`                                                       | Changes the fill color during the effect.                                                                                                 |
+| `stroke?`      | `string`                                                       | Changes the stroke color during the effect.                                                                                               |
+| `strokeSize?`  | `number`                                                       | Changes the stroke size during the effect.                                                                                                |
+| `opacity?`     | `number`                                                       | Changes the opacity (0-1) during the effect.                                                                                               |
+| `scale?`       | `number`                                                       | Scales the cursor size (1 = normal, 2 = double size, 0.5 = half size). Multiplies the layer's base size.                                  |
+
+#### Examples
+
+**Simple Scale Effect:**
+```jsx
+<ReactCursor
+  effects={{
+    hover: {
+      scale: 1.5, // Cursor grows 50% when hovering
+    },
+    click: {
+      scale: 0.8, // Cursor shrinks when clicking
+    },
+  }}
+/>
+```
+
+**Color and Shape Change:**
+```jsx
+<ReactCursor
+  effects={{
+    hover: {
+      SVG: "cross",      // Change to cross shape
+      fill: "#00ff00",    // Change to green
+      stroke: "#ffffff",  // White stroke
+    },
+    click: {
+      fill: "#ff0000",    // Change to red when clicking
+      scale: 1.2,         // Slightly enlarge
+    },
+  }}
+/>
+```
+
+**Complex Multi-Property Effect:**
+```jsx
+<ReactCursor
+  layers={[
+    {
+      SVG: "circle",
+      fill: "#000000",
+      size: { width: 20, height: 20 },
+    },
+  ]}
+  effects={{
+    hover: {
+      SVG: "square",           // Change shape
+      fill: "#0066ff",         // Change color
+      stroke: "#ffffff",       // Add white stroke
+      strokeSize: 2,            // Set stroke width
+      opacity: 0.9,             // Slightly transparent
+      scale: 1.3,               // Enlarge by 30%
+    },
+    click: {
+      fill: "#ff0000",          // Red on click
+      scale: 0.7,                // Shrink on click (overrides hover)
+    },
+  }}
+/>
+```
+
+#### Customizing Hover Targets
+
+By default, hover effects trigger on interactive elements: `"a, button, [role='button'], input, textarea, select"`. You can customize this with the `hoverSelector` prop:
 
 ```jsx
-{
-  hover: {
-    scale: 1.5,
-  }
-}
+<ReactCursor
+  hoverSelector=".custom-hover, [data-interactive]" // Custom CSS selector
+  effects={{
+    hover: {
+      scale: 1.5,
+    },
+  }}
+/>
 ```
 
 ### Custom SVGs
@@ -245,9 +332,9 @@ You can override this by setting `ignoreAccessibility={true}`.
 
 Refer to [ACCESSIBILITY](ACCESSIBILITY.md) for more details.
 
-## 🤝 Contributiing
+## 🤝 Contributing
 
-Refer to [CONTRIBUTING](CONTRIBUTING.MD) for guidelines.
+Refer to [CONTRIBUTING](contributing.md) for guidelines. Please also review our [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## 🧾 License
 

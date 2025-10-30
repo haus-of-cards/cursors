@@ -9,7 +9,8 @@ export default function CursorCodeDisplay( {demoCursor} ) {
 
   // function formatCode(key, value){  }
 
-  let demoCursorString = JSON.stringify(demoCursor, null, 2);
+  // let demoCursorString = JSON.stringify(demoCursor, null, 2);
+  let demoCursorString = JSON.stringify({...demoCursor,  enable: true } , null, 2); // Overwrite the actual Demo cursor status with what is neeed for the code
   demoCursorString = demoCursorString.slice(demoCursorString.indexOf("{") + 1, demoCursorString.lastIndexOf("}") ).trim(); // Strip out the object brackets and trim whitespace
   let demoCursorArray = [];  // Array to hold the lines of code
   

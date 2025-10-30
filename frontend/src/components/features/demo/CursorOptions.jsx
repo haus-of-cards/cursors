@@ -179,7 +179,8 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
         <div className={styles.cursorLayerOptionsDiv}>          
           <h4>Layer Options</h4>
           {/* Use Accordion to show Layers */}
-          <Accordion defaultActiveKey="layer1">
+          {/* <Accordion defaultActiveKey="layer1"> */}
+          <Accordion >
             <Accordion.Item eventKey="layer1">
               <Accordion.Header>Layer 1</Accordion.Header>
               <Accordion.Body>
@@ -264,7 +265,7 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
                 <Form.Range /> */}                
               </Accordion.Body>
             </Accordion.Item>
-            <Accordion.Item>
+            <Accordion.Item eventKey="layer2">
               <Accordion.Header>Layer 2</Accordion.Header>
               <Accordion.Body>
                 <p>Note: While React Cursor supports multiple layers this demonstration currently only has one.</p>

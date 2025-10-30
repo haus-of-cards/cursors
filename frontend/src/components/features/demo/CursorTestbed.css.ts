@@ -1,6 +1,6 @@
 // 
 
-import { style } from "@vanilla-extract/css";
+import { style, styleVariants } from "@vanilla-extract/css";
 import { vars } from "../../../styles/themes.css";  // Global style variables
 
 
@@ -20,8 +20,14 @@ export const testbedDiv = style({
   // border: "solid",
   borderWidth: 3,
   borderRadius: 20,
-  backgroundColor: vars.colors.complementary,
+  // backgroundColor: vars.colors.complementary,
 });
+
+
+// export const testbedBackground = styleVariants({
+//   disabled: { backgroundColor: "red" },
+//   enabled: { backgroundColor: "white" }
+// })
 
 
 // 

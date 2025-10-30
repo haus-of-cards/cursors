@@ -21,7 +21,6 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
     
     // Update the shape within the layers array of the cursor object
     function handleShapeSelection(e){
-      // const cursor = demoCursor; // Make a copy of the current demo cursor
       let newLayerShape;
       // let newLayer;
       switch(e.target.id){  // ID of the radio checkboxes
@@ -33,23 +32,74 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
       // Note: layers is an array of layer objects so need to use map to update
       const newLayers = demoCursor.layers.map((layer, index) => {
         if(index == 0){
-          // Update the existing layer's shape
+          // Update the existing layer's shape with the new SVG
           return {...layer, SVG: newLayerShape};
         }
       }); 
-
-
-      // const currentLayer = demoCursor.layers[0];  // Object representing the layer State
-      // console.log("currentLayer is: ", currentLayer )
-      
-      // const newLayer = {...currentLayer, SVG: newLayerShape };  // Take a copy of the existing layer object and update the shape
-      // console.log("newLayer is: ", newLayer )
-      // console.log("demoCursor.layers[0] is: ", demoCursor.layers[0] )
-
-      // const newLayersArray = [...demoCursor.layers, ]
-      
       setDemoCursor({ ...demoCursor, layers: newLayers }); // Take a copy of demoCursor State and update with the new layer
     }
+
+    // Update the fill colour of the cursor
+    function handleFillColourSelection(e){
+      const newColour = e.target.value;
+      // Note: layers is an array of layer objects so need to use map to update State
+      const newLayers = demoCursor.layers.map((layer, index) => {
+        if(index == 0){
+          // Update the existing layer's shape with the new SVG
+          return {...layer, fill: newColour};
+        }
+      }); 
+      setDemoCursor({ ...demoCursor, layers: newLayers }); // Take a copy of demoCursor State and update with the new layer
+    }
+
+    // Update the fill colour of the cursor
+    function handleStrokeColourSelection(e){
+      const newColour = e.target.value;
+      // Note: layers is an array of layer objects so need to use map to update State
+      const newLayers = demoCursor.layers.map((layer, index) => {
+        if(index == 0){
+          // Update the existing layer's shape with the new SVG
+          return {...layer, stroke: newColour};
+        }
+      }); 
+      setDemoCursor({ ...demoCursor, layers: newLayers }); // Take a copy of demoCursor State and update with the new layer
+    }
+
+    // Update changes in the cursor size
+    function handleCursorSizeChanges(e){
+      // let newSizeH; let newSizeW;
+      // Make a copy of the existing cursor size object with the updated sizes
+      const newSize = {...demoCursor.layers[0].size, 
+        height: (e.target.name == "cursorsizeh") ? Number(e.target.value) : demoCursor.layers[0].size.height,
+        width: (e.target.name == "cursorsizew") ? Number(e.target.value) : demoCursor.layers[0].size.width,
+      }; 
+      // console.log("newSize is: ", newSize)
+      // console.log("e.target.value is: ", e.target.value)
+      // Note: layers is an array of layer objects so need to use map to update State
+      const newLayers = demoCursor.layers.map((layer, index) => {
+        if(index == 0){
+          // Update the existing layer's shape with the new cursor size
+          return {...layer, size: newSize};
+        }
+      }); 
+      // console.log("newLayers is: ", newLayers)
+      setDemoCursor({ ...demoCursor, layers: newLayers }); // Take a copy of demoCursor State and update with the new layer
+    }
+
+    // Update changes in the stroke size
+    function handleStrokeSizeChange(e){
+      // const newStrokeSize = e.target.value;
+      // console.log("e.target.value is: ", e.target.value)
+      // Note: layers is an array of layer objects so need to use map to update State
+      const newLayers = demoCursor.layers.map((layer, index) => {
+        if(index == 0){
+          // Update the existing layer's shape with the new SVG
+          return {...layer, strokeSize: Number(e.target.value)};
+        }
+      }); 
+      setDemoCursor({ ...demoCursor, layers: newLayers }); // Take a copy of demoCursor State and update with the new layer
+    }
+
 
   // Markup
   return (
@@ -104,8 +154,7 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
                 {/* Shape selection */}     
                 <InputGroup className="mb-3">
                   <InputGroup.Text>Layer Shape: </InputGroup.Text>
-                    <Form.Check inline label="circle" checked={demoCursor.layers[0].SVG == "circle"} onChange={handleShapeSelection} name="layer-shape" type="radio" id={`layer-shape-circle`} />
-                    {/* <Form.Check {demoCursor.layers[0].SVG == "circle" && checked} inline label="circle" onChange={handleShapeSelection} name="layer-shape" type="radio" id={`layer-shape-circle`} /> */}
+                    <Form.Check inline label="circle" checked={demoCursor.layers[0].SVG == "circle"} onChange={handleShapeSelection} name="layer-shape" type="radio" id={`layer-shape-circle`} />                    
                     <Form.Check inline label="arrow" checked={demoCursor.layers[0].SVG == "arrow"} onChange={handleShapeSelection} name="layer-shape" type="radio" id={`layer-shape-arrow`} />
                     <Form.Check inline label="cross" checked={demoCursor.layers[0].SVG == "cross"} onChange={handleShapeSelection} name="layer-shape" type="radio" id={`layer-shape-cross`} />
                     <Form.Check inline label="square" checked={demoCursor.layers[0].SVG == "square"} onChange={handleShapeSelection} name="layer-shape" type="radio" id={`layer-shape-square`} />                  
@@ -114,10 +163,14 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
                 {/* Colour selection */}  
                 <Row className="mb-3">
                   <Col>
+                    {/* <Form.Group as={Row} className="mb-3" controlId="fillColourInput"> */}
                     <Form.Group as={Row} className="mb-3" controlId="fillColourInput">
                       <Form.Label column>Fill Colour</Form.Label>
                       <Col>
-                        <Form.Control type="color" defaultValue="#DDDDDD" title="Fill Colour" />
+                        {/* <Form.Control type="color" defaultValue="#DDDDDD" title="Fill Colour" /> */}
+                        {/* // layers: [ { SVG: "arrow", fill: "yellow", stroke: "black", strokeSize: 10, size: { height: 20, width: 20 } } ], */}
+                        <Form.Control type="color" value={demoCursor.layers[0].fill} onChange={handleFillColourSelection} name="fillcolour" title="Fill Colour" />
+                        {/* <Form.Control type="color" value="#ff0000" title="Fill Colour" /> */}
                       </Col>
                     </Form.Group>
                   </Col>                 
@@ -125,7 +178,9 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
                     <Form.Group as={Row} className="mb-3" controlId="strokeColourInput">
                       <Form.Label column>Stroke Colour</Form.Label>
                       <Col>
-                        <Form.Control type="color" defaultValue="#888888" title="Stroke Colour" />
+                        {/* <Form.Control type="color" defaultValue="#888888" title="Stroke Colour" /> */}
+                        {/* <Form.Control type="color" value={demoCursor.layers[0].stroke} title="Fill Colour" /> */}
+                        <Form.Control type="color" value={demoCursor.layers[0].stroke} onChange={handleStrokeColourSelection} name="strokecolour" title="Fill Colour" />
                       </Col>
                     </Form.Group>                
                   </Col>
@@ -133,12 +188,23 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
 
                 
                 {/* Sizes */}
-                <Row>
+
+                <InputGroup className="mb-3">
+                  {/* <Form.Label>Stroke Size</Form.Label> */}
+                  <InputGroup.Text>Cursor Size HxW</InputGroup.Text>
+                  <Form.Control type="text" name="cursorsizeh" value={demoCursor.layers[0].size.height} onChange={handleCursorSizeChanges} placeholder="Cursor Size (H)" title="Cursor Size (H)" />
+                  <Form.Control type="text" name="cursorsizew" value={demoCursor.layers[0].size.width} onChange={handleCursorSizeChanges} placeholder="Cursor Size (W)" title="Cursor Size (W)" />
+                  <InputGroup.Text>Stroke Size</InputGroup.Text>
+                  <Form.Control type="text" title="Stroke Size" name="strokesize" value={demoCursor.layers[0].strokeSize} onChange={handleStrokeSizeChange} placeholder="Stroke Size" />
+                </InputGroup>                                  
+
+                {/* <Row>
                   <Col>
                     <Form.Group as={Row} className="mb-3" controlId="strokeSize">
                       <Form.Label>Stroke Size</Form.Label>
                       <Form.Control type="text" title="Stroke Size" placeholder="Stroke Size" />
                     </Form.Group>                                  
+                    <InputGroup as={Row} className="mb-3" controlId="strokeSize">
                   </Col>
                   <Col>
                     <Form.Group as={Row} className="mb-3" >
@@ -146,9 +212,16 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
                       <Form.Control type="text" id="cursorSizeHorizontal" placeholder="Cursor Size (H)" title="Cursor Size (H)" />
                       <Form.Control type="text" id="cursorSizeVertical" placeholder="Cursor Size (V)" title="Cursor Size (V)" />
                     </Form.Group>                
+                    /* <InputGroup as={Row} className="mb-3" >
+                      <Form.Label>Cursor Size</Form.Label>
+                      <Form.Control type="text" id="cursorSizeHorizontal" placeholder="Cursor Size (H)" title="Cursor Size (H)" />
+                      <Form.Control type="text" id="cursorSizeVertical" placeholder="Cursor Size (V)" title="Cursor Size (V)" />
+                    </InputGroup>                
                   </Col>
 
-                </Row>
+                </Row> */}
+
+
                 {/* Others */}
                 {/* <Form.Label>Size</Form.Label>
                 <Form.Range />

@@ -23,12 +23,9 @@ export default function FeaturesPage({setMainCursor}) {
     // const [demoCursor, setDemoCursor] = useState(false); // Customised demo cursor not displayed by default 
     const [demoCursor, setDemoCursor] = useState({
       enable: false, // Customised demo cursor not displayed by default
-      layers: [ { SVG: "circle", fill: "#FFFF00", stroke: "#8A2BE2", strokeSize: 10, size: { height: 20, width: 20 } } ],
-      // layers: [ { SVG: "circle", fill: "yellow", stroke: "black", strokeSize: 10, size: { height: 20, width: 20 } } ],
       // Note: Using Hex values for colours as this simplifies the update process in Options
-      
+      layers: [ { SVG: "circle", fill: "#FFFF00", stroke: "#8A2BE2", strokeSize: 10, size: { height: 20, width: 20 } } ],
       showSystemCursor: true,
-      // showSystemCursor: false,
       mixBlendMode: "normal",
       zIndex: 20,
       // ignoreAccessibility: true
@@ -77,8 +74,8 @@ export default function FeaturesPage({setMainCursor}) {
         zIndex={10}  
       /> */}
       <ReactCursor 
-        layers={demoCursor.layers} 
         enable={demoCursor.enable}
+        layers={demoCursor.layers} 
         // layers={ [ 
         //   { fill: "yellow", stroke: "black", strokeSize: 10, size: { height: 20, width: 20 } } 
         // ] }

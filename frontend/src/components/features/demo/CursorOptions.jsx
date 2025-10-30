@@ -39,6 +39,27 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
       setDemoCursor({ ...demoCursor, layers: newLayers }); // Take a copy of demoCursor State and update with the new layer
     }
 
+    // Update the shape within the layers array of the cursor object
+    function handleMixBlendModeSelection(e){
+      let newMixBlendMode;
+      // let newLayer;
+      switch(e.target.id){  // ID of the radio checkboxes
+        case "mixedblend-normal": newMixBlendMode = "circle"; break;
+        case "mixedblend-lighten": newMixBlendMode = "lighten"; break;
+        case "mixedblend-darken": newMixBlendMode = "darken"; break;
+        case "mixedblend-overlay": newMixBlendMode = "overlay"; break;
+        case "mixedblend-difference": newMixBlendMode = "difference"; break;
+      }
+      // // Note: layers is an array of layer objects so need to use map to update
+      // const newLayers = demoCursor.layers.map((layer, index) => {
+      //   if(index == 0){
+      //     // Update the existing layer's shape with the new SVG
+      //     return {...layer, mixBlendMode: newMixBlendMode};
+      //   }
+      // }); 
+      setDemoCursor({ ...demoCursor, mixBlendMode: newMixBlendMode }); // Take a copy of demoCursor State and update with the new layer
+    }
+
     // Update the fill colour of the cursor
     function handleFillColourSelection(e){
       const newColour = e.target.value;
@@ -119,23 +140,35 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
           <h4>Main Options</h4>
           <div>
             {/* Cursor Enable. Note: It is enabled by default so it can be used in the Testbed */}
-            <Form.Check disabled type="switch" id="custom-switch" label="Enable Cursor" checked />  
+            <InputGroup className="mb-1">
+              <Form.Check disabled type="switch" id="custom-switch" label="Enable Cursor" checked />  
+            </InputGroup>
             
             {/* System Cursor */}
-            <Form.Check type="switch" checked={demoCursor.showSystemCursor} onChange={handleShowSystemCursorSwitch}  id="show-system-cursor" label="Show System Cursor" />
+            <InputGroup className="mb-1">
+              <Form.Check type="switch" checked={demoCursor.showSystemCursor} onChange={handleShowSystemCursorSwitch}  id="show-system-cursor" label="Show System Cursor" />
+            </InputGroup>
             {/* <Form.Check type="switch" checked={demoCursor.showSystemCursor} onChange={setDemoCursor(!demoCursor)}  id="show-system-cursor" label="Show System Cursor" /> */}
             
             {/* mixBlendMode */}
+            {/* <Form.Label>mixBlendMode</Form.Label> */}
             <InputGroup className="mb-3">
-              <InputGroup.Text>mixBlendMode: </InputGroup.Text>
-              <Form.Check inline label="normal" name="mixBlendMode" type="radio" id={`inline-radio-1`} />
-              <Form.Check inline label="***" name="mixBlendMode" type="radio" id={`inline-radio-2`} />            
+              <InputGroup.Text>mixBlendMode</InputGroup.Text>
+              <Form.Check inline label="normal" checked={demoCursor.mixBlendMode == "normal"} onChange={handleMixBlendModeSelection} name="mixBlendMode" type="radio" id={`mixedblend-normal`} />
+              <Form.Check inline label="lighten" checked={demoCursor.mixBlendMode == "lighten"} onChange={handleMixBlendModeSelection} name="mixBlendMode" type="radio" id={`mixedblend-lighten`} />
+              <Form.Check inline label="darken" checked={demoCursor.mixBlendMode == "darken"} onChange={handleMixBlendModeSelection} name="mixBlendMode" type="radio" id={`mixedblend-darken`} />
+              <Form.Check inline label="overlay" checked={demoCursor.mixBlendMode == "overlay"} onChange={handleMixBlendModeSelection} name="mixBlendMode" type="radio" id={`mixedblend-overlay`} />
+              <Form.Check inline label="difference" checked={demoCursor.mixBlendMode == "difference"} onChange={handleMixBlendModeSelection} name="mixBlendMode" type="radio" id={`mixedblend-difference`} />
+
             </InputGroup>
-            
+
+
+
+
             {/* zIndex */}             
             <InputGroup className="mb-3">
-              <InputGroup.Text>zIndex: </InputGroup.Text>
-              <Form.Control type="text" value={demoCursor.zIndex} placeholder="2147483647" />              
+              <InputGroup.Text>zIndex</InputGroup.Text>
+              <Form.Control type="text" value={demoCursor.zIndex} disabled />              
             </InputGroup>
 
 

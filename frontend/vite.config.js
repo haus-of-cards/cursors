@@ -10,7 +10,8 @@ export default defineConfig({
     react(),
     vanillaExtractPlugin(),
     svgr({
-      include: "**/*.svg",
+      dimensions: false, // allows SVGR to override height/width of SVG
+      include: "**/*.svg", // explicit path required, for correct SVGR importing with hot-reload
     }),
   ],
   base: "/cursors/", // required for GH pages deployment

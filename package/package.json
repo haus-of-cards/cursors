@@ -1,15 +1,19 @@
 {
   "name": "@holmesdev/cursors",
   "version": "0.0.0",
-  "description": "React component for custom cursors - SVG based, fully-customizable, and accessibility-focused",
+  "description": "React cursor component — fully customizable, accessibility-first, and SVG-based",
   "author": "Haus of Cards",
   "keywords": [
     "react",
     "cursor",
     "custom cursor",
     "animated cursor",
+    "mouse",
+    "mouse cursor",
+    "customizable",
     "ui",
     "react-component",
+    "typescript",
     "svg"
   ],
   "license": "MIT",

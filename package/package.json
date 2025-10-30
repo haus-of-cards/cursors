@@ -1,7 +1,8 @@
 {
   "name": "@holmesdev/cursors",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "React cursor component — fully customizable, accessibility-first, and SVG-based",
+  "publishConfig": { "access": "public" },
   "author": "Haus of Cards",
   "keywords": [
     "react",
@@ -50,7 +51,8 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
-    "prettier": "prettier --write \"src/*/*.{ts,tsx,md,json,css}\""
+    "prettier": "prettier --write \"src/*/*.{ts,tsx,md,json,css}\"",
+    "release": "npm run build && npm publish"
   },
   "peerDependencies": {
     "react": ">=19",

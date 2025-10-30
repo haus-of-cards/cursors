@@ -1,4 +1,10 @@
-# 🖱️ Cursors
+# 🖱️ @holmesdev/cursors
+
+[![npm version](https://img.shields.io/npm/v/@holmesdev/cursors.svg)](https://www.npmjs.com/package/@holmesdev/cursors)
+[![npm downloads](https://img.shields.io/npm/dm/@holmesdev/cursors.svg)](https://www.npmjs.com/package/@holmesdev/cursors)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@holmesdev/cursors?label=bundle%20size)](https://bundlephobia.com/package/@holmesdev/cursors)
+[![license](https://img.shields.io/npm/l/@holmesdev/cursors.svg)](LICENSE)
+![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178c6?logo=typescript)
 
 **Fully customizable mouse cursor component for React — SVG-based and accessibility-first.**
 

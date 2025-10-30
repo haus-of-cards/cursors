@@ -21,7 +21,8 @@ export const app = style({
 // Style the Pages. Note that this style is a flex item of the app style above
 export const appContent = style({
   margin: "3rem 0",
-  maxWidth: "60vw",
+  // maxWidth: "80vw",
+  // minWidth: "80vw",
   alignSelf: "center",
   flex: 1, // Let all the flexible items be the same length, regardless of its content
   fontFamily: vars.fonts.body,

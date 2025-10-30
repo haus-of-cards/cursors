@@ -7,7 +7,7 @@ export type SvgDefaultStyles = "arrow" | "circle" | "cross" | "square";
 export type CursorLayer = {
   SVG?: FC<SVGProps<SVGSVGElement>> | SvgDefaultStyles; // SVG to use (must supply SVGR)
   fill?: string; // fill colour (replaces fill=currentColor in SVG file)
-  stroke?: string; // stroke colour (replaces stroke=currentColor in SVG file)
+  stroke?: string; // stroke colour (replaces stroke=currentStroke in SVG file)
   strokeSize?: number; // adjusts the stroke size of SVG
   opacity?: number; // opacity of the layer (0-1)
   size?: { height: number; width: number }; // 'px' height/width of the SVG

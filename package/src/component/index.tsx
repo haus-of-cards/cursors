@@ -7,11 +7,13 @@ const defaultSvgOptions: Required<Omit<CursorLayer, "hotspot">> = {
   SVG: svgStylesMap.default,
   fill: "black",
   stroke: "white",
-  strokeSize: 10,
+  strokeSize: 5,
   opacity: 1,
-  size: { height: 100, width: 100 },
+  size: { height: 25, width: 25 },
+  preserveAspectRatio: true,
   delay: 0,
 };
+
 // Accessibility Detection
 const detectAccessibilityEnv = (ignoreAccessibility = false) => {
   if (typeof window === "undefined") {
@@ -134,7 +136,7 @@ const ReactCursor = ({
   // Precompute layer sizes for centering (recalculate when effectiveLayers change)
   const layerSizes = useMemo(
     () => effectiveLayers.map((layer) => layer.size ?? defaultSvgOptions.size),
-    [effectiveLayers],
+    [effectiveLayers]
   );
 
   // Hide system cursor
@@ -290,6 +292,12 @@ const ReactCursor = ({
               zIndex: zIndex - i,
               pointerEvents: "none",
             }}
+            preserveAspectRatio={
+              (layer.preserveAspectRatio ??
+              defaultSvgOptions.preserveAspectRatio)
+                ? "xMidYMid meet"
+                : "none"
+            }
           />
         );
       })}

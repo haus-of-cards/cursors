@@ -30,7 +30,7 @@ export const cursorMainAndLayerOptionsDiv = style({
   // justifyContent: "center",
   // justifyContent: "space-around",
   // border: "solid"
-
+  fontSize: "smaller"
 });
 
 

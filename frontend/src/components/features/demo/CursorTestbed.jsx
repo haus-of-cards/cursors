@@ -5,6 +5,7 @@ import { Button } from 'react-bootstrap';
 
 // Local imports
 import * as styles from './CursorTestbed.css'; // VE styling file
+// import { testbedBackground } from './CursorTestbed.css';
 
 
 // Main component
@@ -25,6 +26,9 @@ export default function CursorTestbed( {testBed, setTestBed,handleCursorOverTest
         onMouseOver={handleCursorOverTestbed}
         onMouseOut={handleCursorLeavingTestbed}
       >
+        {/* <div className={testbedBackground[testBed ? "enabled" : "disabled"]}></div> */}
+        {/* <div className={testbedBackground["enabled"]}></div> */}
+        {/* <div className={testbedBackground["disabled"]}></div> */}
       </div>
       
       {/* Testbed button */}

@@ -6,7 +6,7 @@ import { vars } from "../styles/themes.css";
 // Layout content vertically
 export const featuresPage = style({
   marginTop: "3rem",
-  // minWidth: "70vh",
+  minWidth: "70vh",
   display: "flex",
   flexDirection: "column",
   alignItems: "center"
@@ -39,7 +39,7 @@ export const featuresPageDemoTestbedCodeDiv = style({
   // marginTop: "1rem",
   padding: "1rem",
   height: "15vw",
-  // flex: 1,
+  flex: 1,
 
   display: "flex",
   justifyContent: "space-around",

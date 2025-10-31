@@ -1,8 +1,10 @@
 {
   "name": "@holmesdev/cursors",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React cursor component — fully customizable, accessibility-first, and SVG-based",
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "author": "Haus of Cards",
   "keywords": [
     "react",

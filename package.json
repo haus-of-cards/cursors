@@ -4,6 +4,7 @@
     "package:build": "npm run build -w package",
     "package:storybook": "npm run storybook -w package",
     "frontend:dev": "npm run dev -w frontend",
+    "package:patch": "npm version patch -w package",
     "package:release": "npm run release -w package"
   },
   "workspaces": [

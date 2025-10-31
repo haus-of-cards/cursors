@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/@holmesdev/cursors.svg)](https://www.npmjs.com/package/@holmesdev/cursors)
 [![npm downloads](https://img.shields.io/npm/dm/@holmesdev/cursors.svg)](https://www.npmjs.com/package/@holmesdev/cursors)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/@holmesdev/cursors?label=bundle%20size)](https://bundlephobia.com/package/@holmesdev/cursors)
-[![license](https://img.shields.io/npm/l/@holmesdev/cursors.svg)](LICENSE)
+[![license](https://img.shields.io/npm/l/@holmesdev/cursors)](LICENSE)
 ![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178c6?logo=typescript)
 
 **Fully customizable mouse cursor component for React — SVG-based and accessibility-first.**
@@ -310,7 +310,7 @@ export default function Example() {
 
 ### Demo Testbed
 
-You can also explore the live cursor functionality on our website via the [Demo Cursor Testbed](https://haus-of-cards.github.io/cursors).
+You can also explore the live cursor functionality on our website via the [DEMO CURSOR TESTBED](https://haus-of-cards.github.io/cursors).
 
 1. Select your desired cursor options.
 2. Enable the Testbed to see them in action.

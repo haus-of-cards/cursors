@@ -334,7 +334,7 @@ Refer to [ACCESSIBILITY](ACCESSIBILITY.md) for more details.
 
 ## 🤝 Contributing
 
-Refer to [CONTRIBUTING](contributing.md) for guidelines. Please also review our [Code of Conduct](CODE_OF_CONDUCT.md).
+Refer to [CONTRIBUTING](contributing.md) for guidelines. Please also review our [CODE OF CONDUCT](CODE_OF_CONDUCT.md).
 
 ## 🧾 License
 

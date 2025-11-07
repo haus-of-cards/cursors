@@ -9,8 +9,7 @@ export default function CursorIntro() {
   return (
     <Fragment>
       <h1>Introduction to React Cursors</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim quia libero cum ab, voluptate facilis eligendi et? Adipisci repellendus dicta culpa! 
-        Tempore voluptates ea enim voluptatem laudantium hic provident repellat.</p>
+      <p> <i>@holmesdev/cursors</i> provides a fully customizable cursor component that can be used within React.js applications. These multi-layered customizable cursors can be added to your React.js project to provide a cursor with features such as multiple-layers, built-in shapes, numerous configuration options, and accessibility support.</p>
     </Fragment>
   )
 }

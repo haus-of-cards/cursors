@@ -24,7 +24,11 @@ export const sidebarSections = [
       },
       { 
         itemNumber: "2.2",
-        itemTitle: "Demo Cursor"
+        itemTitle: "Usage"
+      },
+      { 
+        itemNumber: "2.3",
+        itemTitle: "Example"
       }
     ]
   },
@@ -35,14 +39,46 @@ export const sidebarSections = [
     sectionItems: [ 
       { 
         itemNumber: "3.1",
-        itemTitle: "Basic Options"
+        itemTitle: "Global Options"
       },
       { 
         itemNumber: "3.2",
-        itemTitle: "Advanced Options"
+        itemTitle: "Layer Options"
       },
+      { 
+        itemNumber: "3.3",
+        itemTitle: "Custom SVGs"
+      },
+      { 
+        itemNumber: "3.4",
+        itemTitle: "Demo Testbed"
+      }
+    ]
+  },  
+  
+  {
+    sectionNumber: "4",
+    sectionTitle: "Further Info",
+    sectionItems: [ 
+      { 
+        itemNumber: "4.1",
+        itemTitle: "About"
+      },
+      { 
+        itemNumber: "4.2",
+        itemTitle: "Accessibility"
+      },
+      { 
+        itemNumber: "4.3",
+        itemTitle: "Contributing"
+      },
+      { 
+        itemNumber: "4.4",
+        itemTitle: "License"
+      }
     ]
   }  
+
 ];
 
 

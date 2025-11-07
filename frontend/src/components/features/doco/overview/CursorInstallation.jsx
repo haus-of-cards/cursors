@@ -8,9 +8,12 @@ import { Fragment } from "react";
 export default function CursorInstallation() {
   return (
     <Fragment>
-      <h1>Installing the React Cursors</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim quia libero cum ab, voluptate facilis eligendi et? Adipisci repellendus dicta culpa! 
-        Tempore voluptates ea enim voluptatem laudantium hic provident repellat.</p>
+      <h1>Install React Cursor</h1>
+        <i>
+          <p> npm install @holmesdev/cursors </p>
+          <p> # or </p>
+          <p> yarn add @holmesdev/cursors </p>              
+        </i> 
     </Fragment>
   )
 }

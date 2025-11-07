@@ -8,9 +8,14 @@ import { Fragment } from "react";
 export default function CursorFunctionality() {
   return (
     <Fragment>
-      <h1>React Cursors Functionality</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim quia libero cum ab, voluptate facilis eligendi et? Adipisci repellendus dicta culpa! 
-        Tempore voluptates ea enim voluptatem laudantium hic provident repellat.</p>
+      <h1>Features</h1>
+      <p>React Cursors provide the following features</p>
+      <ul>
+        <li>🎨 <b>Customizable SVG layers</b>  — create multi-layer cursors with different fills, strokes, and delays.</li>
+        <li>⚙️ <b>Dynamic hover and click effects</b> — smoothly scale, reculor, or swap SVGs based on interactions.</li>
+        <li>🧩 <b>Accessibility-first</b> — automatically disables for high contrast, reduced motion, or touch environments.</li>
+        <li>🧍‍♂️ <b>Optional system cursor hiding</b> — fully replace or blend with the native cursor.</li>        
+      </ul>
     </Fragment>
   )
 }

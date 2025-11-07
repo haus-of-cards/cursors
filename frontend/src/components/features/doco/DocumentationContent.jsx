@@ -9,9 +9,6 @@ import * as styles from './DocumentationContent.css';  // Vanilla Extract stylin
 import CursorIntro from "./overview/CursorIntro";
 import CursorFunctionality from "./overview/CursorFunctionality";
 import CursorInstallation from "./overview/CursorInstallation";
-import CursorDemo from "./overview/CursorDemo";
-import CursorOptionsBasic from "./overview/CursorOptionsGlobal";
-import CursorOptionsAdvanced from "./overview/CursorOptionsLayers";
 import CursorUsage from "./overview/CursorUsage";
 import CursorOptionsGlobal from "./overview/CursorOptionsGlobal";
 import CursorOptionsLayers from "./overview/CursorOptionsLayers";
@@ -21,6 +18,7 @@ import CursorAbout from "./overview/CursorAbout";
 import CursorAccessibility from "./overview/CursorAccessibility";
 import CursorContributing from "./overview/CursorContributing";
 import CursorLicence from "./overview/CursorLicence";
+import CursorExample from "./overview/CursorExample";
 
 
 // Main component
@@ -56,7 +54,7 @@ export default function DocumentationContent( {itemSelected} ) {
       {/* 2. Getting Started */}
       {(itemSelected=="2.1") && <CursorInstallation /> }
       {(itemSelected=="2.2") && <CursorUsage /> }
-      {(itemSelected=="2.3") && <CursorDemo /> }
+      {(itemSelected=="2.3") && <CursorExample /> }
       {/* 3. Configuration */}
       {(itemSelected=="3.1") && <CursorOptionsGlobal /> }
       {(itemSelected=="3.2") && <CursorOptionsLayers /> }

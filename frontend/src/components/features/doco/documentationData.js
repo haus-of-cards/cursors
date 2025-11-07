@@ -9,7 +9,7 @@ export const sidebarSections = [
       },
       { 
         itemNumber: "1.2",
-        itemTitle: "Cursor Functionality"
+        itemTitle: "Cursor Features"
       }
     ]
   },

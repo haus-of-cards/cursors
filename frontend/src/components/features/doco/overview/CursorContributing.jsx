@@ -9,7 +9,7 @@ export default function CursorContributing() {
   return (
     <Fragment>
       <h1>Contributing</h1>
-      <p>Refer to CONTRIBUTING for guidelines. Please also review our CODE OF CONDUCT. ***</p>
+      <p>Thank you for your interest in contributing to <i>@holmesdev/cursors</i>! We welcome contributions from the community and appreciate your help in making this project better.</p>
     </Fragment>
   )
 }

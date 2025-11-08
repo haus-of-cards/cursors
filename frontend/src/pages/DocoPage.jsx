@@ -10,7 +10,7 @@ function DocoPage() {
   
   return (
     <div className={styles.docopage}>
-      <h1 >React Cursors Documentation</h1>
+      <h1 className={styles.docopageH1} >React Cursor Documentation</h1>
       <Documentation /> {/* Display documentation menu & content*/}
     </div>
 

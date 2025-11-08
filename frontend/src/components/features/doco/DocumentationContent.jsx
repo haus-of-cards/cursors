@@ -5,7 +5,7 @@ import { Fragment } from "react";
 
 // Local imports
 import * as styles from './DocumentationContent.css';  // Vanilla Extract styling file
-// import { itemsDocumentation } from "./documentationData";  // Documentation markup for each item
+// Components containing documentation content
 import CursorIntro from "./overview/CursorIntro";
 import CursorFunctionality from "./overview/CursorFunctionality";
 import CursorInstallation from "./overview/CursorInstallation";

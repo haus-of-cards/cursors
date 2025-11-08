@@ -9,7 +9,13 @@ export default function CursorOptionsGlobal() {
 
   const code = `
   <ReactCursor enable={false} />
-  `
+  `;
+
+  const sizeType = `{ height: number, width: number }`;
+  const sizeDefault = `{ height: 25, width: 25 }`;
+  const hotSpotType = `{ x: number, y: number }`;
+  const hotSpotDefault = `{ x: width/2, y: height/2 }`;
+
 
   return (
     <Fragment>
@@ -63,13 +69,9 @@ export default function CursorOptionsGlobal() {
       </tr>
       <tr>
       <td><code>size?</code></td>
-
-      {/* <td><code>{ height: number, width: number }</code></td> */}
-      {/* <td><code>{ height: 25, width: 25 }</code></td> */}
-      <td></td>
-      <td></td>
-
-
+      {/* Workaround for the curly braces */}
+      <td><code> {sizeType} </code></td>
+      <td><code> {sizeDefault} </code></td>
       <td>Adjust the <code>px</code> height/width of the SVG. Aspect-ratio is retained by default, so the smallest value will usually be used for the size.</td>
       </tr>
       <tr>
@@ -86,11 +88,11 @@ export default function CursorOptionsGlobal() {
       </tr>
       <tr>
       <td><code>hotspot?</code></td>
-
+      {/* Workaround for the curly braces */}
+      <td><code> {hotSpotType} </code></td>
+      <td><code> {hotSpotDefault} </code></td>
       {/* <td><code>{ x: number, y: number }</code></td> */}
       {/* <td><code>{ x: width/2, y: height/2 }</code></td> */}
-      <td></td>
-      <td></td>
 
       <td>X/Y coordinate override for where the actual “click” hotspot of the cursor layer is. By default, the click is centered within the SVG image. If top-left is required, for example when using an “arrow” style SVG, the hotspot should be set at <code>x=0</code> &amp; <code>y=0</code>.</td>
       </tr>

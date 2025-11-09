@@ -46,7 +46,7 @@
   "scripts": {
     "audit": "npm audit",
     "audit fix": "npm audit fix",
-    "prepare": "npm run build",
+    "prepare": "if [ \"$CI\" != \"true\" ]; then npm run build; fi",
     "build": "rollup -c",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

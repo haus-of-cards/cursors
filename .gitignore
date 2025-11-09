@@ -144,3 +144,11 @@ vite.config.ts.timestamp-*
 # Storybook
 *storybook.log
 storybook-static
+
+# Lockfiles - handle selectively for GitHub Actions
+# Ignore all lockfiles by default
+package-lock.json
+# Ignore frontend lockfile (deployment build only)
+frontend/package-lock.json
+# Keep lockfile for the npm package (for reproducible publishing)
+!package/package-lock.json

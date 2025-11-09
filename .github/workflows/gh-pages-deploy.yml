@@ -12,7 +12,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
-  
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -31,9 +31,13 @@ jobs:
           node-version: 22
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          rm -rf node_modules package-lock.json
+          npm cache clean --force
+          npm install --workspaces
 
       - name: Build React App
+        working-directory: frontend
         run: npm run build
 
       - name: Set Git User for gh-pages

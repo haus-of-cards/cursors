@@ -268,7 +268,7 @@ export default function CursorOptions( {demoCursor, setDemoCursor} ) {
             <Accordion.Item eventKey="layer2">
               <Accordion.Header>Layer 2</Accordion.Header>
               <Accordion.Body>
-                <p>Note: While React Cursor supports multiple layers this demonstration currently only has one.</p>
+                <p>Note: While @holmesdev/cursors supports multiple layers this demonstration currently only has one.</p>
               </Accordion.Body>
             </Accordion.Item>
           </Accordion>        

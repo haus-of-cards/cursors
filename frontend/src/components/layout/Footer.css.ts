@@ -4,11 +4,11 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/themes.css";
 
 export const footer = style({
-  // display: "flex",
-  // justifyContent: "center",
   fontFamily: vars.fonts.brand,
-  backgroundColor: vars.colors.complementary,
-  textAlign: "center",
+  color: vars.colors.complementary,
+  textAlign: "right",
   padding: "1rem",
-  color: "black",
+  fontStyle: "italic",
+  fontWeight: 100,
+  borderTop: `1px solid ${vars.colors.complementary}`,
 });

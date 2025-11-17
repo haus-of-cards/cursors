@@ -6,7 +6,7 @@
 import { useState } from 'react';
 
 // Local imports
-import * as styles from './FeaturesPage.css'; // Vanilla Extract styling file
+import * as styles from './DemoPage.css'; // Vanilla Extract styling file
 
 // Workspace imports
 import ReactCursor from "@holmesdev/cursors";
@@ -20,7 +20,6 @@ export default function FeaturesPage({setMainCursor}) {
   // States
   
     // Demo Cursor
-    // const [demoCursor, setDemoCursor] = useState(false); // Customised demo cursor not displayed by default 
     const [demoCursor, setDemoCursor] = useState({
       enable: false, // Customised demo cursor not displayed by default
       // Note: Using Hex values for colours as this simplifies the update process in Options
@@ -98,6 +97,7 @@ export default function FeaturesPage({setMainCursor}) {
             setTestBed={setTestBed}
             handleCursorOverTestbed={handleCursorOverTestbed}
             handleCursorLeavingTestbed={handleCursorLeavingTestbed}
+            className={styles.testbed}
           />
           {/* Demo Cursor Code */}
           <CursorCodeDisplay demoCursor={demoCursor} />

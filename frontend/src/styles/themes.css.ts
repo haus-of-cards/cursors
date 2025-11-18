@@ -14,7 +14,7 @@ export const root = createGlobalTheme(":root", {
     primary: "#16011c",
     primaryVariant: "#0a000d",
     complementary: "#adadad",
-    brand: "#fc72f8",
+    brand: "#d63384",
   },
 });
 

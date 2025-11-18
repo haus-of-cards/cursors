@@ -23,11 +23,17 @@ export const hausofcardspageH1 = style({
 export const brandname = style({
   color: vars.colors.brand,
   textShadow: `
-    -1px -1px 0 ${vars.colors.primaryVariant},
-     1px -1px 0 ${vars.colors.primaryVariant},
-    -1px  1px 0 ${vars.colors.primaryVariant},
-     1px  1px 0 ${vars.colors.primaryVariant}
+    0 0 20px color-mix(in srgb, ${vars.colors.brand} 65%, transparent),
+    0 0 20px color-mix(in srgb, ${vars.colors.brand} 65%, transparent),
+    0 0 20px color-mix(in srgb, ${vars.colors.brand} 65%, transparent),
+    0 0 20px color-mix(in srgb, ${vars.colors.brand} 65%, transparent)
   `,
+
+  selectors: {
+    "&:hover": {
+      color: vars.colors.primaryVariant,
+    },
+  },
 });
 
 export const hausofcardspageH2 = style({
@@ -44,14 +50,25 @@ export const hausofcardspageDemoDiv = style({
   padding: "2rem 0",
   display: "flex",
   flexDirection: "row",
-  flexWrap: "wrap",
   gap: "2rem",
   width: "100%",
   justifyContent: "space-between",
   alignItems: "center",
+
+  "@media": {
+    "screen and (max-width: 768px)": {
+      flexDirection: "column",
+    },
+  },
 });
 
 export const hausofcardspageDemoH3 = style({
+  width: "50%",
+  "@media": {
+    "screen and (max-width: 768px)": {
+      width: "100%",
+    },
+  },
 });
 
 export const hausofcardspagefeatures = style({
@@ -70,7 +87,14 @@ export const hausofcardspageDemo = style({
   justifyContent: "center",
   alignItems: "center",
   gap: "2rem",
-  minWidth: "250px",
+  background: "rgba(255,255,255,0.1)",
+  borderRadius: "1rem",
+  padding: "3rem 1rem",
+  "@media": {
+    "screen and (max-width: 768px)": {
+      width: "100%",
+    },
+  },
 });
 
 export const cta = style({
@@ -112,8 +136,9 @@ const rainbow = keyframes({
 
 export const img = style({
   width: "5rem",
+  padding: "1rem",
   animation: `
-    ${pulse} 10s ease-in-out infinite alternate,
+    ${pulse} 5s ease-in-out infinite alternate,
     ${rainbow} 15s linear infinite alternate
   `,
 });

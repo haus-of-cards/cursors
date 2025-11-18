@@ -38,3 +38,35 @@ export const selectFullWidth = style({
   flex: 1,
   minWidth: "150px",
 });
+
+export const remove = style({
+  background: "red",
+  color: "white",
+  border: "3px solid red",
+  borderRadius: "1rem",
+  padding: "0.5rem 1rem",
+  selectors: {
+    "&:hover": {
+      background: "firebrick",
+    },
+  },
+});
+
+export const add = style({
+  marginTop: "1rem",
+  background: vars.colors.brand,
+  color: "white",
+  border: `3px solid ${vars.colors.brand}`,
+  borderRadius: "1rem",
+  padding: "0.5rem 1rem",
+  selectors: {
+    "&:hover": {
+      background: vars.colors.primary,
+    },
+  },
+});
+
+export const note = style({
+  textAlign: "center",
+  fontStyle: "italic",
+});

@@ -2,16 +2,19 @@
 
 import { style } from "@vanilla-extract/css";
 
-
 export const documentationContentDiv = style({
-  marginTop: "2rem",
-  paddingLeft: "10rem",
-  paddingRight: "10rem",
-  maxWidth: "70vw",
-  // alignSelf: "center"
+  padding: "2rem",
+  minWidth: "250px",
+  width: "100%",
+
+  "@media": {
+    "screen and (max-width: 768px)": {
+      padding: "1rem",
+    },
+  },
 });
 
 export const documentationContentHeader = style({
   marginTop: "2rem",
-  textAlign: "center"
+  textAlign: "center",
 });

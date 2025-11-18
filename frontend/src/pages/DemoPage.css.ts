@@ -5,22 +5,25 @@ import { vars } from "../styles/themes.css";
 
 // Layout content vertically
 export const featuresPage = style({
-  marginTop: "3rem",
-  minWidth: "70vh",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  width: "100%",
+});
+
+export const title = style({
+  fontFamily: vars.fonts.brand,
 });
 
 // Div for Demo Cursor
 export const featuresPageDemoDiv = style({
-  marginTop: "1rem",
   padding: "1rem",
   display: "flex",
   flexDirection: "column",
   borderWidth: 3,
   borderRadius: 20,
-  backgroundColor: vars.colors.complementary,
+  width: "100%",
+  maxWidth: "1200px",
 });
 
 // Div containing Testbed & Code sections
@@ -31,7 +34,9 @@ export const featuresPageDemoTestbedCodeDiv = style({
   display: "flex",
   flexWrap: "wrap",
   justifyContent: "space-around",
+  gap: "1rem",
   flexDirection: "row",
+  borderRadius: "1rem",
 });
 
 export const testbed = style({

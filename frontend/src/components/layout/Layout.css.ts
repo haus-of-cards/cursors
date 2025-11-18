@@ -25,4 +25,5 @@ export const appContent = style({
   flex: 1, // Let all the flexible items be the same length, regardless of its content
   fontFamily: vars.fonts.body,
   fontWeight: 300,
+  width: "100vw",
 });

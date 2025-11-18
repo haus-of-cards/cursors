@@ -32,7 +32,10 @@ function App() {
           {" "}
           {/* Note how the Layout component is used as an element instead of a wrapper */}
           <Route index element={<HausOfCards />} />
-          <Route path="features" element={<FeaturesPage setMainCursor={setMainCursor} />}  />
+          <Route
+            path="features"
+            element={<FeaturesPage setMainCursor={setMainCursor} />}
+          />
           <Route path="docs" element={<DocoPage />} />
           {/* Catchall segment ie. Page not found */}
           <Route path="*" element={<NotFoundPage />} />

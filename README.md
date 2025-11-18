@@ -129,16 +129,15 @@ Global options are passed directly to the component through props, and apply to 
 <ReactCursor enable={false} />
 ```
 
-| Prop                   | Type                                                           | Default                                                                                 | Description                                                                                                                                                                            |
-| ---------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `enable?`              | `boolean`                                                      | `true`                                                                                  | Enables or disables the cursor entirely.                                                                                                                                               |
-| `showSystemCursor?`    | `boolean`                                                      | `true`                                                                                  | Shows or hides the system cursor.                                                                                                                                                      |
-| `layers?`              | `CursorLayer[]` [_(refer to Layer Options)_](#layer-options)   | `[{ fill: "black", stroke: "white", strokeSize: 10, size: { width: 20, height: 20 } }]` | Defines each cursor layer.                                                                                                                                                             |
-| `mixBlendMode?`        | `CSSProperties["mixBlendMode"]`                                | `"normal"`                                                                              | Controls how the cursor blends with the background.                                                                                                                                    |
-| `zIndex?`              | `number`                                                       | `2147483647`                                                                            | Cursor z-index. Default is max value.                                                                                                                                                  |
-| `ignoreAccessibility?` | `boolean`                                                      | `false`                                                                                 | Bypass system accessibility detection. By default, if a user has any accessibility flags set in their browser, the custom cursor will disable and the system cursor will show instead. |
-| `effects?`             | `CursorEffects` [_(refer to Cursor Effects)_](#cursor-effects) | `undefined`                                                                             | Defines hover and click effect states.                                                                                                                                                 |
-| `hoverSelector?`       | `string`                                                       | `"a, button, [role='button'], input, textarea, select"`                                 | CSS selector that triggers hover effects.                                                                                                                                              |
+| Prop                   | Type                                                         | Default                                                                                 | Description                                                                                                                                                                            |
+| ---------------------- | ------------------------------------------------------------ | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `enable?`              | `boolean`                                                    | `true`                                                                                  | Enables or disables the cursor entirely.                                                                                                                                               |
+| `showSystemCursor?`    | `boolean`                                                    | `true`                                                                                  | Shows or hides the system cursor.                                                                                                                                                      |
+| `layers?`              | `CursorLayer[]` [_(refer to Layer Options)_](#layer-options) | `[{ fill: "black", stroke: "white", strokeSize: 10, size: { width: 20, height: 20 } }]` | Defines each cursor layer.                                                                                                                                                             |
+| `mixBlendMode?`        | `CSSProperties["mixBlendMode"]`                              | `"normal"`                                                                              | Controls how the cursor blends with the background.                                                                                                                                    |
+| `zIndex?`              | `number`                                                     | `2147483647`                                                                            | Cursor z-index. Default is max value.                                                                                                                                                  |
+| `ignoreAccessibility?` | `boolean`                                                    | `false`                                                                                 | Bypass system accessibility detection. By default, if a user has any accessibility flags set in their browser, the custom cursor will disable and the system cursor will show instead. |
+| `hoverSelector?`       | `string`                                                     | `"a, button, [role='button'], input, textarea, select"`                                 | CSS selector that triggers hover effects.                                                                                                                                              |
 
 ### Layer Options
 
@@ -155,21 +154,22 @@ React Cursors have one or more layers with their own set of options. For example
 />
 ```
 
-| Prop                   | Type                                                | Default                       | Description                                                                                                                                                                                                                                                    |
-| ---------------------- | --------------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `SVG?`                 | `SvgDefaultStyles` \| `FC<SVGProps<SVGSVGElement>>` | `"circle"`                    | Defines which SVG image to use for the cursor layer. SvgDefaultStyles include: `"circle"`, `"cross"`, `"square"`, `"arrow"`. To supply your own SVG, you should utilise [SVGR](https://react-svgr.com/) within your application. [See more here](#custom-svgs) |
-| `fill?`                | `string`                                            | `"black"`                     | Replaces the `fill=currentColor` within layer's SVG file. Can supply any valid CSS color, such as `"black"`, `"#000"`, `"rgb(0,0,0)"`, etc.                                                                                                                    |
-| `stroke?`              | `string`                                            | `"white"`                     | Replaces the `stroke=currentStroke` within layer's SVG file.                                                                                                                                                                                                   |
-| `strokeSize?`          | `number`                                            | `10`                          | Adjusts the stroke size of the layer's SVG.                                                                                                                                                                                                                    |
-| `opacity?`             | `number`                                            | `1`                           | Adjust the opacity of the layer.                                                                                                                                                                                                                               |
-| `size?`                | `{ height: number, width: number }`                 | `{ height: 25, width: 25 }`   | Adjust the `px` height/width of the SVG. Aspect-ratio is retained by default, so the smallest value will usually be used for the size.                                                                                                                         |
-| `preserveAspectRatio?` | `boolean`                                           | `true`                        | Preserves the aspect-ratio of the SVG layer, regardless of the `size` attribute provided. If `false`, the SVG will stretch/scale exactly as specified by the `size` attribute.                                                                                 |
-| `delay?`               | `number`                                            | `0`                           | The amount of "lag" that the layer will have, with respect to the actual system cursor position. Higher number = greater lag.                                                                                                                                  |
-| `hotspot?`             | `{ x: number, y: number }`                          | `{ x: width/2, y: height/2 }` | X/Y coordinate override for where the actual "click" hotspot of the cursor layer is. By default, the click is centered within the SVG image. If top-left is required, for example when using an "arrow" style SVG, the hotspot should be set at `x=0` & `y=0`. |
+| Prop                   | Type                                                           | Default                       | Description                                                                                                                                                                                                                                                    |
+| ---------------------- | -------------------------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SVG?`                 | `SvgDefaultStyles` \| `FC<SVGProps<SVGSVGElement>>`            | `"circle"`                    | Defines which SVG image to use for the cursor layer. SvgDefaultStyles include: `"circle"`, `"cross"`, `"square"`, `"arrow"`. To supply your own SVG, you should utilise [SVGR](https://react-svgr.com/) within your application. [See more here](#custom-svgs) |
+| `fill?`                | `string`                                                       | `"black"`                     | Replaces the `fill=currentColor` within layer's SVG file. Can supply any valid CSS color, such as `"black"`, `"#000"`, `"rgb(0,0,0)"`, etc.                                                                                                                    |
+| `stroke?`              | `string`                                                       | `"white"`                     | Replaces the `stroke=currentStroke` within layer's SVG file.                                                                                                                                                                                                   |
+| `strokeSize?`          | `number`                                                       | `10`                          | Adjusts the stroke size of the layer's SVG.                                                                                                                                                                                                                    |
+| `opacity?`             | `number`                                                       | `1`                           | Adjust the opacity of the layer.                                                                                                                                                                                                                               |
+| `size?`                | `{ height: number, width: number }`                            | `{ height: 25, width: 25 }`   | Adjust the `px` height/width of the SVG. Aspect-ratio is retained by default, so the smallest value will usually be used for the size.                                                                                                                         |
+| `preserveAspectRatio?` | `boolean`                                                      | `true`                        | Preserves the aspect-ratio of the SVG layer, regardless of the `size` attribute provided. If `false`, the SVG will stretch/scale exactly as specified by the `size` attribute.                                                                                 |
+| `delay?`               | `number`                                                       | `0`                           | The amount of "lag" that the layer will have, with respect to the actual system cursor position. Higher number = greater lag.                                                                                                                                  |
+| `effects?`             | `CursorEffects` [_(refer to Cursor Effects)_](#cursor-effects) | `undefined`                   | Defines hover and click effect states.                                                                                                                                                                                                                         |
+| `hotspot?`             | `{ x: number, y: number }`                                     | `{ x: width/2, y: height/2 }` | X/Y coordinate override for where the actual "click" hotspot of the cursor layer is. By default, the click is centered within the SVG image. If top-left is required, for example when using an "arrow" style SVG, the hotspot should be set at `x=0` & `y=0`. |
 
 ### Cursor Effects
 
-Cursor effects allow you to dynamically change the cursor's appearance when users interact with certain elements. Effects are applied to the first layer of your cursor.
+Cursor effects allow you to dynamically change the cursor's appearance when users interact with certain elements. Effects are applied per-layer.
 
 #### Effect Types
 
@@ -182,14 +182,15 @@ Cursor effects allow you to dynamically change the cursor's appearance when user
 
 Each effect (`hover` or `click`) accepts the following properties:
 
-| Property      | Type                                                | Description                                                                                                                              |
-| ------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `SVG?`        | `SvgDefaultStyles` \| `FC<SVGProps<SVGSVGElement>>` | Changes the SVG shape during the effect. Can use built-in shapes (`"circle"`, `"cross"`, `"square"`, `"arrow"`) or custom SVG component. |
-| `fill?`       | `string`                                            | Changes the fill color during the effect.                                                                                                |
-| `stroke?`     | `string`                                            | Changes the stroke color during the effect.                                                                                              |
-| `strokeSize?` | `number`                                            | Changes the stroke size during the effect.                                                                                               |
-| `opacity?`    | `number`                                            | Changes the opacity (0-1) during the effect.                                                                                             |
-| `scale?`      | `number`                                            | Scales the cursor size (1 = normal, 2 = double size, 0.5 = half size). Multiplies the layer's base size.                                 |
+| Property      | Type                                                | Description                                                                                                                                                                   |
+| ------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SVG?`        | `SvgDefaultStyles` \| `FC<SVGProps<SVGSVGElement>>` | Changes the SVG shape during the effect. Can use built-in shapes (`"circle"`, `"cross"`, `"square"`, `"arrow"`) or custom SVG component.                                      |
+| `fill?`       | `string`                                            | Changes the fill color during the effect.                                                                                                                                     |
+| `stroke?`     | `string`                                            | Changes the stroke color during the effect.                                                                                                                                   |
+| `strokeSize?` | `number`                                            | Changes the stroke size during the effect.                                                                                                                                    |
+| `opacity?`    | `number`                                            | Changes the opacity (0-1) during the effect.                                                                                                                                  |
+| `scale?`      | `number`                                            | Scales the cursor size (1 = normal, 2 = double size, 0.5 = half size). Multiplies the layer's base size.                                                                      |
+| `hotspot?`    | `{ x: number, y: number }`                          | Overrides the X/Y coordinates for the SVGs click location. This is useful when changing to an SVG that uses a different click point (e.g. changing from "circle" to "arrow"). |
 
 #### Examples
 
@@ -197,14 +198,19 @@ Each effect (`hover` or `click`) accepts the following properties:
 
 ```jsx
 <ReactCursor
-  effects={{
-    hover: {
-      scale: 1.5, // Cursor grows 50% when hovering
-    },
-    click: {
-      scale: 0.8, // Cursor shrinks when clicking
-    },
-  }}
+  layers={[
+    // Apply the effect per-layer (i.e. this is layer 1)
+    {
+      effects={{
+        hover: {
+          scale: 1.5, // Cursor grows 50% when hovering
+        },
+        click: {
+          scale: 0.8, // Cursor shrinks when clicking
+        },
+      }}
+    }
+  ]}
 />
 ```
 
@@ -212,17 +218,21 @@ Each effect (`hover` or `click`) accepts the following properties:
 
 ```jsx
 <ReactCursor
-  effects={{
-    hover: {
-      SVG: "cross", // Change to cross shape
-      fill: "#00ff00", // Change to green
-      stroke: "#ffffff", // White stroke
-    },
-    click: {
-      fill: "#ff0000", // Change to red when clicking
-      scale: 1.2, // Slightly enlarge
-    },
-  }}
+  layers={[
+    {
+      effects={{
+        hover: {
+          SVG: "cross", // Change to cross shape
+          fill: "#00ff00", // Change to green
+          stroke: "#ffffff", // White stroke
+        },
+        click: {
+          fill: "#ff0000", // Change to red when clicking
+          scale: 1.2, // Slightly enlarge
+        },
+      }}
+    }
+  ]}
 />
 ```
 
@@ -235,22 +245,24 @@ Each effect (`hover` or `click`) accepts the following properties:
       SVG: "circle",
       fill: "#000000",
       size: { width: 20, height: 20 },
+      effects={{
+        hover: {
+          SVG: "square", // Change shape
+          fill: "#0066ff", // Change color
+          stroke: "#ffffff", // Add white stroke
+          strokeSize: 2, // Set stroke width
+          opacity: 0.9, // Slightly transparent
+          scale: 1.3, // Enlarge by 30%
+        },
+        click: {
+          SVG: "arrow", // Change shape
+          fill: "#ff0000", // Red on click
+          scale: 0.7, // Shrink on click (overrides hover)
+          hotspot: { x: 0, y: 0 }, // Moves hotspot to 0:0, to suit "arrow"
+        },
+      }}
     },
   ]}
-  effects={{
-    hover: {
-      SVG: "square", // Change shape
-      fill: "#0066ff", // Change color
-      stroke: "#ffffff", // Add white stroke
-      strokeSize: 2, // Set stroke width
-      opacity: 0.9, // Slightly transparent
-      scale: 1.3, // Enlarge by 30%
-    },
-    click: {
-      fill: "#ff0000", // Red on click
-      scale: 0.7, // Shrink on click (overrides hover)
-    },
-  }}
 />
 ```
 
@@ -261,11 +273,6 @@ By default, hover effects trigger on interactive elements: `"a, button, [role='b
 ```jsx
 <ReactCursor
   hoverSelector=".custom-hover, [data-interactive]" // Custom CSS selector
-  effects={{
-    hover: {
-      scale: 1.5,
-    },
-  }}
 />
 ```
 

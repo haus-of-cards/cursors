@@ -3,7 +3,7 @@ import { CursorLayer, CursorEffects } from "../types";
 import { resolveSvg, svgStylesMap } from "../utils";
 
 // Default Cursor Layer Options
-const defaultSvgOptions: Required<Omit<CursorLayer, "hotspot">> = {
+const defaultSvgOptions: Required<Omit<CursorLayer, "hotspot" | "effects">> = {
   SVG: svgStylesMap.default,
   fill: "black",
   stroke: "white",
@@ -51,7 +51,6 @@ export type Props = {
   mixBlendMode?: CSSProperties["mixBlendMode"]; // CSS mix-blend-mode property to apply to the entire component
   zIndex?: number; // custom-define the z-index of the cursor (default is max z-index value)
   ignoreAccessibility?: boolean; // ignore system accessibility setting
-  effects?: CursorEffects; // effect states for hover and click
   hoverSelector?: string; // CSS selector for elements that trigger hover effect (default: 'a, button, [role="button"]')
 };
 
@@ -70,7 +69,6 @@ const ReactCursor = ({
   mixBlendMode = "normal",
   zIndex = 2147483647,
   ignoreAccessibility = false,
-  effects,
   hoverSelector = 'a, button, [role="button"], input, textarea, select',
 }: Props) => {
   // Inline accessibility detection
@@ -97,20 +95,18 @@ const ReactCursor = ({
 
   // Apply effects to layers based on current state
   const effectiveLayers = useMemo(() => {
-    if (!effects) return layers;
-
-    // Determine which effect to apply (click takes precedence over hover)
-    const activeEffect = isClicking
-      ? effects.click
-      : isHovering
-        ? effects.hover
-        : null;
-
-    if (!activeEffect) return layers;
-
     // Apply effect to first layer only (can be extended to all layers if needed)
-    return layers.map((layer, index) => {
-      if (index !== 0) return layer;
+    return layers.map((layer) => {
+      if (!layer.effects) return layer;
+
+      // Determine which effect to apply (click takes precedence over hover)
+      const activeEffect = isClicking
+        ? layer.effects.click
+        : isHovering
+          ? layer.effects.hover
+          : null;
+
+      if (!activeEffect) return layer;
 
       return {
         ...layer,
@@ -119,6 +115,7 @@ const ReactCursor = ({
         stroke: activeEffect.stroke ?? layer.stroke,
         strokeSize: activeEffect.strokeSize ?? layer.strokeSize,
         opacity: activeEffect.opacity ?? layer.opacity,
+        hotspot: activeEffect.hotspot ?? layer.hotspot,
         size: activeEffect.scale
           ? {
               height:
@@ -131,7 +128,7 @@ const ReactCursor = ({
           : layer.size,
       };
     });
-  }, [layers, effects, isHovering, isClicking]);
+  }, [layers, isHovering, isClicking]);
 
   // Update internal references when layers change
   useEffect(() => {
@@ -170,7 +167,7 @@ const ReactCursor = ({
 
   // Hover and click effect detection
   useEffect(() => {
-    if (!shouldRender || !effects) return;
+    if (!shouldRender) return;
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
@@ -187,15 +184,11 @@ const ReactCursor = ({
     };
 
     const handleMouseDown = () => {
-      if (effects.click) {
-        setIsClicking(true);
-      }
+      setIsClicking(true);
     };
 
     const handleMouseUp = () => {
-      if (effects.click) {
-        setIsClicking(false);
-      }
+      setIsClicking(false);
     };
 
     document.addEventListener("mouseover", handleMouseOver);
@@ -209,7 +202,7 @@ const ReactCursor = ({
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mouseup", handleMouseUp);
     };
-  }, [shouldRender, effects, hoverSelector]);
+  }, [shouldRender, hoverSelector]);
 
   // Position and animation of cursor
   useEffect(() => {

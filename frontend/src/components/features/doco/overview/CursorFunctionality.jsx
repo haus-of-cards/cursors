@@ -9,7 +9,7 @@ export default function CursorFunctionality() {
   return (
     <Fragment>
       <h1>Features</h1>
-      <p>React Cursors provide the following features</p>
+      <p>@holmesdev/cursors provide the following features</p>
       <ul>
         <li>🎨 <b>Customizable SVG layers</b>  — create multi-layer cursors with different fills, strokes, and delays.</li>
         <li>⚙️ <b>Dynamic hover and click effects</b> — smoothly scale, reculor, or swap SVGs based on interactions.</li>

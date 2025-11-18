@@ -1,50 +1,67 @@
 // HausOfCards (homepage)
 
 // Node imports
-// import { Container, Row, Col } from "react-bootstrap"; // React Bootstrap
-import { Link } from 'react-router-dom';  // React Router version of href
 
 // Local imports
-import * as styles from './HausOfCardsPage.css';  // Vanilla Extract styling file
-// import React from 'react';
-// import { ReactComponent as SVGCircle } from '../images/circle.svg';
+import * as styles from "./HausOfCardsPage.css"; // Vanilla Extract styling file
 
+import ArrowSVG from "../images/arrow.svg";
+import { Link } from "react-router-dom";
 
 // Main component
 function HausOfCards() {
-
   return (
     <div className={styles.hausofcardspage}>
-      <h1 >Welcome to React Cursors</h1>
+      <h1 className={styles.hausofcardspageH1}>
+        Welcome to{" "}
+        <a
+          href="https://www.npmjs.com/package/@holmesdev/cursors"
+          target="_blank"
+          referrerPolicy="no-referrer"
+          className={styles.brandname}
+        >
+          @holmesdev/cursors
+        </a>
+      </h1>
+      <h2 className={styles.hausofcardspageH2}>
+        Fully customizable mouse cursor component for React — SVG-based and
+        accessibility-first
+      </h2>
       <div className={styles.hausofcardspageDemoDiv}>
         <div className={styles.hausofcardspageDemoH3}>
           <h3> Customisable Cursors for React.js</h3>
-          <p className={styles.hausofcardspageDemoParagraph}> Add multi-layered customisable cursors to your React.js project using our React Cursors component.
-              With multiple-layers, built-in shapes, numerous configuration options, and accessibility support,
-
-          </p>
+          <ul className={styles.hausofcardspagefeatures}>
+            <li>
+              🎨 Customizable SVG layers — create multi-layer cursors with
+              different fills, strokes, and delays.
+            </li>
+            <li>
+              ⚙️ Dynamic hover and click effects — smoothly scale, recolor, or
+              swap SVGs based on interactions.
+            </li>
+            <li>
+              🧩 Accessibility-first — automatically disables for high contrast,
+              reduced motion, or touch environments.
+            </li>
+            <li>
+              🧍‍♂️ Optional system cursor hiding — fully replace or blend with the
+              native cursor.
+            </li>
+          </ul>
         </div>
         <div className={styles.hausofcardspageDemo}>
-          {/* <img src={svgImage} alt="React Cursor SVG" /> */}
-          {/* <SVGCircle width="100" height="100" fill="green"/> */}
-
-          {/* <svg width="200" height="200" viewBox="0 0 100 100"> */}
-          <svg width="200" height="200" >
-            <circle cx="100" cy="50" r="40" stroke="black" strokeWidth="3" fill="red" />
-          </svg>
+          <ArrowSVG className={styles.img} strokeWidth={3} />
+          <Link to={"/demo"} className={styles.cta}>
+            Demo Here!
+          </Link>
         </div>
       </div>
       <div>
-        {/* <h3 className={styles.hausofcardspageH3}>
-          See <Link as={Link} to={"features"}>Features</Link> for an overview of cursor functionality 
-          and <Link as={Link} to={"docs"}>Docs</Link> for information on implementation
-        </h3> */}
-        <h3 className={styles.hausofcardspageH3}>Ready to get started? npm install @holmesdev/cursor</h3>
+        <h3 className={styles.hausofcardspageH3}>Ready to get started?</h3>
+        <p className={styles.install}>npm install @holmesdev/cursor</p>
       </div>
-
     </div>
-
-  )
+  );
 }
 
-export default HausOfCards
+export default HausOfCards;

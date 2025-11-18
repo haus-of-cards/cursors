@@ -6,21 +6,17 @@ import { createGlobalTheme } from "@vanilla-extract/css";
 export const root = createGlobalTheme(":root", {
   // Semantic tokens
   fonts: {
-    // brand: "Roboto, sans-serif",
-    brand: "PT-Serif, sans-serif",
-    body: "Open Sans, sans-serif",
-    // body: "Roboto Flex, sans-serif",
+    brand: "Roboto, sans-serif",
+    body: "Roboto Flex, sans-serif",
+    mono: '"Courier New", monospace',
   },
   colors: {
-    // primary: "white",
-    // primary: "#EEEEEE",
-    primary: "#F2F2F2",
-    primaryVariant: "#CCCCCC",
-    complementary: "#CECDCD",
-    brand: "purple"
-  }
+    primary: "#16011c",
+    primaryVariant: "#0a000d",
+    complementary: "#adadad",
+    brand: "#d63384",
+  },
 });
 
-
 // Making a copy of the root variables that we can work with
-export const vars = {...root};  // The ... (spread) operator splits iterables into individual elements
+export const vars = { ...root }; // The ... (spread) operator splits iterables into individual elements

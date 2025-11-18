@@ -9,10 +9,11 @@ import HausOfCards from "./pages/HausOfCardsPage";
 import DocoPage from "./pages/DocoPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import Layout from "./components/layout/Layout"; // Layout component that structures our App
-import FeaturesPage from "./pages/FeaturesPage";
+import FeaturesPage from "./pages/DemoPage";
 
 // Workspace imports
 import ReactCursor from "@holmesdev/cursors";
+import { vars } from "./styles/themes.css";
 
 // React component App
 function App() {
@@ -23,17 +24,46 @@ function App() {
   return (
     <Fragment>
       {/* Import React Cursor Component */}
-      <ReactCursor enable={mainCursor} />
+      <ReactCursor
+        enable={mainCursor}
+        showSystemCursor={false}
+        layers={[
+          {
+            SVG: "circle",
+            strokeSize: 10,
+            fill: "black",
+            size: { width: 14, height: 14 },
+          },
+          {
+            SVG: "circle",
+            fill: vars.colors.brand,
+            opacity: 0.2,
+            size: { width: 50, height: 50 },
+            delay: 100,
+          },
+        ]}
+        effects={{
+          hover: {
+            scale: 0.7,
+            stroke: vars.colors.brand,
+            strokeSize: 25,
+            SVG: "square",
+          },
+          click: {
+            scale: 1.2,
+            fill: vars.colors.brand,
+          },
+        }}
+      />
 
       {/* New Routing Setup using the Layout component  */}
       {/* Page routing */}
       <Routes>
         <Route path="/" element={<Layout />}>
-          {" "}
           {/* Note how the Layout component is used as an element instead of a wrapper */}
           <Route index element={<HausOfCards />} />
           <Route
-            path="features"
+            path="demo"
             element={<FeaturesPage setMainCursor={setMainCursor} />}
           />
           <Route path="docs" element={<DocoPage />} />

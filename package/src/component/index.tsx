@@ -133,6 +133,11 @@ const ReactCursor = ({
     });
   }, [layers, effects, isHovering, isClicking]);
 
+  // Update internal references when layers change
+  useEffect(() => {
+    layerPositions.current = layers.map(() => ({ x: 0, y: 0 }));
+  }, [layers]);
+
   // Precompute layer sizes for centering (recalculate when effectiveLayers change)
   const layerSizes = useMemo(
     () => effectiveLayers.map((layer) => layer.size ?? defaultSvgOptions.size),

@@ -157,7 +157,7 @@ React Cursors have one or more layers with their own set of options. For example
 
 | Prop                   | Type                                                           | Default                       | Description                                                                                                                                                                                                                                                    |
 | ---------------------- | -------------------------------------------------------------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `SVG?`                 | `SvgDefaultStyles` \| `FC<SVGProps<SVGSVGElement>>`            | `"circle"`                    | Defines which SVG image to use for the cursor layer. SvgDefaultStyles include: `"circle"`, `"cross"`, `"square"`, `"arrow"`. To supply your own SVG, you should utilise [SVGR](https://react-svgr.com/) within your application. [See more here](#custom-svgs) |
+| `SVG?`                 | `SvgDefaultStyles` \| `FC<SVGProps<SVGSVGElement>>`            | `"circle"`                    | Defines which SVG image to use for the cursor layer. SvgDefaultStyles include: `"circle"`, `"cross"`, `"square"`, `"arrow"`. To supply your own SVG, you must first convert it to a React Functional Component. [See more here](#custom-svgs)                  |
 | `fill?`                | `string`                                                       | `"black"`                     | Replaces the `fill=currentColor` within layer's SVG file. Can supply any valid CSS color, such as `"black"`, `"#000"`, `"rgb(0,0,0)"`, etc.                                                                                                                    |
 | `stroke?`              | `string`                                                       | `"white"`                     | Replaces the `stroke=currentStroke` within layer's SVG file.                                                                                                                                                                                                   |
 | `strokeSize?`          | `number`                                                       | `10`                          | Adjusts the stroke size of the layer's SVG.                                                                                                                                                                                                                    |
@@ -281,21 +281,34 @@ By default, hover effects trigger on interactive elements: `"a, button, [role='b
 
 The cursor component comes with preset SVGs like `"circle"`, `"cross"`, `"square"`, and `"arrow"`.
 
-If you want to use a custom SVG, that’s also supported. However, the component does not accept raw SVG files directly. Instead, the SVG must be converted into a React functional component. The recommended and standard way is to utilise [SVGR](https://react-svgr.com/) within your project.
+**If you want to use a custom SVG, that is also supported.** However, the `ReactCursor` component does not accept raw SVG files/strings directly. Instead, the SVG must first be converted into a React Functional Component. These are the recommended methods:
 
-For instance, with Vite:
+- **METHOD ONE:** The easiest method is to copy/paste your SVG code directly into the [online SVGR playground](https://react-svgr.com/playground/). This will output a JSX component that you can use directly.
+  1. Copy/paste your `.svg` code into the input section.
+  2. Copy/paste the output into a new JSX file (e.g. `MyCustomSVG.jsx`).
+  3. Import the SVG Component within your application.
 
-```bash
-npm install --save-dev vite-plugin-svgr
-```
+- **METHOD TWO:** Alternatively, you can automonize this conversion within your application by using [React SVGR](https://react-svgr.com/) within your project. For instance, with Vite:
+  1. Install the dependency.
 
-```js
-// vite.config.js
-plugins: [ svgr() ],
-```
+  ```bash
+  npm install --save-dev vite-plugin-svgr
+  ```
+
+  2. Configure the plugin.
+
+  ```js
+  // vite.config.js
+  plugins: [ svgr() ],
+  ```
+
+  3. Import the SVG normally.
+
+#### Importing Custom SVGs
 
 ```jsx
-import MyCustomSVG from "/path/to/file.svg"
+import MyCustomSVG from "/path/to/file.jsx"; // for manually created SVG component (i.e. METHOD ONE)
+import MyCustomSVG from "/path/to/file.svg"; // for react-svgr (i.e. METHOD TWO)
 
 export default function Example() {
   return (
@@ -307,6 +320,7 @@ export default function Example() {
       }
     ]}>
   );
+}
 ```
 
 > **NOTE**
@@ -321,7 +335,7 @@ export default function Example() {
 
 ### Demo Testbed
 
-You can also explore the live cursor functionality on our website via the [DEMO CURSOR TESTBED](https://haus-of-cards.github.io/cursors/demo).
+You can also explore the live cursor functionality on [our website](https://haus-of-cards.github.io/cursors).
 
 1. Select your desired cursor options.
 2. Enable the Testbed to see them in action.

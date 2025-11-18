@@ -12,3 +12,7 @@ export const docopageH1 = style({
   alignSelf: "center",
   fontFamily: vars.fonts.brand,
 });
+
+export const markdown = style({
+  padding: "2rem",
+});

@@ -17,6 +17,7 @@ import {
 import * as styles from "./CursorOptions.css"; // Vanilla Extract styling file
 import { layer } from "@vanilla-extract/css";
 import { defaultLayer } from "../../../pages/DemoPage";
+import { PiTrash } from "react-icons/pi";
 
 // Main component
 export default function CursorOptions({ demoCursor, setDemoCursor }) {
@@ -121,8 +122,12 @@ export default function CursorOptions({ demoCursor, setDemoCursor }) {
       ...demoCursor,
       layers: newLayers,
     });
+  }
 
-    console.log({
+  function removeLayer(e, layerIdx) {
+    e.preventDefault();
+    const newLayers = demoCursor.layers.filter((_, idx) => idx !== layerIdx);
+    setDemoCursor({
       ...demoCursor,
       layers: newLayers,
     });
@@ -222,7 +227,7 @@ export default function CursorOptions({ demoCursor, setDemoCursor }) {
                       <InputGroup.Text>Layer Shape</InputGroup.Text>
                       <Form.Select
                         className={styles.selectFullWidth}
-                        value={demoCursor.layers[idx].SVG}
+                        value={layer.SVG}
                         onChange={(e) => handleLayerShapeChange(e, idx)}
                       >
                         <option value="arrow">arrow</option>
@@ -240,7 +245,7 @@ export default function CursorOptions({ demoCursor, setDemoCursor }) {
                           <Col>
                             <Form.Control
                               type="color"
-                              value={demoCursor.layers[idx].fill}
+                              value={layer.fill}
                               onChange={(e) => handleLayerFillChange(e, idx)}
                               name="fillcolour"
                               title="Fill Colour"
@@ -254,7 +259,7 @@ export default function CursorOptions({ demoCursor, setDemoCursor }) {
                           <Col>
                             <Form.Control
                               type="color"
-                              value={demoCursor.layers[idx].stroke}
+                              value={layer.stroke}
                               onChange={(e) => handleLayerStrokeChange(e, idx)}
                               name="strokecolour"
                               title="Stroke Colour"
@@ -271,7 +276,7 @@ export default function CursorOptions({ demoCursor, setDemoCursor }) {
                         <InputGroup.Text>Stroke Size</InputGroup.Text>
                         <Form.Control
                           type="number"
-                          value={demoCursor.layers[idx].strokeSize}
+                          value={layer.strokeSize}
                           min={0}
                           onChange={(e) => handleLayerStrokeSizeChange(e, idx)}
                         />
@@ -283,7 +288,7 @@ export default function CursorOptions({ demoCursor, setDemoCursor }) {
                       <Form.Control
                         type="number"
                         name="cursorsizeh"
-                        value={demoCursor.layers[idx].size.height}
+                        value={layer.size.height}
                         onChange={(e) => handleCursorSizeChanges(e, idx)}
                         placeholder="Cursor Size (H)"
                         title="Cursor Size (H)"
@@ -292,7 +297,7 @@ export default function CursorOptions({ demoCursor, setDemoCursor }) {
                       <Form.Control
                         type="number"
                         name="cursorsizew"
-                        value={demoCursor.layers[idx].size.width}
+                        value={layer.size.width}
                         onChange={(e) => handleCursorSizeChanges(e, idx)}
                         placeholder="Cursor Size (W)"
                         title="Cursor Size (W)"
@@ -302,7 +307,7 @@ export default function CursorOptions({ demoCursor, setDemoCursor }) {
                     <InputGroup className="mb-3">
                       <Form.Check
                         type="switch"
-                        checked={demoCursor.layers[idx].preserveAspectRatio}
+                        checked={layer.preserveAspectRatio}
                         onChange={(e) => handleCursorLayerAspectToggle(e, idx)}
                         id={`preserve-aspect-ratio:${idx}`}
                         label="Preserve Aspect Ratio"
@@ -314,7 +319,7 @@ export default function CursorOptions({ demoCursor, setDemoCursor }) {
                         <InputGroup.Text>Opacity</InputGroup.Text>
                         <Form.Control
                           type="number"
-                          value={demoCursor.layers[idx].opacity}
+                          value={layer.opacity}
                           min={0}
                           max={1}
                           step={0.01}
@@ -329,19 +334,42 @@ export default function CursorOptions({ demoCursor, setDemoCursor }) {
                       <InputGroup.Text>Delay</InputGroup.Text>
                       <Form.Control
                         type="number"
-                        value={demoCursor.layers[idx].delay}
+                        value={layer.delay}
                         min={0}
                         onChange={(e) => handleCursorLayerDelayChange(e, idx)}
                       />
                     </InputGroup>
+
+                    {idx > 0 && (
+                      <button
+                        className={styles.remove}
+                        onClick={(e) => removeLayer(e, idx)}
+                      >
+                        Remove Layer{" "}
+                        <PiTrash style={{ pointerEvents: "none" }} />
+                      </button>
+                    )}
                   </Accordion.Body>
                 </Accordion.Item>
               ))}
               {/* ABILITY TO ADD INFINITE LAYERS */}
-              {/* <button onClick={addNewLayer}>Add Layer</button> */}
+              <button className={styles.add} onClick={addNewLayer}>
+                Add Layer
+              </button>
             </Accordion>
           </div>
         </div>
+        <p className={styles.note}>
+          Check the{" "}
+          <a
+            href="https://github.com/haus-of-cards/cursors/blob/main/README.md"
+            target="_blank"
+            referrerPolicy="no-referrer"
+          >
+            README
+          </a>{" "}
+          for all options - including hover effects, custom SVGs, and more!
+        </p>
       </Form>
     </div> // End of cursorOptionsDiv
   );

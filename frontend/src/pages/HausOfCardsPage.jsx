@@ -13,11 +13,19 @@ function HausOfCards() {
   return (
     <div className={styles.hausofcardspage}>
       <h1 className={styles.hausofcardspageH1}>
-        Welcome to <span className={styles.brandname}>@holmesdev/cursors</span>
+        Welcome to{" "}
+        <a
+          href="https://www.npmjs.com/package/@holmesdev/cursors"
+          target="_blank"
+          referrerPolicy="no-referrer"
+          className={styles.brandname}
+        >
+          @holmesdev/cursors
+        </a>
       </h1>
       <h2 className={styles.hausofcardspageH2}>
         Fully customizable mouse cursor component for React — SVG-based and
-        accessibility-first.
+        accessibility-first
       </h2>
       <div className={styles.hausofcardspageDemoDiv}>
         <div className={styles.hausofcardspageDemoH3}>
@@ -43,7 +51,9 @@ function HausOfCards() {
         </div>
         <div className={styles.hausofcardspageDemo}>
           <ArrowSVG className={styles.img} strokeWidth={3} />
-          <Link to={"/demo"} className={styles.cta}>Demo Here!</Link>
+          <Link to={"/demo"} className={styles.cta}>
+            Demo Here!
+          </Link>
         </div>
       </div>
       <div>

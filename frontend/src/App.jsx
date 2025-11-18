@@ -33,6 +33,17 @@ function App() {
             strokeSize: 10,
             fill: "black",
             size: { width: 14, height: 14 },
+            effects: {
+              hover: {
+                scale: 0.8,
+                stroke: vars.colors.brand,
+                strokeSize: 25,
+                SVG: "square",
+              },
+              click: {
+                fill: vars.colors.brand,
+              },
+            },
           },
           {
             SVG: "circle",
@@ -40,20 +51,16 @@ function App() {
             opacity: 0.2,
             size: { width: 50, height: 50 },
             delay: 100,
+            effects: {
+              hover: {
+                scale: 1.5,
+              },
+              click: {
+                scale: 1.5,
+              },
+            },
           },
         ]}
-        effects={{
-          hover: {
-            scale: 0.7,
-            stroke: vars.colors.brand,
-            strokeSize: 25,
-            SVG: "square",
-          },
-          click: {
-            scale: 1.2,
-            fill: vars.colors.brand,
-          },
-        }}
       />
 
       {/* New Routing Setup using the Layout component  */}

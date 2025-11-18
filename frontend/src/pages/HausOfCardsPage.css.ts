@@ -52,8 +52,6 @@ export const hausofcardspageDemoDiv = style({
 });
 
 export const hausofcardspageDemoH3 = style({
-  flex: 1,
-  maxWidth: "50vh",
 });
 
 export const hausofcardspagefeatures = style({
@@ -86,6 +84,7 @@ export const cta = style({
   transition: "filter 300ms",
   textDecoration: "none",
   fontWeight: 600,
+  maxWidth: "400px",
   selectors: {
     "&:hover": {
       background: vars.colors.brand,
@@ -114,7 +113,7 @@ const rainbow = keyframes({
 export const img = style({
   width: "5rem",
   animation: `
-    ${pulse} 15s ease-in-out infinite alternate,
+    ${pulse} 10s ease-in-out infinite alternate,
     ${rainbow} 15s linear infinite alternate
   `,
 });

@@ -3,93 +3,80 @@
 // Node imports
 
 // import ReactCursor from "@holmesdev/cursors"; // Our cursor!
-import { useState } from 'react';
+import { useState } from "react";
 
 // Local imports
-import * as styles from './DemoPage.css'; // Vanilla Extract styling file
+import * as styles from "./DemoPage.css"; // Vanilla Extract styling file
 
 // Workspace imports
 import ReactCursor from "@holmesdev/cursors";
-import CursorTestbed from '../components/features/demo/CursorTestbed';
-import CursorCodeDisplay from '../components/features/demo/CursorCodeDisplay';
-import CursorOptions from '../components/features/demo/CursorOptions';
+import CursorTestbed from "../components/features/demo/CursorTestbed";
+import CursorCodeDisplay from "../components/features/demo/CursorCodeDisplay";
+import CursorOptions from "../components/features/demo/CursorOptions";
 
+// Note: Using Hex values for colours as this simplifies the update process in Options
+export const defaultLayer = {
+  SVG: "circle",
+  fill: "#000000",
+  stroke: "#FFFFFF",
+  strokeSize: 10,
+  size: { width: 20, height: 20 },
+  preserveAspectRatio: true,
+  opacity: 1,
+  delay: 0,
+};
 
 // React component FeaturesPage
-export default function FeaturesPage({setMainCursor}) { 
+export default function FeaturesPage({ setMainCursor }) {
   // States
-  
-    // Demo Cursor
-    const [demoCursor, setDemoCursor] = useState({
-      enable: false, // Customised demo cursor not displayed by default
-      // Note: Using Hex values for colours as this simplifies the update process in Options
-      layers: [ { SVG: "circle", fill: "#FFFF00", stroke: "#8A2BE2", strokeSize: 10, size: { height: 20, width: 20 } } ],
-      showSystemCursor: true,
-      mixBlendMode: "normal",
-      zIndex: 20,
-      // ignoreAccessibility: true
-      // effects,
-      // hoverSelector = 'a, button, [role="button"], input, textarea, select',
-    }); 
-  
-  
+
+  // Demo Cursor
+  const [demoCursor, setDemoCursor] = useState({
+    enable: false,
+    showSystemCursor: true,
+    mixBlendMode: "normal",
+    zIndex: 2147483647,
+    // JSON copy to ensure deep-copy (and not passing referencex)
+    layers: [defaultLayer],
+  });
 
   const [testBed, setTestBed] = useState(false); // Our Testbed is initially off
-  // const [numberOfLayers, setNumberOfLayers] = useState(1); // Initially only one layer for the demo cursor
-  // const [layers, setLayers] = useState([]); // Used tohold the layer options for each layer
 
   // Functions
 
-    // Handle cursor being moved over Testbed ie. If Testbed enabled then show demo and not main cursor
-    function handleCursorOverTestbed(){
-      if(testBed){
-        setMainCursor(false);
-        // setDemoCursor({ enable: true }); *** Note: cannot update directly - need to copy existing state first!
-        setDemoCursor({ ...demoCursor, enable: true }); // Spread operator to copy the other fields
-      } else {
-        setMainCursor(true);
-        // setDemoCursor({ enable: false });
-        setDemoCursor({ ...demoCursor, enable: false }); // Spread operator to copy the other fields
-      }
-    }
-    
-    // Handle cursor leaving the Testbed ie. only main cursor shows
-    function handleCursorLeavingTestbed(){  
-      // setDemoCursor(false);
-      // setDemoCursor({ enable: false });
-      setDemoCursor({ ...demoCursor, enable: false }); // Spread operator to copy the other fields
+  // Handle cursor being moved over Testbed ie. If Testbed enabled then show demo and not main cursor
+  function handleCursorOverTestbed() {
+    if (testBed) {
+      setMainCursor(false);
+      setDemoCursor({ ...demoCursor, enable: true }); // Spread operator to copy the other fields
+    } else {
       setMainCursor(true);
+      setDemoCursor({ ...demoCursor, enable: false }); // Spread operator to copy the other fields
     }
+  }
 
-
+  // Handle cursor leaving the Testbed ie. only main cursor shows
+  function handleCursorLeavingTestbed() {
+    setDemoCursor({ ...demoCursor, enable: false }); // Spread operator to copy the other fields
+    setMainCursor(true);
+  }
 
   // Markup
   return (
     <div className={styles.featuresPage}>
-      {/* Demo Cursor. *** Should this go here or inside the Testbed?  */}
-      {/* <ReactCursor 
-        enable={demoCursor}
-        layers={ [ { fill: "red", stroke: "green", size: { height: 30, width: 30 } } ] } 
-        zIndex={10}  
-      /> */}
-      <ReactCursor 
+      <ReactCursor
         enable={demoCursor.enable}
-        layers={demoCursor.layers} 
-        // layers={ [ 
-        //   { fill: "yellow", stroke: "black", strokeSize: 10, size: { height: 20, width: 20 } } 
-        // ] }
-        // zIndex={10}  
-        zIndex={demoCursor.zIndex} 
-        showSystemCursor={demoCursor.showSystemCursor} 
-        mixBlendMode={demoCursor.mixBlendMode} 
-        ignoreAccessibility={demoCursor.ignoreAccessibility} 
+        layers={demoCursor.layers}
+        zIndex={demoCursor.zIndex}
+        showSystemCursor={demoCursor.showSystemCursor}
+        mixBlendMode={demoCursor.mixBlendMode}
+        ignoreAccessibility={demoCursor.ignoreAccessibility}
       />
-      
-      <h1 >Cursor Features Demo</h1>
-      
+
+      <h1 className={styles.title}>Cursor Features Demo</h1>
+
       {/* Demo Div */}
       <div className={styles.featuresPageDemoDiv}>
-
         <div className={styles.featuresPageDemoTestbedCodeDiv}>
           {/* Demo Cursor Testbed */}
           <CursorTestbed
@@ -104,15 +91,8 @@ export default function FeaturesPage({setMainCursor}) {
         </div>
 
         {/* Demo Cursor Options */}
-        <CursorOptions demoCursor={demoCursor} setDemoCursor={setDemoCursor} />              
-      
+        <CursorOptions demoCursor={demoCursor} setDemoCursor={setDemoCursor} />
       </div>
-
-
     </div>
-
-  )
+  );
 }
-
-
-

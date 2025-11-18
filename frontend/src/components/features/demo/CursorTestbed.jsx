@@ -1,8 +1,5 @@
 // Implements the Testbed for testing the Demo cursor
 
-// Node imports
-import { Button } from "react-bootstrap";
-
 // Local imports
 import * as styles from "./CursorTestbed.css"; // VE styling file
 
@@ -26,20 +23,22 @@ export default function CursorTestbed({
     <div className={`${className} ${styles.testbedDiv}`}>
       {/* Testbed */}
       <div
-        className={styles.testbed}
+        className={`${styles.testbed} ${testBed ? styles.testbedActive : styles.testbedInactive}`}
         onMouseOver={handleCursorOverTestbed}
         onMouseOut={handleCursorLeavingTestbed}
       >
-        {/* <div className={testbedBackground[testBed ? "enabled" : "disabled"]}></div> */}
-        {/* <div className={testbedBackground["enabled"]}></div> */}
-        {/* <div className={testbedBackground["disabled"]}></div> */}
+        {/* TESTBED RENDERED HERE */}
+        {testBed ? "Test your cursor directly here!" : "Please Enable Testbed"}
       </div>
 
       {/* Testbed button */}
-      <Button className={styles.testbedButton} onClick={handleTestbedButton}>
+      <button
+        className={`${styles.testbedButton} ${testBed ? styles.activeBtn : styles.inactiveBtn}`}
+        onClick={handleTestbedButton}
+      >
         {!testBed && <span>Enable Testbed</span>}
         {testBed && <span>Disable Testbed</span>}
-      </Button>
+      </button>
     </div>
   );
 }

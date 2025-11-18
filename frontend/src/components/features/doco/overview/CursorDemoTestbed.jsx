@@ -10,7 +10,7 @@ export default function CursorDemoTestbed() {
   return (
     <Fragment>
       <h1>Cursor Demo Testbed</h1>
-      <p>You can explore live cursor functionality via the <Link to={"/features"} > Demo Cursor Testbed </Link> on the Features page.</p>
+      <p>You can explore live cursor functionality via the <Link to={"/demo"} > Demo Cursor Testbed </Link> on the Features page.</p>
       <p>All you need to do is:</p>
       <ol>
         <li>Select your desired cursor options.</li>

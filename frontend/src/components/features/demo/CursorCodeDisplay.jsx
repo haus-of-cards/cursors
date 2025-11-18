@@ -1,113 +1,56 @@
 // Component to display the code generated for the Demo Cursor
 
-// Local imports
-import * as styles from './CursorCodeDisplay.css'; // VE style file
+import { useState } from "react";
+import { PiCheck, PiClipboardBold } from "react-icons/pi";
 
+// Local imports
+import * as styles from "./CursorCodeDisplay.css"; // VE style file
 
 // Main component
-export default function CursorCodeDisplay( {demoCursor} ) {
+export default function CursorCodeDisplay({ demoCursor }) {
+  const [copied, setCopied] = useState(false);
 
-  // function formatCode(key, value){  }
+  const jsonToJsxProps = (obj, indent = 2) => {
+    const spaces = " ".repeat(indent);
 
-  // let demoCursorString = JSON.stringify(demoCursor, null, 2);
-  let demoCursorString = JSON.stringify({...demoCursor,  enable: true } , null, 2); // Overwrite the actual Demo cursor status with what is neeed for the code
-  demoCursorString = demoCursorString.slice(demoCursorString.indexOf("{") + 1, demoCursorString.lastIndexOf("}") ).trim(); // Strip out the object brackets and trim whitespace
-  let demoCursorArray = [];  // Array to hold the lines of code
-  
-  // Process the string until all cursor code extracted
-  let prop; let value;
+    return `<ReactCursor\n${Object.entries(obj)
+      .filter(([key]) => key !== "enable") // Exclude "enable"
+      .map(([key, value]) => {
+        if (typeof value === "string") {
+          return `${spaces}${key}="${value}"`;
+        } else if (typeof value === "number" || typeof value === "boolean") {
+          return `${spaces}${key}={${value}}`;
+        } else if (Array.isArray(value) || typeof value === "object") {
+          // Recursively stringify objects/arrays
+          const nested = JSON.stringify(value, null, indent)
+            .replace(/"([^"]+)":/g, "$1:") // remove quotes from keys
+          return `${spaces}${key}={${nested}}`;
+        } else {
+          return `${spaces}${key}={${value}}`;
+        }
+      })
+      .join("\n")}\n/>`;
+  };
 
-  // let loopIndex = 1;
-
-  // Start loop ...
-  do {
-  
-    // Get the prop: 
-      
-      // Find the colon
-      const nextColonIndex = demoCursorString.indexOf(`:`); 
-      // Extract the prop and store in prop
-
-      prop = demoCursorString.slice(0, nextColonIndex);  
-      prop = prop.trim();
-      prop = prop.slice(1,prop.length - 1); // remove double-quotes from JSON field
-      // console.log("prop is: ", prop);
-      // Remove the colon and everything before before trimming the front of the string to bring us up to the prop value
-      demoCursorString = demoCursorString.slice(nextColonIndex + 1).trimStart();
-      // console.log("demoCursorString is: ", demoCursorString);
-
-  // Get the prop value
-
-    // Check if the next value is an array by checking for a leading square bracket
-    if(demoCursorString.charAt(0) == "["){
-      // If an array then extract the prop value and trim everything between the opening & closing square brackets and store        
-      const closingSquareBracketIndex = demoCursorString.indexOf("]"); // The closing sq. br. marks the end of the array
-      value = demoCursorString.slice(1, closingSquareBracketIndex).trim();  // Remove opening & closing sq. brackets
-    
-      // Finally remove the prop value too from the string after checking that we are not at the end
-      if(closingSquareBracketIndex == (demoCursorString.length - 1)){ 
-        // In this case closing bracket marks the end of the string so we are finished
-        demoCursorString = "";
-      } else {
-        // otherwise there must be more props so look for delete this prop & value from the string so we can continue
-        demoCursorString = demoCursorString.slice(closingSquareBracketIndex + 2); // Comma follows straight after the bracket so skip that
-      }
-    
-    // otherwise prop value must be a simple type so we can extract everything up to the next comma
-    } else {      
-      const nextCommaIndex = demoCursorString.indexOf(","); // The next comma marks the end of the value
-      if(nextCommaIndex > 0){
-        // There are still props remaining
-        value = demoCursorString.slice(0, nextCommaIndex); // Get the prop value ie. what precedes the comma
-        demoCursorString = demoCursorString.slice(nextCommaIndex + 1).trimStart() // Remove the prop's value and trailing comma from the string and continue        
-      } else {
-        // No comma so we must be at the end of the string        
-        value = demoCursorString.trimEnd(); 
-        demoCursorString = "";  // No cursor found means we are at the end of the string
-      } 
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(jsonToJsxProps(demoCursor, 2));
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000); // Reset after 2s
+    } catch (err) {
+      console.error("Failed to copy!", err);
     }
-
-    // console.log("value is: ", value)
-    // console.log("demoCursorString is: ", demoCursorString)
-
-
-    // We have the prop & value so add this to the array
-    demoCursorArray.push( prop + ": " + value);
-      
-    // loopIndex++;
-
-  // } while( demoCursorString.length > 0 );  
-  // } while( demoCursorString.indexOf(`:`) || loopIndex > 10 );  // Keep looping while there are semicolons (ie. props) remaining
-  } while( demoCursorString != "");  // Keep looping while there is code to process
-
-  // console.log("demoCursorArray is: ", demoCursorArray)
-
+  };
 
   // Markup
   return (
     <div className={styles.codeDiv}>
-      {/* The JSON.stringify() method converts JavaScript objects into strings.  */}
-      <div >
-        {`<ReactCursor`}
-        
-          {/* {demoCursorString}  */}
-          {/* {JSON.stringify(demoCursor, null, 2)} */}
-        
-
-        <ul className={styles.codeDivList} >
-          { demoCursorArray.map(line => {
-            return <li key={line} >{line}</li>            
-            })
-          }
-        </ul>
-        {`/>`}
-      </div>
-      {/* { Object.toString(demoCursor) }  */}
-
-      {/* <p> {`enable={demoCursor}`}          </p>
-      <p> {`layers={ [ { fill: "red", stroke: "green", size: { height: 30, width: 30 } } ] }`}  </p>
-      <p> {`zIndex={10}`} </p> */}
+      <pre>
+        <code>{jsonToJsxProps(demoCursor, 2)}</code>
+      </pre>
+      <button className={styles.clipboard} onClick={handleCopy}>
+        {copied ? <PiCheck /> : <PiClipboardBold />}
+      </button>
     </div>
-  )
+  );
 }
-

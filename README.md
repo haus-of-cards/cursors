@@ -10,21 +10,21 @@
 
 ## 📚 Contents
 
-- [Overview](#📖-overview)
-  - [Features](#✨-features)
-- [Getting Started](#🚀-getting-started)
+- [Overview](#-overview)
+  - [Features](#-features)
+- [Getting Started](#-getting-started)
   - [Installation](#installation)
   - [Usage](#usage)
-  - [Example](#🎨-example-custom-layers-and-effects)
-- [Configuration](#🛠️-configuration)
+  - [Example](#-example-custom-layers-and-effects)
+- [Configuration](#-configuration)
   - [Global Options](#global-options)
   - [Layer Options](#layer-options)
   - [Custom SVGs](#custom-svgs)
   - [Demo Testbed](#demo-testbed)
-- [About](#ℹ️-about-haus-of-cards)
-- [Accessibility](#🧠-accessibility)
-- [Contributing](#🤝-contributing)
-- [License](#🧾-license)
+- [Accessibility](#-accessibility)
+- [About](##-about-haus-of-cards)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ## 📖 Overview
 
@@ -182,18 +182,19 @@ Cursor effects allow you to dynamically change the cursor's appearance when user
 
 Each effect (`hover` or `click`) accepts the following properties:
 
-| Property       | Type                                                           | Description                                                                                                                              |
-| -------------- | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| `SVG?`         | `SvgDefaultStyles` \| `FC<SVGProps<SVGSVGElement>>`           | Changes the SVG shape during the effect. Can use built-in shapes (`"circle"`, `"cross"`, `"square"`, `"arrow"`) or custom SVG component. |
-| `fill?`        | `string`                                                       | Changes the fill color during the effect.                                                                                                 |
-| `stroke?`      | `string`                                                       | Changes the stroke color during the effect.                                                                                               |
-| `strokeSize?`  | `number`                                                       | Changes the stroke size during the effect.                                                                                                |
-| `opacity?`     | `number`                                                       | Changes the opacity (0-1) during the effect.                                                                                               |
-| `scale?`       | `number`                                                       | Scales the cursor size (1 = normal, 2 = double size, 0.5 = half size). Multiplies the layer's base size.                                  |
+| Property      | Type                                                | Description                                                                                                                              |
+| ------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `SVG?`        | `SvgDefaultStyles` \| `FC<SVGProps<SVGSVGElement>>` | Changes the SVG shape during the effect. Can use built-in shapes (`"circle"`, `"cross"`, `"square"`, `"arrow"`) or custom SVG component. |
+| `fill?`       | `string`                                            | Changes the fill color during the effect.                                                                                                |
+| `stroke?`     | `string`                                            | Changes the stroke color during the effect.                                                                                              |
+| `strokeSize?` | `number`                                            | Changes the stroke size during the effect.                                                                                               |
+| `opacity?`    | `number`                                            | Changes the opacity (0-1) during the effect.                                                                                             |
+| `scale?`      | `number`                                            | Scales the cursor size (1 = normal, 2 = double size, 0.5 = half size). Multiplies the layer's base size.                                 |
 
 #### Examples
 
 **Simple Scale Effect:**
+
 ```jsx
 <ReactCursor
   effects={{
@@ -208,23 +209,25 @@ Each effect (`hover` or `click`) accepts the following properties:
 ```
 
 **Color and Shape Change:**
+
 ```jsx
 <ReactCursor
   effects={{
     hover: {
-      SVG: "cross",      // Change to cross shape
-      fill: "#00ff00",    // Change to green
-      stroke: "#ffffff",  // White stroke
+      SVG: "cross", // Change to cross shape
+      fill: "#00ff00", // Change to green
+      stroke: "#ffffff", // White stroke
     },
     click: {
-      fill: "#ff0000",    // Change to red when clicking
-      scale: 1.2,         // Slightly enlarge
+      fill: "#ff0000", // Change to red when clicking
+      scale: 1.2, // Slightly enlarge
     },
   }}
 />
 ```
 
 **Complex Multi-Property Effect:**
+
 ```jsx
 <ReactCursor
   layers={[
@@ -236,16 +239,16 @@ Each effect (`hover` or `click`) accepts the following properties:
   ]}
   effects={{
     hover: {
-      SVG: "square",           // Change shape
-      fill: "#0066ff",         // Change color
-      stroke: "#ffffff",       // Add white stroke
-      strokeSize: 2,            // Set stroke width
-      opacity: 0.9,             // Slightly transparent
-      scale: 1.3,               // Enlarge by 30%
+      SVG: "square", // Change shape
+      fill: "#0066ff", // Change color
+      stroke: "#ffffff", // Add white stroke
+      strokeSize: 2, // Set stroke width
+      opacity: 0.9, // Slightly transparent
+      scale: 1.3, // Enlarge by 30%
     },
     click: {
-      fill: "#ff0000",          // Red on click
-      scale: 0.7,                // Shrink on click (overrides hover)
+      fill: "#ff0000", // Red on click
+      scale: 0.7, // Shrink on click (overrides hover)
     },
   }}
 />
@@ -310,15 +313,11 @@ export default function Example() {
 
 ### Demo Testbed
 
-You can also explore the live cursor functionality on our website via the [DEMO CURSOR TESTBED](https://haus-of-cards.github.io/cursors).
+You can also explore the live cursor functionality on our website via the [DEMO CURSOR TESTBED](https://haus-of-cards.github.io/cursors/demo).
 
 1. Select your desired cursor options.
 2. Enable the Testbed to see them in action.
 3. Once you’re happy with your design, copy the generated code directly into your React.js application to start using it.
-
-## ℹ️ About Haus of Cards
-
-Haus of Cards is a student team who created the React Cursor project at Holmesglen Institute of TAFE in 2025 as part of their course.
 
 ## 🧠 Accessibility
 
@@ -331,6 +330,10 @@ By default, the component respects user system preferences and disables itself w
 You can override this by setting `ignoreAccessibility={true}`.
 
 Refer to [ACCESSIBILITY](ACCESSIBILITY.md) for more details.
+
+## ℹ️ About Haus of Cards
+
+Haus of Cards is a student team who created the React Cursor project at Holmesglen Institute of TAFE in 2025 as part of their course.
 
 ## 🤝 Contributing
 

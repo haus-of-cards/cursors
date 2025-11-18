@@ -106,11 +106,11 @@ export const HoverScaleEffect: Story = {
         stroke: "white",
         strokeSize: 2,
         size: { height: 20, width: 20 },
+        effects: {
+          hover: { scale: 2 },
+        },
       },
     ],
-    effects: {
-      hover: { scale: 2 },
-    },
     enable: true,
     showSystemCursor: false,
     ignoreAccessibility: true,
@@ -127,15 +127,15 @@ export const HoverColorChange: Story = {
         stroke: "white",
         strokeSize: 2,
         size: { height: 20, width: 20 },
+        effects: {
+          hover: {
+            fill: "red",
+            stroke: "yellow",
+            scale: 1.5,
+          },
+        },
       },
     ],
-    effects: {
-      hover: {
-        fill: "red",
-        stroke: "yellow",
-        scale: 1.5,
-      },
-    },
     enable: true,
     showSystemCursor: false,
     ignoreAccessibility: true,
@@ -152,15 +152,15 @@ export const HoverSvgChange: Story = {
         stroke: "white",
         strokeSize: 2,
         size: { height: 20, width: 20 },
+        effects: {
+          hover: {
+            SVG: "cross",
+            fill: "green",
+            scale: 1.8,
+          },
+        },
       },
     ],
-    effects: {
-      hover: {
-        SVG: "cross",
-        fill: "green",
-        scale: 1.8,
-      },
-    },
     enable: true,
     showSystemCursor: false,
     ignoreAccessibility: true,
@@ -177,14 +177,14 @@ export const ClickEffect: Story = {
         stroke: "white",
         strokeSize: 2,
         size: { height: 24, width: 24 },
+        effects: {
+          click: {
+            scale: 0.5,
+            fill: "orange",
+          },
+        },
       },
     ],
-    effects: {
-      click: {
-        scale: 0.5,
-        fill: "orange",
-      },
-    },
     enable: true,
     showSystemCursor: false,
     ignoreAccessibility: true,
@@ -201,19 +201,19 @@ export const HoverAndClickEffects: Story = {
         stroke: "white",
         strokeSize: 2,
         size: { height: 20, width: 20 },
+        effects: {
+          hover: {
+            scale: 1.5,
+            fill: "blue",
+          },
+          click: {
+            scale: 0.8,
+            fill: "red",
+            SVG: "cross",
+          },
+        },
       },
     ],
-    effects: {
-      hover: {
-        scale: 1.5,
-        fill: "blue",
-      },
-      click: {
-        scale: 0.8,
-        fill: "red",
-        SVG: "cross",
-      },
-    },
     enable: true,
     showSystemCursor: false,
     ignoreAccessibility: true,
@@ -230,24 +230,24 @@ export const ComplexEffect: Story = {
         stroke: "cyan",
         strokeSize: 3,
         size: { height: 30, width: 30 },
+        effects: {
+          hover: {
+            SVG: "square",
+            fill: "gold",
+            stroke: "purple",
+            strokeSize: 5,
+            scale: 2,
+            opacity: 0.8,
+          },
+          click: {
+            SVG: "cross",
+            fill: "red",
+            stroke: "black",
+            scale: 0.6,
+          },
+        },
       },
     ],
-    effects: {
-      hover: {
-        SVG: "square",
-        fill: "gold",
-        stroke: "purple",
-        strokeSize: 5,
-        scale: 2,
-        opacity: 0.8,
-      },
-      click: {
-        SVG: "cross",
-        fill: "red",
-        stroke: "black",
-        scale: 0.6,
-      },
-    },
     enable: true,
     showSystemCursor: false,
     ignoreAccessibility: true,
@@ -264,12 +264,34 @@ export const SubtleScale: Story = {
         stroke: "white",
         strokeSize: 1,
         size: { height: 16, width: 16 },
+        effects: {
+          hover: { scale: 1.25 },
+          click: { scale: 0.9 },
+        },
       },
     ],
-    effects: {
-      hover: { scale: 1.25 },
-      click: { scale: 0.9 },
-    },
+    enable: true,
+    showSystemCursor: false,
+    ignoreAccessibility: true,
+  },
+};
+
+/** Subtle hover and click scaling for minimal, refined UX feedback */
+export const HotspotEffect: Story = {
+  args: {
+    layers: [
+      {
+        SVG: "circle",
+        fill: "black",
+        stroke: "red",
+        strokeSize: 2,
+        size: { height: 16, width: 16 },
+        effects: {
+          hover: { SVG: "arrow", hotspot: { x: 0, y: 0 } },
+          click: { scale: 0.9 },
+        },
+      },
+    ],
     enable: true,
     showSystemCursor: false,
     ignoreAccessibility: true,

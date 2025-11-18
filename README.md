@@ -19,6 +19,7 @@
 - [Configuration](#-configuration)
   - [Global Options](#global-options)
   - [Layer Options](#layer-options)
+  - [Cursor Effects](#cursor-effects)
   - [Custom SVGs](#custom-svgs)
   - [Demo Testbed](#demo-testbed)
 - [Accessibility](#-accessibility)
@@ -176,7 +177,7 @@ Cursor effects allow you to dynamically change the cursor's appearance when user
 - **`hover`** - Triggered when the mouse hovers over interactive elements (defined by `hoverSelector`)
 - **`click`** - Triggered when the user presses down the mouse button (released on mouse up)
 
-**Note:** Click effects take precedence over hover effects when both are active.
+**Note:** `click` effects take precedence over `hover` effects when both are active.
 
 #### Effect Properties
 
@@ -278,9 +279,9 @@ By default, hover effects trigger on interactive elements: `"a, button, [role='b
 
 ### Custom SVGs
 
-The cursor component comes with preset SVGs like "circle", "cross", "square", and "arrow".
+The cursor component comes with preset SVGs like `"circle"`, `"cross"`, `"square"`, and `"arrow"`.
 
-If you want to use a custom SVG, that’s also supported. However, the component does not accept raw SVG files directly. Instead, the SVG must be converted into a React component, for example using [SVGR](https://react-svgr.com/).
+If you want to use a custom SVG, that’s also supported. However, the component does not accept raw SVG files directly. Instead, the SVG must be converted into a React functional component. The recommended and standard way is to utilise [SVGR](https://react-svgr.com/) within your project.
 
 For instance, with Vite:
 
@@ -315,7 +316,7 @@ export default function Example() {
 > For example, within your actual `.svg` file:
 >
 > - Height and Width: Omit these in the SVG. The cursor component’s `size` prop will control the dimensions.
-> - Colors: Use `fill="currentColor"` and `stroke="currentStroke"` for dynamic colors. This allows the cursor component’s fill and stroke props to control the appearance.
+> - Colors: Use `fill="currentColor"` and `stroke="currentStroke"` for dynamic colors. This allows the cursor component’s `fill` and `stroke` props to control the appearance.
 >   - ⚠️ If you hard-code colors like `fill="red"`, the SVG will always display in red, ignoring the component’s props.
 
 ### Demo Testbed

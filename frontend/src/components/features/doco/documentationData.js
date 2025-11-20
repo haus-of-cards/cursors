@@ -2,105 +2,126 @@ export const sidebarSections = [
   {
     sectionNumber: "1",
     sectionTitle: "Overview",
-    sectionItems: [ 
-      { 
+    sectionItems: [
+      {
         itemNumber: "1.1",
-        itemTitle: "Introduction"
+        itemTitle: "Features",
       },
-      { 
-        itemNumber: "1.2",
-        itemTitle: "Cursor Features"
-      }
-    ]
+    ],
   },
 
   {
     sectionNumber: "2",
     sectionTitle: "Getting Started",
-    sectionItems: [ 
-      { 
+    sectionItems: [
+      {
         itemNumber: "2.1",
-        itemTitle: "Installing"
+        itemTitle: "Installation",
       },
-      { 
+      {
         itemNumber: "2.2",
-        itemTitle: "Usage"
+        itemTitle: "Usage",
       },
-      { 
-        itemNumber: "2.3",
-        itemTitle: "Example"
-      }
-    ]
+    ],
   },
 
   {
     sectionNumber: "3",
     sectionTitle: "Configuration",
-    sectionItems: [ 
-      { 
+    sectionItems: [
+      {
         itemNumber: "3.1",
-        itemTitle: "Global Options"
+        itemTitle: "Global Options",
       },
-      { 
+      {
         itemNumber: "3.2",
-        itemTitle: "Layer Options"
+        itemTitle: "Layer Options",
       },
-      { 
-        itemNumber: "3.3",
-        itemTitle: "Custom SVGs"
-      },
-      { 
-        itemNumber: "3.4",
-        itemTitle: "Demo Testbed"
-      }
-    ]
-  },  
-  
+    ],
+  },
+
   {
     sectionNumber: "4",
-    sectionTitle: "Further Info",
-    sectionItems: [ 
-      { 
+    sectionTitle: "Cursor Effects",
+    sectionItems: [
+      {
         itemNumber: "4.1",
-        itemTitle: "About"
+        itemTitle: "Effect Types",
       },
-      { 
+      {
         itemNumber: "4.2",
-        itemTitle: "Accessibility"
+        itemTitle: "Effect Properties",
       },
-      { 
+      {
         itemNumber: "4.3",
-        itemTitle: "Contributing"
+        itemTitle: "Customizing Hover Targets",
       },
-      { 
-        itemNumber: "4.4",
-        itemTitle: "License"
+    ],
+  },
+
+  {
+    sectionNumber: "5",
+    sectionTitle: "Custom SVGs",
+    sectionItems: [
+      {
+        itemNumber: "5.1",
+        itemTitle: "Implementation",
+      },
+    ],
+  },
+
+  {
+    sectionNumber: "6",
+    sectionTitle: "Examples",
+    sectionItems: [
+      {
+        itemNumber: "6.1",
+        itemTitle: "Demos"
       }
-    ]
-  }  
+    ],
+  },
 
+  {
+    sectionNumber: "7",
+    sectionTitle: "Other Information",
+    sectionItems: [
+      {
+        itemNumber: "7.1",
+        itemTitle: "Accessibility",
+      },
+      {
+        itemNumber: "7.2",
+        itemTitle: "About",
+      },
+      {
+        itemNumber: "7.3",
+        itemTitle: "Contributing",
+      },
+      {
+        itemNumber: "7.4",
+        itemTitle: "License",
+      },
+    ],
+  },
 ];
-
 
 export const sidebarSectionsOld = [
   {
     sectionNumber: "1",
     sectionTitle: "Overview",
-    sectionItems: [ "Intro to React Cursors", "Cursor Functionality"]
+    sectionItems: ["Intro to React Cursors", "Cursor Functionality"],
   },
   {
     sectionNumber: "2",
     sectionTitle: "Getting Started",
-    sectionItems: [ "Installing", "Demo Cursor"]
+    sectionItems: ["Installing", "Demo Cursor"],
   },
   {
     sectionNumber: "3",
     sectionTitle: "Overview",
-    sectionItems: [ "Advanced Options", "Using your own SVGs" ]
+    sectionItems: ["Advanced Options", "Using your own SVGs"],
   },
- 
 ];
-
 
 export const itemsDocumentation = [
   {
@@ -108,11 +129,10 @@ export const itemsDocumentation = [
     itemTitle: "Installing",
     itemMarkup: `
       <h3>Intro to React Cursors<h3>
-    `
+    `,
   },
-  { 
+  {
     itemNumber: "1.2",
-    itemTitle: "Cursor Functionality"
+    itemTitle: "Cursor Functionality",
   },
-
 ];

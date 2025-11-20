@@ -3,14 +3,46 @@
 // Node imports
 import { Fragment } from "react";
 
-
 // Main component
 export default function CursorIntro() {
   return (
     <Fragment>
       <h1>Introduction to React Cursors</h1>
-      <p> <b><i> @holmesdev/cursors</i></b> provides a fully customizable cursor component that can be used within React.js applications. These multi-layered customizable cursors can be added to your React.js project to provide a cursor with features such as multiple-layers, built-in shapes, numerous configuration options, and accessibility support.</p>
-    </Fragment>
-  )
-}
+      <p>
+        {" "}
+        <b>
+          <i> @holmesdev/cursors</i>
+        </b>{" "}
+        lets you replace the default pointer with a beautiful, customizable,
+        multi-layer cursor system for React — complete with prebuilt shapes,
+        deep configuration options, and built-in accessibility.
+      </p>
 
+      <ul>
+        <li>
+          🎨 Multi-layer support — stack any number of customizable layers to
+          build complex cursor designs
+        </li>
+        <li>🧩 Built-in shapes — arrow, circle, crosshair, and square</li>
+        <li>
+          ⚙️ Deep configuration — fine-grained control over size, color,
+          behaviour, and more
+        </li>
+        <li>
+          ♿ Accessible by default — fully built-in under the hood, including
+          automatic safety fallbacks
+        </li>
+        <li>🔧 Fully declarative React API</li>
+        <li>💻 TypeScript support — fully typed props and layers</li>
+        <li>
+          🪶 Lightweight & performant — optimized rendering with minimal
+          overhead
+        </li>
+        <li>
+          📦 Small bundle footprint — ideal for any modern React application
+        </li>
+        <li>🔓 Open-source (MIT) — freely available and fully open-source</li>
+      </ul>
+    </Fragment>
+  );
+}

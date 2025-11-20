@@ -32,20 +32,57 @@ function HausOfCards() {
           <h3> Customisable Cursors for React.js</h3>
           <ul className={styles.hausofcardspagefeatures}>
             <li>
-              🎨 Customizable SVG layers — create multi-layer cursors with
-              different fills, strokes, and delays.
+              🎨{" "}
+              <span className={styles.subfeatheading}>Multi-layer support</span>{" "}
+              — stack any number of customizable layers to build complex cursor
+              designs
             </li>
             <li>
-              ⚙️ Dynamic hover and click effects — smoothly scale, recolor, or
-              swap SVGs based on interactions.
+              🧩 <span className={styles.subfeatheading}>Built-in shapes</span>{" "}
+              — arrow, circle, crosshair, and square
             </li>
             <li>
-              🧩 Accessibility-first — automatically disables for high contrast,
-              reduced motion, or touch environments.
+              ⚙️ <span className={styles.subfeatheading}></span>Deep
+              configuration — fine-grained control over size, color, behaviour,
+              and more
             </li>
             <li>
-              🧍‍♂️ Optional system cursor hiding — fully replace or blend with the
-              native cursor.
+              ♿{" "}
+              <span className={styles.subfeatheading}>
+                Accessible by default{" "}
+              </span>
+              — fully built-in under the hood, including automatic safety
+              fallbacks
+            </li>
+            <li>
+              🔧{" "}
+              <span className={styles.subfeatheading}>
+                Fully declarative React API
+              </span>
+            </li>
+            <li>
+              💻{" "}
+              <span className={styles.subfeatheading}>TypeScript support</span>{" "}
+              — fully typed props and layers
+            </li>
+            <li>
+              🪶{" "}
+              <span className={styles.subfeatheading}>
+                Lightweight & performant
+              </span>{" "}
+              — optimized rendering with minimal overhead
+            </li>
+            <li>
+              📦{" "}
+              <span className={styles.subfeatheading}>
+                Small bundle footprint
+              </span>
+              — ideal for any modern React application
+            </li>
+            <li>
+              🔓{" "}
+              <span className={styles.subfeatheading}>Open-source (MIT)</span>—
+              freely available and fully open-source
             </li>
           </ul>
         </div>

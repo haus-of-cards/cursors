@@ -27,7 +27,7 @@ export default function CursorOptionsGlobal() {
       <p> Props that can be used with our Cursor: </p>
 
       {/* Table listing all Props. Note that this was basically just copied & pasted from the HTML export of the Readme Markdown document */}
-      <table class="table table-striped table-bordered">
+      <table className="table table-dark table-striped table-bordered">
         <thead>
           <tr>
             <th>Prop</th>
@@ -124,22 +124,6 @@ export default function CursorOptionsGlobal() {
               any accessibility flags set in their browser, the custom cursor
               will disable and the system cursor will show instead.
             </td>
-          </tr>
-
-          <tr>
-            <td>
-              <code>effects?</code>
-            </td>
-            <td>
-              <code>CursorEffects</code>{" "}
-              <a href="#cursor-effects">
-                <em>(refer to Cursor Effects)</em>
-              </a>
-            </td>
-            <td>
-              <code>undefined</code>
-            </td>
-            <td>Defines hover and click effect states.</td>
           </tr>
 
           <tr>

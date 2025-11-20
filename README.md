@@ -31,8 +31,9 @@
 
 - 🎨 Multi-layer support — stack any number of customizable layers to build complex cursor designs
 - 🧩 Built-in shapes — arrow, circle, crosshair, and square
+- 📝 Custom shapes — use any user-provided SVG of your choice as a cursor layer
 - ⚙️ Deep configuration — fine-grained control over size, color, behaviour, and more
-- ♿ Accessible by default — fully built-in under the hood, including automatic safety fallbacks
+- ♿ Accessible by default — fully baked-in under the hood, including automatic safety fallbacks
 - 🔧 Fully declarative React API
 - 💻 TypeScript support — fully typed props and layers
 - 🪶 Lightweight & performant — optimized rendering with minimal overhead

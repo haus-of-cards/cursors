@@ -42,8 +42,11 @@ function HausOfCards() {
               — arrow, circle, crosshair, and square
             </li>
             <li>
-              ⚙️ <span className={styles.subfeatheading}></span>Deep
-              configuration — fine-grained control over size, color, behaviour,
+              📝 <span className={styles.subfeatheading}>Custom shapes</span> — use any user-provided SVG of your choice as a cursor layer
+            </li>
+            <li>
+              ⚙️ <span className={styles.subfeatheading}>Deep
+              configuration</span> — fine-grained control over size, color, behaviour,
               and more
             </li>
             <li>
@@ -51,7 +54,7 @@ function HausOfCards() {
               <span className={styles.subfeatheading}>
                 Accessible by default{" "}
               </span>
-              — fully built-in under the hood, including automatic safety
+              — fully baked-in under the hood, including automatic safety
               fallbacks
             </li>
             <li>

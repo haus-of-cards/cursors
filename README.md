@@ -11,17 +11,13 @@
 ## 📚 Contents
 
 - [Overview](#-overview)
-  - [Features](#-features)
 - [Getting Started](#-getting-started)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Example](#-example-custom-layers-and-effects)
 - [Configuration](#-configuration)
   - [Global Options](#global-options)
   - [Layer Options](#layer-options)
-  - [Cursor Effects](#cursor-effects)
-  - [Custom SVGs](#custom-svgs)
-  - [Demo Testbed](#demo-testbed)
+- [Cursor Effects](#-cursor-effects)
+- [Custom SVGs](#-custom-svgs)
+- [Examples](#-examples)
 - [Accessibility](#-accessibility)
 - [About](##-about-haus-of-cards)
 - [Contributing](#-contributing)
@@ -31,7 +27,7 @@
 
 _**@holmesdev/cursors**_ provides a fully customizable cursor component that can be used within React.js applications. These multi-layered customizable cursors can be added to your React.js project to provide a cursor with features such as multiple-layers, built-in shapes, numerous configuration options, and accessibility support.
 
-### ✨ Features
+### Features
 
 - 🎨 **Customizable SVG layers** — create multi-layer cursors with different fills, strokes, and delays.
 - ⚙️ **Dynamic hover and click effects** — smoothly scale, recolor, or swap SVGs based on interactions.
@@ -65,54 +61,6 @@ function App() {
 }
 
 export default App;
-```
-
-### 🎨 Example: Custom Layers and Effects
-
-```jsx
-import ReactCursor from "@holmesdev/cursors";
-
-export default function Example() {
-  return (
-    <ReactCursor
-      showSystemCursor={false} // hide the system cursor
-      layers={[
-        // Define options for layer #1
-        {
-          SVG: "arrow",
-          fill: "#ff0000",
-          stroke: "#000000",
-          strokeSize: 2,
-          size: { width: 10, height: 10 },
-          hotspot: { x: 0, y: 0 },
-        },
-        // Define options for layer #2
-        {
-          SVG: "circle",
-          fill: "#00ffff",
-          stroke: "#ffffff",
-          strokeSize: 5,
-          size: { width: 50, height: 50 },
-          opacity: 0.5,
-          delay: 100,
-        },
-        // ...define options for other layers, as required
-      ]}
-      effects={{
-        // Define global hover effect
-        hover: {
-          SVG: "cross",
-          fill: "#00ffff",
-        },
-        // Define global click effect
-        click: {
-          scale: 1.5,
-          fill: "#ffff00",
-        },
-      }}
-    />
-  );
-}
 ```
 
 ## 🛠️ Configuration
@@ -168,18 +116,18 @@ React Cursors have one or more layers with their own set of options. For example
 | `effects?`             | `CursorEffects` [_(refer to Cursor Effects)_](#cursor-effects) | `undefined`                   | Defines hover and click effect states.                                                                                                                                                                                                                         |
 | `hotspot?`             | `{ x: number, y: number }`                                     | `{ x: width/2, y: height/2 }` | X/Y coordinate override for where the actual "click" hotspot of the cursor layer is. By default, the click is centered within the SVG image. If top-left is required, for example when using an "arrow" style SVG, the hotspot should be set at `x=0` & `y=0`. |
 
-### Cursor Effects
+## ✨ Cursor Effects
 
 Cursor effects allow you to dynamically change the cursor's appearance when users interact with certain elements. Effects are applied per-layer.
 
-#### Effect Types
+### Effect Types
 
 - **`hover`** - Triggered when the mouse hovers over interactive elements (defined by `hoverSelector`)
 - **`click`** - Triggered when the user presses down the mouse button (released on mouse up)
 
-**Note:** `click` effects take precedence over `hover` effects when both are active.
+**\*Note:** `click` effects take precedence over `hover` effects when both are active.\*
 
-#### Effect Properties
+### Effect Properties
 
 Each effect (`hover` or `click`) accepts the following properties:
 
@@ -193,81 +141,7 @@ Each effect (`hover` or `click`) accepts the following properties:
 | `scale?`      | `number`                                            | Scales the cursor size (1 = normal, 2 = double size, 0.5 = half size). Multiplies the layer's base size.                                                                      |
 | `hotspot?`    | `{ x: number, y: number }`                          | Overrides the X/Y coordinates for the SVGs click location. This is useful when changing to an SVG that uses a different click point (e.g. changing from "circle" to "arrow"). |
 
-#### Examples
-
-**Simple Scale Effect:**
-
-```jsx
-<ReactCursor
-  layers={[
-    // Apply the effect per-layer (i.e. this is layer 1)
-    {
-      effects={{
-        hover: {
-          scale: 1.5, // Cursor grows 50% when hovering
-        },
-        click: {
-          scale: 0.8, // Cursor shrinks when clicking
-        },
-      }}
-    }
-  ]}
-/>
-```
-
-**Color and Shape Change:**
-
-```jsx
-<ReactCursor
-  layers={[
-    {
-      effects={{
-        hover: {
-          SVG: "cross", // Change to cross shape
-          fill: "#00ff00", // Change to green
-          stroke: "#ffffff", // White stroke
-        },
-        click: {
-          fill: "#ff0000", // Change to red when clicking
-          scale: 1.2, // Slightly enlarge
-        },
-      }}
-    }
-  ]}
-/>
-```
-
-**Complex Multi-Property Effect:**
-
-```jsx
-<ReactCursor
-  layers={[
-    {
-      SVG: "circle",
-      fill: "#000000",
-      size: { width: 20, height: 20 },
-      effects={{
-        hover: {
-          SVG: "square", // Change shape
-          fill: "#0066ff", // Change color
-          stroke: "#ffffff", // Add white stroke
-          strokeSize: 2, // Set stroke width
-          opacity: 0.9, // Slightly transparent
-          scale: 1.3, // Enlarge by 30%
-        },
-        click: {
-          SVG: "arrow", // Change shape
-          fill: "#ff0000", // Red on click
-          scale: 0.7, // Shrink on click (overrides hover)
-          hotspot: { x: 0, y: 0 }, // Moves hotspot to 0:0, to suit "arrow"
-        },
-      }}
-    },
-  ]}
-/>
-```
-
-#### Customizing Hover Targets
+### Customizing Hover Targets
 
 By default, hover effects trigger on interactive elements: `"a, button, [role='button'], input, textarea, select"`. You can customize this with the `hoverSelector` prop:
 
@@ -277,7 +151,7 @@ By default, hover effects trigger on interactive elements: `"a, button, [role='b
 />
 ```
 
-### Custom SVGs
+## 🖼️ Custom SVGs
 
 The cursor component comes with preset SVGs like `"circle"`, `"cross"`, `"square"`, and `"arrow"`.
 
@@ -335,11 +209,9 @@ export default function Example() {
 
 ### Demo Testbed
 
-You can also explore the live cursor functionality on [our website](https://haus-of-cards.github.io/cursors).
-
-1. Select your desired cursor options.
-2. Enable the Testbed to see them in action.
-3. Once you’re happy with your design, copy the generated code directly into your React.js application to start using it.
+- Multiple examples have been pre-made and can [found here](https://github.com/haus-of-cards/cursors/tree/main/examples)
+- These example can be viewed in realtime by accessing the [examples section](https://haus-of-cards.github.io/cursors/examples) of our website
+- Alternatively, you can demo the cursor configuration by accessing our [live demo testbed](https://haus-of-cards.github.io/cursors/demo).
 
 ## 🧠 Accessibility
 

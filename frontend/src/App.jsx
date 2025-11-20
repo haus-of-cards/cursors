@@ -14,6 +14,8 @@ import FeaturesPage from "./pages/DemoPage";
 // Workspace imports
 import ReactCursor from "@holmesdev/cursors";
 import { vars } from "./styles/themes.css";
+import ExamplesPage from "./pages/ExamplesPage";
+import MainCursor from "./components/features/MainCursor";
 
 // React component App
 function App() {
@@ -23,45 +25,8 @@ function App() {
   // Markup (JSX)
   return (
     <Fragment>
-      {/* Import React Cursor Component */}
-      <ReactCursor
-        enable={mainCursor}
-        showSystemCursor={false}
-        layers={[
-          {
-            SVG: "circle",
-            strokeSize: 10,
-            fill: "black",
-            size: { width: 14, height: 14 },
-            effects: {
-              hover: {
-                scale: 0.8,
-                stroke: vars.colors.brand,
-                strokeSize: 25,
-                SVG: "square",
-              },
-              click: {
-                fill: vars.colors.brand,
-              },
-            },
-          },
-          {
-            SVG: "circle",
-            fill: vars.colors.brand,
-            opacity: 0.2,
-            size: { width: 50, height: 50 },
-            delay: 100,
-            effects: {
-              hover: {
-                scale: 1.5,
-              },
-              click: {
-                scale: 1.5,
-              },
-            },
-          },
-        ]}
-      />
+      {/* Import the pre-styled React Cursor Component */}
+      <MainCursor enable={mainCursor} />
 
       {/* New Routing Setup using the Layout component  */}
       {/* Page routing */}
@@ -74,6 +39,10 @@ function App() {
             element={<FeaturesPage setMainCursor={setMainCursor} />}
           />
           <Route path="docs" element={<DocoPage />} />
+          <Route
+            path="examples"
+            element={<ExamplesPage setMainCursor={setMainCursor} />}
+          />
           {/* Catchall segment ie. Page not found */}
           <Route path="*" element={<NotFoundPage />} />
         </Route>

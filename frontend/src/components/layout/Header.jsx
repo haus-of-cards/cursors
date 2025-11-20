@@ -29,24 +29,27 @@ function Header() {
           </Navbar.Brand>
           <Navbar.Toggle
             aria-controls="basic-navbar-nav"
-            className={styles.colour}
+            className={styles.link}
           />
           <Navbar.Collapse id="basic-navbar-nav" className={styles.options}>
             <Nav>
-              <Nav.Link as={Link} to={""} className={styles.colour}>
+              <Nav.Link as={Link} to={""} className={styles.link}>
                 Home
               </Nav.Link>
-              <Nav.Link as={Link} to={"demo"} className={styles.colour}>
+              <Nav.Link as={Link} to={"demo"} className={styles.link}>
                 Demo
               </Nav.Link>
-              <Nav.Link as={Link} to={"docs"} className={styles.colour}>
+              <Nav.Link as={Link} to={"examples"} className={styles.link}>
+                Examples
+              </Nav.Link>
+              <Nav.Link as={Link} to={"docs"} className={styles.link}>
                 Documentation
               </Nav.Link>
               <Nav.Link
                 as={Link}
                 to={`${config.githubRepoURL}`}
                 target="_blank"
-                className={styles.colour}
+                className={styles.link}
               >
                 GitHub
               </Nav.Link>

@@ -58,7 +58,7 @@ function HausOfCards() {
       </div>
       <div>
         <h3 className={styles.hausofcardspageH3}>Ready to get started?</h3>
-        <p className={styles.install}>npm install @holmesdev/cursor</p>
+        <p className={styles.install}>npm install @holmesdev/cursors</p>
       </div>
     </div>
   );

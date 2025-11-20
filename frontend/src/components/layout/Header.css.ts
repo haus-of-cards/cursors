@@ -54,6 +54,11 @@ export const options = style({
     },
   },
 });
-export const colour = style({
+export const link = style({
   color: vars.colors.complementary,
+  selectors: {
+    "&:hover": {
+      transform: "scale(1.1)",
+    },
+  },
 });

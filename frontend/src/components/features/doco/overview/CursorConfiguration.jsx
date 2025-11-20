@@ -5,7 +5,7 @@ import { Fragment } from "react";
 
 
 // Main component
-export default function CursorExample() {
+export default function CursorConfiguration() {
 
   const code = `
   import ReactCursor from "@holmesdev/cursors";

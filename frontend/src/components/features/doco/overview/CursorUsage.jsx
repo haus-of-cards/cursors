@@ -3,11 +3,8 @@
 // Node imports
 import { Fragment } from "react";
 
-
-
 // Main component
 export default function CursorUsage() {
-
   const code = `
     import ReactCursor from "@holmesdev/cursors";
 
@@ -28,10 +25,14 @@ export default function CursorUsage() {
   return (
     <Fragment>
       <h1>Cursor Usage</h1>
-      <p>Import the Cursor into your top-level component <i>App</i> and then render it. </p>
+      <p>
+        Import the Cursor into your top-level component <i>App</i> and then
+        render it.{" "}
+      </p>
       {/* Preserve the formatting when displaying the code  */}
-      <pre><code> {code} </code></pre>
+      <pre>
+        <code> {code} </code>
+      </pre>
     </Fragment>
-  )
+  );
 }
-

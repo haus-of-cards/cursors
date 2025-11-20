@@ -78,6 +78,13 @@ export const hausofcardspagefeatures = style({
   display: "flex",
   flexDirection: "column",
   gap: "0.5rem",
+  fontFamily: vars.fonts.brand,
+});
+
+export const subfeatheading = style({
+  fontSize: "1rem",
+  fontWeight: "bold",
+  textDecoration: "underline",
 });
 
 export const hausofcardspageDemo = style({

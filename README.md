@@ -25,14 +25,19 @@
 
 ## 📖 Overview
 
-_**@holmesdev/cursors**_ provides a fully customizable cursor component that can be used within React.js applications. These multi-layered customizable cursors can be added to your React.js project to provide a cursor with features such as multiple-layers, built-in shapes, numerous configuration options, and accessibility support.
+**_@holmesdev/cursors_** lets you replace the default pointer with a beautiful, customizable, multi-layer cursor system for React — complete with prebuilt shapes, deep configuration options, and built-in accessibility.
 
 ### Features
 
-- 🎨 **Customizable SVG layers** — create multi-layer cursors with different fills, strokes, and delays.
-- ⚙️ **Dynamic hover and click effects** — smoothly scale, recolor, or swap SVGs based on interactions.
-- 🧩 **Accessibility-first** — automatically disables for high contrast, reduced motion, or touch environments.
-- 🧍‍♂️ **Optional system cursor hiding** — fully replace or blend with the native cursor.
+- 🎨 Multi-layer support — stack any number of customizable layers to build complex cursor designs
+- 🧩 Built-in shapes — arrow, circle, crosshair, and square
+- ⚙️ Deep configuration — fine-grained control over size, color, behaviour, and more
+- ♿ Accessible by default — fully built-in under the hood, including automatic safety fallbacks
+- 🔧 Fully declarative React API
+- 💻 TypeScript support — fully typed props and layers
+- 🪶 Lightweight & performant — optimized rendering with minimal overhead
+- 📦 Small bundle footprint — ideal for any modern React application
+- 🔓 Open-source (MIT) — freely available and fully open-source
 
 ## 🚀 Getting Started
 
@@ -131,7 +136,7 @@ Cursor effects allow you to dynamically change the cursor's appearance when user
 
 Each effect (`hover` or `click`) accepts the following properties:
 
-| Property      | Type                                                | Description                                                                                                                                                                   |
+| Prop          | Type                                                | Description                                                                                                                                                                   |
 | ------------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `SVG?`        | `SvgDefaultStyles` \| `FC<SVGProps<SVGSVGElement>>` | Changes the SVG shape during the effect. Can use built-in shapes (`"circle"`, `"cross"`, `"square"`, `"arrow"`) or custom SVG component.                                      |
 | `fill?`       | `string`                                            | Changes the fill color during the effect.                                                                                                                                     |
@@ -207,7 +212,7 @@ export default function Example() {
 > - Colors: Use `fill="currentColor"` and `stroke="currentStroke"` for dynamic colors. This allows the cursor component’s `fill` and `stroke` props to control the appearance.
 >   - ⚠️ If you hard-code colors like `fill="red"`, the SVG will always display in red, ignoring the component’s props.
 
-### Demo Testbed
+## 📝 Examples
 
 - Multiple examples have been pre-made and can [found here](https://github.com/haus-of-cards/cursors/tree/main/examples)
 - These example can be viewed in realtime by accessing the [examples section](https://haus-of-cards.github.io/cursors/examples) of our website
@@ -231,7 +236,7 @@ Haus of Cards is a student team who created the React Cursor project at Holmesgl
 
 ## 🤝 Contributing
 
-Refer to [CONTRIBUTING](contributing.md) for guidelines. Please also review our [CODE OF CONDUCT](CODE_OF_CONDUCT.md).
+Refer to [CONTRIBUTING](CONTRIBUTING.md) for guidelines. Please also review our [CODE OF CONDUCT](CODE_OF_CONDUCT.md).
 
 ## 🧾 License
 

@@ -42,7 +42,7 @@ function ExamplesPage({ setMainCursor }) {
       {CursorsMap[selectedCursor]}
 
       <p>Click any cursor name to view it within your browser!</p>
-      <table className={`table table-dark table-striped ${styles.table}`}>
+      <table className={`table table-dark table-striped table-bordered ${styles.table}`}>
         <thead className={styles.th}>
           <tr>
             <td>Name</td>

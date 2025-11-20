@@ -24,12 +24,13 @@ export default function CursorIntro() {
           build complex cursor designs
         </li>
         <li>🧩 Built-in shapes — arrow, circle, crosshair, and square</li>
+        <li>📝 Custom shapes — use any user-provided SVG of your choice as a cursor layer</li>
         <li>
           ⚙️ Deep configuration — fine-grained control over size, color,
           behaviour, and more
         </li>
         <li>
-          ♿ Accessible by default — fully built-in under the hood, including
+          ♿ Accessible by default — fully baked-in under the hood, including
           automatic safety fallbacks
         </li>
         <li>🔧 Fully declarative React API</li>

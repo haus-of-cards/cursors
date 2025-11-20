@@ -20,7 +20,7 @@ if (redirect) {
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     {/* Basename required for gh-pages URL structure */}
-    <BrowserRouter basename="/cursors">
+    <BrowserRouter basename={import.meta.env.BASE_URL}>
       <App />
     </BrowserRouter>
   </StrictMode>

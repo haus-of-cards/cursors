@@ -33,7 +33,6 @@ function MainCursor({ enable }) {
       layers={[
         {
           SVG: CustomSvg,
-          strokeSize: 10,
           fill: "black",
           stroke: vars.colors.brand,
           strokeSize: 25,

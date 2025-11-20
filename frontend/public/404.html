@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script>
+      // Preserve deep-link route, but strip "/cursors" so we don't duplicate it
+      const path = window.location.pathname.replace("/cursors", "");
+      sessionStorage.setItem("redirect", path);
+      window.location.replace("/cursors/");
+    </script>
+  </head>
+</html>
